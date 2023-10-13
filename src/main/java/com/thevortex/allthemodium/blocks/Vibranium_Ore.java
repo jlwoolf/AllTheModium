@@ -18,7 +18,9 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Vibranium_Ore extends DropExperienceBlock {
 
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(80.0f,2500.0f));
+		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(
+			AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get() ? 80.0f : -1.0f, 5000f
+		));
 	}
 	@Override
 	@SuppressWarnings("java:S1874") // deprecated method from super class
