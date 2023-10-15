@@ -27,7 +27,7 @@ public class BlockBreak {
 		boolean fakePlayer = (event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null);
 		boolean emptyHand = event.getPlayer().getMainHandItem().isEmpty();
 
-		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && fakePlayer && event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES)) {
+		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && fakePlayer && event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES) && AllthemodiumCommonConfigs.OTHER_PROTECTION.get()) {
 
 			event.setCanceled(true);
 			return;
