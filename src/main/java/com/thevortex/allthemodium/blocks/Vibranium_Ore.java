@@ -1,6 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
+import com.thevortex.allthemodium.config.AllthemodiumServerConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
 
@@ -27,7 +27,7 @@ public class Vibranium_Ore extends DropExperienceBlock {
 	public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
 		BlockEntity blockEntity = getter.getBlockEntity(blockPos);
 		if (canEntityDestroy(state,getter,blockPos, player)) {
-			if(AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get())
+			if(AllthemodiumServerConfigs.VIBRANIUM_QUARRYABLE.get())
 				return super.getDestroyProgress(state, player, getter, blockPos);
 			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 500 : 2500;
 			return player.getDigSpeed(state, blockPos) / 2.0F / i;
@@ -37,7 +37,7 @@ public class Vibranium_Ore extends DropExperienceBlock {
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
 		if((player instanceof FakePlayer) && state.is(TagRegistry.VIBRANIUM_ORE)) { 
-			return AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get(); 
+			return AllthemodiumServerConfigs.VIBRANIUM_QUARRYABLE.get(); 
 		}
 		return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition) < 16.0F);
 	}

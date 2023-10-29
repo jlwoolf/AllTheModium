@@ -41,8 +41,7 @@ import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.thevortex.allthemodium.config.AllthemodiumClientConfigs;
-import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
+import com.thevortex.allthemodium.config.AllthemodiumServerConfigs;
 import com.thevortex.allthemodium.crafting.ATMCraftingSetup;
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
@@ -102,8 +101,7 @@ public class AllTheModium
 		GeckoLib.initialize();
 
 		// load configs
-		ModLoadingContext.get().registerConfig(Type.CLIENT, AllthemodiumClientConfigs.SPEC, "allthemodium-client.toml");
-		ModLoadingContext.get().registerConfig(Type.COMMON, AllthemodiumCommonConfigs.SPEC, "allthemodium-common.toml");
+		ModLoadingContext.get().registerConfig(Type.SERVER, AllthemodiumServerConfigs.SPEC, "allthemodium-server.toml");
 
     	if(ModList.get().isLoaded("mekanism")) {
 			ATMSlurries.SLURRIES.register(modEventBus);

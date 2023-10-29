@@ -2,7 +2,7 @@ package com.thevortex.allthemodium.events;
 
 
 import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
+import com.thevortex.allthemodium.config.AllthemodiumServerConfigs;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 
@@ -27,23 +27,23 @@ public class BlockBreak {
 		boolean fakePlayer = (event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null);
 		boolean emptyHand = event.getPlayer().getMainHandItem().isEmpty();
 
-		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && fakePlayer && event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES) && AllthemodiumCommonConfigs.OTHER_PROTECTION.get()) {
+		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && fakePlayer && event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES) && AllthemodiumServerConfigs.OTHER_PROTECTION.get()) {
 
 			event.setCanceled(true);
 			return;
 		}
-		if((event.getState().is(TagRegistry.ALLTHEMODIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumCommonConfigs.ALLTHEMODIUM_QUARRYABLE.get()) {
+		if((event.getState().is(TagRegistry.ALLTHEMODIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumServerConfigs.ALLTHEMODIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
 		}
 
-		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get()) {
+		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumServerConfigs.VIBRANIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
 		}
-		if((event.getState().is(TagRegistry.UNOBTAINIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumCommonConfigs.UNOBTAINIUM_QUARRYABLE.get()) {
+		if((event.getState().is(TagRegistry.UNOBTAINIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumServerConfigs.UNOBTAINIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
