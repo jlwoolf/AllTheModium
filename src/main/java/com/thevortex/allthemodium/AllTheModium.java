@@ -101,7 +101,7 @@ public class AllTheModium
 		GeckoLib.initialize();
 
 		// load configs
-		ModLoadingContext.get().registerConfig(Type.SERVER, AllthemodiumServerConfigs.SPEC, "allthemodium-server.toml");
+		ModLoadingContext.get().registerConfig(Type.SERVER, AllthemodiumServerConfigs.SPEC);
 
     	if(ModList.get().isLoaded("mekanism")) {
 			ATMSlurries.SLURRIES.register(modEventBus);
