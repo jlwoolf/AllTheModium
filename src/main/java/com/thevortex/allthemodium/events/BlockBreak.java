@@ -10,12 +10,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.util.FakePlayer;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
-@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(bus=EventBusSubscriber.Bus.GAME, modid = Reference.MOD_ID)
 public class BlockBreak {
 
 

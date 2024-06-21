@@ -1,5 +1,8 @@
 package com.thevortex.allthemodium.blocks;
 
+import org.checkerframework.checker.units.qual.A;
+
+import com.mojang.serialization.MapCodec;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,9 +22,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import net.minecraft.util.RandomSource;
 
-public class AncientCaveVines extends GrowingPlantHeadBlock implements BonemealableBlock, ACaveVines {
+public class AncientCaveVines extends GrowingPlantHeadBlock implements ACaveVines {
     private static final float CHANCE_OF_BERRIES_ON_GROWTH = 0.11F;
-
+    
+   public static final MapCodec<CaveVinesBlock> CODEC = simpleCodec(CaveVinesBlock::new);
     public AncientCaveVines(Properties p_53928_, Direction p_53929_, VoxelShape p_53930_, boolean p_53931_, double p_53932_) {
         super(p_53928_, Direction.DOWN, SHAPE, false, 0.1D);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)).setValue(BERRIES, Boolean.valueOf(false)));
@@ -69,5 +73,9 @@ public class AncientCaveVines extends GrowingPlantHeadBlock implements Bonemeala
     @Override
     protected GrowingPlantBodyBlock getBodyBlock() {
         return ModRegistry.ANCIENT_CAVEVINES_PLANT_.get();
+    }
+    @Override
+    protected MapCodec<CaveVinesBlock> codec() {
+       return CODEC;
     }
 }

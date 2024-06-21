@@ -23,7 +23,7 @@ build
 
 # other
 eclipse
-run
+runs
 
 # Files from Forge MDK
 forge*changelog.txt
@@ -48,3 +48,8 @@ TCon/silent_data/vibranium.json
 
 # datagen
 src/generated/resources/.cache
+.vscode/settings.json
+libs/alltheores-2.3.0-alpha_mc_1.21.jar
+libs/geckolib-neoforge-1.21-4.5.5.jar
+run/*
+runs/*

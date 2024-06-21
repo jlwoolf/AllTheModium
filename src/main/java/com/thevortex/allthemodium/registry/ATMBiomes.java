@@ -18,10 +18,8 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ATMBiomes {
 
 
@@ -29,7 +27,7 @@ public class ATMBiomes {
 
 
     private static TagKey<Biome> register(String names) {
-        return TagKey.create(Registries.BIOME, new ResourceLocation(Reference.MOD_ID,names));
+        return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,names));
     }
 
     public static void addDefaultCarvers(BiomeGenerationSettings.Builder builder) {

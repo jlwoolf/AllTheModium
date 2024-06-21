@@ -19,7 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class allthemodium_helmet<T extends LivingEntity> extends HumanoidModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "allthemodium_armor"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "allthemodium_armor"), "main");
 	protected final EquipmentSlot slot;
 
 	public allthemodium_helmet(ModelPart root, EquipmentSlot slot) {
@@ -50,9 +50,9 @@ public class allthemodium_helmet<T extends LivingEntity> extends HumanoidModel<T
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int packedColor) {
 		setPartVisibility(slot);
-		super.renderToBuffer(poseStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+		super.renderToBuffer(poseStack, buffer, packedLight, packedOverlay, packedColor);
 	}
 
 	private void setPartVisibility(EquipmentSlot slot) {

@@ -9,7 +9,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -19,15 +19,15 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class AncientSaplingBlock extends SaplingBlock implements BonemealableBlock {
+public class AncientSaplingBlock extends SaplingBlock {
 
 
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
     protected static final float AABB_OFFSET = 6.0F;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
-    private final AbstractTreeGrower treeGrower;
+    private final TreeGrower treeGrower;
 
-    public AncientSaplingBlock(AbstractTreeGrower p_55978_, BlockBehaviour.Properties p_55979_) {
+    public AncientSaplingBlock(TreeGrower p_55978_, BlockBehaviour.Properties p_55979_) {
         super(p_55978_,p_55979_);
         this.treeGrower = p_55978_;
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));

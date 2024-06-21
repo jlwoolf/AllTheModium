@@ -4,17 +4,17 @@ import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ATMStructures {
 
     public static final DeferredRegister<StructureType<?>> STRUCTURES = DeferredRegister.create(Registries.STRUCTURE_TYPE, Reference.MOD_ID);
 
 
-    public static final RegistryObject<StructureType<APStructure>> ANCIENT_PYRAMID = STRUCTURES.register("ancient_pyramid", () -> () -> APStructure.CODEC);
-    public static final RegistryObject<StructureType<PVStructure>> PIGLIN_VILLAGE = STRUCTURES.register("piglin_village", () -> () -> PVStructure.CODEC);
-    public static final RegistryObject<StructureType<DungeonStructure>> ANCIENT_DUNGEON = STRUCTURES.register("dungeon", () -> () -> DungeonStructure.CODEC);
+    public static final DeferredHolder<StructureType<?>,StructureType<APStructure>> ANCIENT_PYRAMID = STRUCTURES.register("ancient_pyramid", () -> () -> APStructure.CODEC);
+    public static final DeferredHolder<StructureType<?>,StructureType<PVStructure>> PIGLIN_VILLAGE = STRUCTURES.register("piglin_village", () -> () -> PVStructure.CODEC);
+    public static final DeferredHolder<StructureType<?>,StructureType<DungeonStructure>> ANCIENT_DUNGEON = STRUCTURES.register("dungeon", () -> () -> DungeonStructure.CODEC);
 
 
 }

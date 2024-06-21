@@ -3,17 +3,20 @@ package com.thevortex.allthemodium.datagen.builder;
 
 import com.thevortex.allthemodium.datagen.RecipeException;
 import com.thevortex.allthemodium.reference.Reference;
+
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.EnumMap;
 import java.util.Locale;
@@ -31,7 +34,7 @@ public class ShapedBlockBuilder {
 
 
     private final String criteriaName;
-    private final InventoryChangeTrigger.TriggerInstance criterion;
+    private final Criterion<TriggerInstance> criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
     private final TagKey<Item> ingot;
 
@@ -51,19 +54,19 @@ public class ShapedBlockBuilder {
 
 
 
-    public ShapedBlockBuilder setBlock(RegistryObject<Item> object) {
+    public ShapedBlockBuilder setBlock(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.BLOCK, object.get());
         return this;
     }
-    public ShapedBlockBuilder setGear(RegistryObject<Item> object) {
+    public ShapedBlockBuilder setGear(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.GEAR, object.get());
         return this;
     }
-    public ShapedBlockBuilder setPlate(RegistryObject<Item> object) {
+    public ShapedBlockBuilder setPlate(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.PLATE, object.get());
         return this;
     }
-    public ShapedBlockBuilder setRod(RegistryObject<Item> object) {
+    public ShapedBlockBuilder setRod(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.ROD, object.get());
         return this;
     }
@@ -75,7 +78,7 @@ public class ShapedBlockBuilder {
         }
     }
 
-    public void build(Consumer<FinishedRecipe> consumer) {
+    public void build(RecipeOutput consumer) {
 
         Consumer<ShapedRecipeBuilder> register = builder -> builder.save(consumer);
 

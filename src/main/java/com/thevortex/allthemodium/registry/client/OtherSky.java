@@ -1,6 +1,9 @@
 package com.thevortex.allthemodium.registry.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.thevortex.allthemodium.registry.ATMBiomes;
+
+import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;
@@ -8,9 +11,20 @@ import org.joml.Matrix4f;
 
 public class OtherSky extends DimensionSpecialEffects {
 
+    private final float cloudLevel;
+    private final boolean hasGround;
+    private final SkyType skyType;
+    private final boolean forceBrightLightmap;
+    private final boolean constantAmbientLight;
 
-        public OtherSky(float p_108866_, boolean p_108867_, SkyType p_108868_, boolean p_108869_, boolean p_108870_) {
-            super(p_108866_, p_108867_, p_108868_, p_108869_, p_108870_);
+
+        public OtherSky(float cloudLevel, boolean hasGround, SkyType skyType, boolean forceBrightLightmap, boolean constantAmbientLight) {
+            super(cloudLevel, hasGround, skyType, forceBrightLightmap, constantAmbientLight);
+            this.cloudLevel = cloudLevel;
+            this.hasGround = hasGround;
+            this.skyType = skyType;
+            this.forceBrightLightmap = forceBrightLightmap;
+            this.constantAmbientLight = constantAmbientLight;
         }
 
         @Override
@@ -25,15 +39,7 @@ public class OtherSky extends DimensionSpecialEffects {
 
         @Override
         public float getCloudHeight() { return Float.NaN; }
-        @Override
-        public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
-            return false;
-        }
-/*
-        @Override
-        public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
-            return ((level.getBiome(camera.getBlockPosition()).is(ATMBiomes.CRIMSON_FOREST)) || (level.getBiome(camera.getBlockPosition()).is(ATMBiomes.WARPED_FOREST)) || (level.getBiome(camera.getBlockPosition()).is(ATMBiomes.THE_OTHER)));
-        }
+        
+        
 
- */
 }

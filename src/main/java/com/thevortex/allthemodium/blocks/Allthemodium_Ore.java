@@ -19,9 +19,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.util.FakePlayer;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.util.FakePlayer;
 
 public class Allthemodium_Ore extends RedStoneOreBlock {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
@@ -29,18 +29,7 @@ public class Allthemodium_Ore extends RedStoneOreBlock {
 		super(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(-1.0f,1500.0f));
 	}
 
-	@Override
-	@SuppressWarnings("java:S1874") // deprecated method from super class
-	public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
-		BlockEntity blockEntity = getter.getBlockEntity(blockPos);
-		if (canEntityDestroy(state,getter,blockPos, player)) {
-			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 250 : 1500;
-			return player.getDigSpeed(state, blockPos) / 2.0F / i;
-		}
-		return 0.0F;
-	}
-
-
+	
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.ALLTHEMODIUM_ORE.get())) { return false; }

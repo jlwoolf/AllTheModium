@@ -8,16 +8,16 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = Reference.MOD_ID)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = Reference.MOD_ID)
 public final class ATMDataGenerators {
 
     private ATMDataGenerators() {
@@ -34,9 +34,9 @@ public final class ATMDataGenerators {
             ATMBlockTags blockTags1 = new ATMBlockTags(packOutput,event.getLookupProvider(), fileHelper);
             generator.addProvider(true, blockTags1);
             generator.addProvider(true,new ATMItemTags(packOutput,event.getLookupProvider(), blockTags1.contentsGetter(), fileHelper));
-            generator.addProvider(true,new ATMCraftingRecipes(packOutput));
+            generator.addProvider(true,new ATMCraftingRecipes(packOutput,event.getLookupProvider()));
             generator.addProvider(true,new LootTableProvider(packOutput, Collections.emptySet(),
-                    List.of(new LootTableProvider.SubProviderEntry(ATMLootTables::new, LootContextParamSets.BLOCK))));
+                    List.of(new LootTableProvider.SubProviderEntry(ATMLootTables::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));
         }
         if (event.includeClient()) {
             generator.addProvider(true,new BlockStates(generator, fileHelper));

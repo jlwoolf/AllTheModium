@@ -6,7 +6,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.IPlantable;
+import net.neoforged.neoforge.common.IPlantable;
 
 public class AncientDirt extends Block {
     public AncientDirt(Properties p_49795_) {

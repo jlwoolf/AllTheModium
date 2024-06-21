@@ -4,11 +4,13 @@ import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
 import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.registry.ModRegistry;
+
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -17,6 +19,12 @@ import java.util.stream.Stream;
 public class ATMLootTables extends VanillaBlockLoot {
 
 
+
+
+        public ATMLootTables(Provider p_344962_) {
+        super(p_344962_);
+        //TODO Auto-generated constructor stub
+    }
 
 
         @Override
@@ -67,32 +75,32 @@ public class ATMLootTables extends VanillaBlockLoot {
                     ModRegistry.PILLARBLOCKS.getEntries())
                     .filter(block -> !(block instanceof LeavesBlock))
                     .flatMap(Collection::stream)
-                    .map(RegistryObject::get)
+                    .map(DeferredHolder::get)
                     .collect(Collectors.toList());
 
         }
         protected Iterable<Block> getKnownStairs() {
             return ModRegistry.STAIRBLOCKS.getEntries()
-                    .stream().map(RegistryObject::get)
+                    .stream().map(DeferredHolder::get)
                     .collect(Collectors.toList());
 
         }
         protected Iterable<Block> getKnownSlabs() {
             return ModRegistry.SLABBLOCKS.getEntries()
-                    .stream().map(RegistryObject::get)
+                    .stream().map(DeferredHolder::get)
                     .collect(Collectors.toList());
 
         }
 
         protected Iterable<Block> getKnownWalls() {
             return ModRegistry.WALLBLOCKS.getEntries()
-                    .stream().map(RegistryObject::get)
+                    .stream().map(DeferredHolder::get)
                     .collect(Collectors.toList());
 
         }
         protected Iterable<Block> getunKnownBlocks() {
             return ModRegistry.PILLARBLOCKS.getEntries()
-                    .stream().map(RegistryObject::get)
+                    .stream().map(DeferredHolder::get)
                     .collect(Collectors.toList());
 
         }

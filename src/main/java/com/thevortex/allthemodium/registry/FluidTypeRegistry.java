@@ -1,21 +1,27 @@
 package com.thevortex.allthemodium.registry;
 
+import java.util.function.Supplier;
+
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.resource.MoltenATMType;
 import com.thevortex.allthemodium.registry.resource.MoltenUNOBType;
 import com.thevortex.allthemodium.registry.resource.MoltenVIBType;
 import com.thevortex.allthemodium.registry.resource.SoulLavaType;
+
+import mekanism.common.registration.impl.FluidDeferredRegister;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class FluidTypeRegistry {
-    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Reference.MOD_ID);
+    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, Reference.MOD_ID);
 
-    public static final RegistryObject<FluidType> SOULLAVA = FLUID_TYPES.register("soul_lava", () -> new SoulLavaType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType,FluidType> SOULLAVA = FLUID_TYPES.register("soul_lava",() -> new SoulLavaType(FluidType.Properties.create()
             .descriptionId("block." + Reference.MOD_ID + ".soul_lava")
             .fallDistanceModifier(0F)
             .canExtinguish(false)
@@ -26,7 +32,7 @@ public class FluidTypeRegistry {
             .canHydrate(false)
     ));
 
-    public static final RegistryObject<FluidType> ATM = FLUID_TYPES.register("molten_atm", () -> new MoltenATMType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType,FluidType> ATM = FLUID_TYPES.register("molten_atm", () -> new MoltenATMType(FluidType.Properties.create()
             .descriptionId("block." + Reference.MOD_ID + ".molten_allthemodium")
             .fallDistanceModifier(0F)
             .canExtinguish(false)
@@ -37,7 +43,7 @@ public class FluidTypeRegistry {
             .canHydrate(false)
     ));
 
-    public static final RegistryObject<FluidType> VIB = FLUID_TYPES.register("molten_vibranium", () -> new MoltenVIBType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType,FluidType> VIB = FLUID_TYPES.register("molten_vibranium", () -> new MoltenVIBType(FluidType.Properties.create()
             .descriptionId("block." + Reference.MOD_ID + ".molten_vibranium")
             .fallDistanceModifier(0F)
             .canExtinguish(false)
@@ -48,7 +54,7 @@ public class FluidTypeRegistry {
             .canHydrate(false)
     ));
 
-    public static final RegistryObject<FluidType> UNOB = FLUID_TYPES.register("molten_unobtainium", () -> new MoltenUNOBType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType,FluidType> UNOB = FLUID_TYPES.register("molten_unobtainium", () -> new MoltenUNOBType(FluidType.Properties.create()
             .descriptionId("block." + Reference.MOD_ID + ".molten_unobtainium")
             .fallDistanceModifier(0F)
             .canExtinguish(false)

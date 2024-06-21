@@ -3,10 +3,10 @@ package com.thevortex.allthemodium.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mojang.serialization.MapCodec;
 import com.thevortex.allthemodium.AllTheModium;
 
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.reference.TweakProxy;
 import com.thevortex.allthemodium.registry.LevelRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
@@ -31,6 +31,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TeleportPad extends Block {
+	MapCodec<? extends TeleportPad> codec = simpleCodec(TeleportPad::new);
+	
 	protected static final VoxelShape TELEPORTPAD_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
 
 	public TeleportPad(Properties properties) {
@@ -51,7 +53,7 @@ public class TeleportPad extends Block {
 
 		return TELEPORTPAD_AABB;
 	}
-
+/*
 	@Override
 	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player,
 								 InteractionHand handIn, BlockHitResult hit) {
@@ -62,7 +64,7 @@ public class TeleportPad extends Block {
 		}
 		return super.use(state, worldIn, pos, player, handIn, hit);
 	}
-
+ */
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
 		if(player.level().dimension().registry().getNamespace().contains(Reference.MOD_ID)) {
@@ -73,7 +75,7 @@ public class TeleportPad extends Block {
 	}
 
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
-		int config = TweakProxy.packMode();
+		int config = 1;//TweakProxy.packMode();
 		if (player.level().dimension().equals(LevelRegistry.Mining)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
 			int y = 256;

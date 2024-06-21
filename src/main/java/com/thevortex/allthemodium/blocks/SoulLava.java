@@ -22,11 +22,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.LavaFluid;
 import net.minecraft.world.ticks.ScheduledTick;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.NeoForgeEventHandler;
+import net.neoforged.neoforge.event.EventHooks;
 
 import com.thevortex.allthemodium.registry.ModRegistry;
 import org.lwjgl.system.CallbackI;
@@ -36,7 +38,7 @@ public class SoulLava extends LiquidBlock {
 	public int tickcount = 0;
 	protected FlowingFluid fluid;
 	public SoulLava(Supplier<? extends FlowingFluid> supplier, Properties p_i48368_1_) {
-		super(supplier, p_i48368_1_);
+		super((FlowingFluid) supplier, p_i48368_1_);
 
 	}
 
@@ -90,7 +92,7 @@ public class SoulLava extends LiquidBlock {
 						return;
 					}
 
-						level.setBlockAndUpdate(blockpos1.above(), ForgeEventFactory
+						level.setBlockAndUpdate(blockpos1.above(), EventHooks
 								.fireFluidPlaceBlockEvent(level, blockpos1.above(), pos, FIRE));
 
 				}

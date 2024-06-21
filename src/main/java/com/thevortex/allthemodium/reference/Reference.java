@@ -6,24 +6,24 @@ import net.minecraft.world.level.block.Block;
 
 public class Reference {
 
-	public static final ResourceLocation ORETYPE = location("forge:ores/allthemodium");
-	public static final ResourceLocation ORETYPE2 = location("forge:ores/vibranium");
-	public static final ResourceLocation ORETYPE3 = location("forge:ores/unobtainium");
+	public static final ResourceLocation ORETYPE = location("c:ores/allthemodium");
+	public static final ResourceLocation ORETYPE2 = location("c:ores/vibranium");
+	public static final ResourceLocation ORETYPE3 = location("c:ores/unobtainium");
 	public static final String MOD_ID = "allthemodium";
 	public static String tab() {
 		return String.format("itemGroup.%s", MOD_ID);
 	}
 	public static ResourceLocation atm(String path) {
-		return new ResourceLocation(MOD_ID, path);
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
 	}
 	public static ResourceLocation mek(String path) {
-		return new ResourceLocation("mekanism", path);
+		return ResourceLocation.fromNamespaceAndPath("mekanism", path);
 	}
 	public static ResourceLocation location(String pathIn) {
-		return new ResourceLocation(pathIn);
+		return ResourceLocation.tryParse(pathIn);
 	}
 	public static ResourceLocation forge(String path) {
-		return new ResourceLocation("forge", path);
+		return ResourceLocation.fromNamespaceAndPath("c", path);
 	}
 	public static ResourceLocation raw_ores(String path) {
 		return forge("raw_ores/" + path);

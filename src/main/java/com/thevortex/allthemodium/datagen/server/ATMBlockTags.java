@@ -8,13 +8,13 @@ import net.allthemods.alltheores.blocks.BlockList;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
-
-import static net.minecraftforge.common.Tags.Blocks.NEEDS_NETHERITE_TOOL;
 
 
 public class ATMBlockTags extends BlockTagsProvider {
@@ -87,8 +87,8 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_2.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_STRIPPED.get());
 
-        tag(NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(Tags.Blocks.NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(Tags.Blocks.NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());

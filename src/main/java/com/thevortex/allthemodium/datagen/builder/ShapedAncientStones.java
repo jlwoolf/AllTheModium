@@ -3,17 +3,20 @@ package com.thevortex.allthemodium.datagen.builder;
 import com.thevortex.allthemodium.datagen.RecipeException;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
+
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.EnumMap;
 import java.util.Locale;
@@ -28,7 +31,7 @@ public class ShapedAncientStones {
         }
     }
     private final String criteriaName;
-    private final InventoryChangeTrigger.TriggerInstance criterion;
+    private final Criterion<TriggerInstance> criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
     private final TagKey<Item> ancientstone;
 
@@ -45,43 +48,43 @@ public class ShapedAncientStones {
         return new ShapedAncientStones(ancientstone);
     }
 
-    public ShapedAncientStones setBookShelf(RegistryObject<Item> object) {
+    public ShapedAncientStones setBookShelf(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.BOOKSHELF, object.get());
         return this;
     }
-    public ShapedAncientStones setDoor(RegistryObject<Item> object) {
+    public ShapedAncientStones setDoor(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.DOOR, object.get());
         return this;
     }
-    public ShapedAncientStones setTrapDoor(RegistryObject<Item> object) {
+    public ShapedAncientStones setTrapDoor(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.TRAPDOOR, object.get());
         return this;
     }
-    public ShapedAncientStones setBrick(RegistryObject<Item> object) {
+    public ShapedAncientStones setBrick(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.BRICK, object.get());
         return this;
     }
-    public ShapedAncientStones setStairs(RegistryObject<Item> object) {
+    public ShapedAncientStones setStairs(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.STAIRS, object.get());
         return this;
     }
 
-    public ShapedAncientStones setFence(RegistryObject<Item> object) {
+    public ShapedAncientStones setFence(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.FENCE, object.get());
         return this;
     }
 
-    public ShapedAncientStones setFenceGate(RegistryObject<Item> object) {
+    public ShapedAncientStones setFenceGate(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.FENCEGATE, object.get());
         return this;
     }
 
-    public ShapedAncientStones setSlab(RegistryObject<Item> object) {
+    public ShapedAncientStones setSlab(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.SLAB, object.get());
         return this;
     }
 
-    public ShapedAncientStones setWall(RegistryObject<Item> object) {
+    public ShapedAncientStones setWall(DeferredHolder<Item,Item> object) {
         pieces.put(Slot.WALL, object.get());
         return this;
     }
@@ -93,7 +96,7 @@ public class ShapedAncientStones {
         }
     }
 
-    public void build(Consumer<FinishedRecipe> consumer) {
+    public void build(RecipeOutput consumer) {
 
         Consumer<ShapedRecipeBuilder> register = builder -> builder.save(consumer);
         Optional.ofNullable(pieces.get(Slot.BOOKSHELF))

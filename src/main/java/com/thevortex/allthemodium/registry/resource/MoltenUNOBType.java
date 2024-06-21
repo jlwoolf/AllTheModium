@@ -14,9 +14,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.minecraftforge.fluids.FluidType;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid.Properties;
+import net.neoforged.neoforge.fluids.FluidType;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
@@ -30,17 +32,17 @@ public class MoltenUNOBType extends FluidType {
     }
 
     @Override
-    public @Nullable BlockPathTypes getBlockPathType(FluidState state, BlockGetter level, BlockPos pos, @Nullable Mob mob, boolean canFluidLog) {
+    public @Nullable PathType getBlockPathType(FluidState state, BlockGetter level, BlockPos pos, @Nullable Mob mob, boolean canFluidLog) {
         return canFluidLog ? super.getBlockPathType(state, level, pos, mob, true) : null;
     }
 
     @Override
     public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
         consumer.accept(new IClientFluidTypeExtensions() {
-            private static final ResourceLocation UNDER_FLUID = new ResourceLocation(Reference.MOD_ID, "textures/block/fluid/molten_still.png");
-            private static final ResourceLocation FLUID_STILL = new ResourceLocation(Reference.MOD_ID, "block/fluid/unobtainium_molten_still");
-            private static final ResourceLocation FLUID_FLOW = new ResourceLocation(Reference.MOD_ID, "block/fluid/unobtainium_molten_flow");
-            private static final ResourceLocation FLUID_OVERLAY = new ResourceLocation(Reference.MOD_ID, "block/fluid/unobtainium_molten_still");
+            private static final ResourceLocation UNDER_FLUID = ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "textures/block/fluid/molten_still.png");
+            private static final ResourceLocation FLUID_STILL = ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/unobtainium_molten_still");
+            private static final ResourceLocation FLUID_FLOW = ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/unobtainium_molten_flow");
+            private static final ResourceLocation FLUID_OVERLAY = ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/fluid/unobtainium_molten_still");
 
             @Override
             public ResourceLocation getStillTexture() {

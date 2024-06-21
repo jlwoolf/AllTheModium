@@ -9,8 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -43,7 +42,7 @@ public class ATMItemTags extends ItemTagsProvider {
 
         tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
-
+/*
         tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ALLTHEMODIUM_PICKAXE.get());
 
         tag(TagRegistry.FORGE_AXES).add(ModRegistry.ALLTHEMODIUM_AXE.get());
@@ -77,7 +76,7 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_SHOVEL.get());
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HOE.get());
-
+*/
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 public class ATMBrushableBlock extends BrushableBlock
 {
     public ATMBrushableBlock(Block block, Properties properties, SoundEvent soundBrush, SoundEvent soundCompleted) {
-        super(block, properties, soundBrush, soundCompleted);
+        super(block, soundCompleted, soundBrush, properties);
     }
 
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

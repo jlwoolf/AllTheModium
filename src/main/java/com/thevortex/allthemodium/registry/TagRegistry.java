@@ -10,9 +10,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Collection;
 import java.util.Iterator;

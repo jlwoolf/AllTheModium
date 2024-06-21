@@ -9,8 +9,10 @@ import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.allthemods.alltheores.infos.ItemTagRegistry;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -19,16 +21,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.fml.ModList;
-
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class ATMCraftingRecipes extends RecipeProvider {
-    public ATMCraftingRecipes(PackOutput packOutput) {
-        super(packOutput);
+    public ATMCraftingRecipes(PackOutput packOutput, CompletableFuture<Provider> provider) {
+        super(packOutput, provider);
     }
     private ResourceLocation recipeDir(String typeIn, String typeOut) {
-        return new ResourceLocation(Reference.MOD_ID,typeIn + "_from_" + typeOut);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,typeIn + "_from_" + typeOut);
     }
     private ShapedRecipeBuilder shaped(ItemLike provider, int integer) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider,integer)
@@ -39,19 +39,19 @@ public class ATMCraftingRecipes extends RecipeProvider {
             .group(Reference.MOD_ID);
     }
 
-    private static InventoryChangeTrigger.TriggerInstance hasTag(TagKey<Item> tagKey) {
+    private static Criterion<TriggerInstance> hasTag(TagKey<Item> tagKey) {
         return inventoryTrigger(ItemPredicate.Builder.item().of(tagKey).build());
     }
 
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
         buildShapedRecipes(consumer);
         buildShapelessRecipes(consumer);
         buildSmeltingRecipes(consumer);
         buildBlastingRecipes(consumer);
     }
-    protected void buildShapedRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildShapedRecipes(RecipeOutput consumer) {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get())
             .group(Reference.MOD_ID)
@@ -106,7 +106,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
                 .unlockedBy("has_allthemodium_nugget", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_NUGGET).build()))
                 .unlockedBy("has_ender_pearl", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Items.ENDER_PEARL).build()))
                 .save(consumer);
-
+/*
         shaped(ModRegistry.ALLTHEMODIUM_PICKAXE.get())
             .pattern("ara")
             .pattern(" r ")
@@ -161,7 +161,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
                 .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
                 .unlockedBy("has_allthemodium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_ROD).build()))
                 .save(consumer);
-
+*/
 
         final String hasCondition = "has_item";
 
@@ -285,7 +285,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
 
 
 
-    protected void buildBlastingRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildBlastingRecipes(RecipeOutput consumer) {
 
         final String hasCondition = "has_item";
 
@@ -328,7 +328,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
     }
 
 
-    protected void buildShapelessRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildShapelessRecipes(RecipeOutput consumer) {
 
         final String hasCondition = "has_item";
 
@@ -514,7 +514,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
     }
 
 
-    protected void buildSmeltingRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildSmeltingRecipes(RecipeOutput consumer) {
 
         final String hasCondition = "has_item";
 

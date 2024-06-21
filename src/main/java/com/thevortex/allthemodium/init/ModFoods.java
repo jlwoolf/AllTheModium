@@ -12,8 +12,8 @@ public class ModFoods {
 
 	public static final FoodProperties SOUL_BERRIES;
 	static {
-		ALLTHEMODIUM_APPLE = new FoodProperties.Builder().nutrition(20).saturationMod(2.0F).alwaysEat().fast().build();
-		ALLTHEMODIUM_CARROT = new FoodProperties.Builder().nutrition(40).saturationMod(4.0F).alwaysEat().fast().build();
-		SOUL_BERRIES = new FoodProperties.Builder().nutrition(5).saturationMod(4.0F).alwaysEat().fast().build();
+		ALLTHEMODIUM_APPLE = new FoodProperties.Builder().nutrition(20).saturationModifier(2.0F).alwaysEdible().fast().build();
+		ALLTHEMODIUM_CARROT = new FoodProperties.Builder().nutrition(40).saturationModifier(4.0F).alwaysEdible().fast().build();
+		SOUL_BERRIES = new FoodProperties.Builder().nutrition(5).saturationModifier(4.0F).alwaysEdible().fast().build();
 	}
 }
