@@ -2,7 +2,7 @@
   "type": "mekanism:purifying",
   "item_input": {
     "count": 1,
-    "tag": "neoforge:raw_materials/unobtainium"
+    "tag": "c:raw_materials/unobtainium"
   },
   "chemical_input": {
     "amount": 1,
