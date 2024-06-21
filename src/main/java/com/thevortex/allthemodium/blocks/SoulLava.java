@@ -38,7 +38,7 @@ public class SoulLava extends LiquidBlock {
 	public int tickcount = 0;
 	protected FlowingFluid fluid;
 	public SoulLava(Supplier<? extends FlowingFluid> supplier, Properties p_i48368_1_) {
-		super((FlowingFluid) supplier, p_i48368_1_);
+		super(supplier.get(), p_i48368_1_);
 
 	}
 

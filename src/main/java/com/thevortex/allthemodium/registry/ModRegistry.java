@@ -1,10 +1,6 @@
 package com.thevortex.allthemodium.registry;
 
 import com.thevortex.allthemodium.blocks.*;
-import com.thevortex.allthemodium.blocks.Allthemodium_Block;
-import com.thevortex.allthemodium.blocks.TeleportPad;
-import com.thevortex.allthemodium.blocks.Unobtainium_Block;
-import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.entity.ATMBrushableBlockEntity;
 import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
@@ -62,7 +58,8 @@ public class ModRegistry {
 
 		// BIOMES
 
-	DeferredHolder<Biome,Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
+	public static final DeferredHolder<Biome,Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
+	
 	//
 
 
@@ -117,7 +114,6 @@ public class ModRegistry {
 			,Direction.DOWN
 			,ACaveVines.SHAPE
 			, false));
-			
 
 	public static final DeferredHolder<Block,Block> PIGLICH_HEART_BLOCK = BLOCKS.register("piglich_heart_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.AMETHYST)));
 	public static final DeferredHolder<Item,Item> PIGLICH_HEART_BLOCK_ITEM = ITEMS.register("piglich_heart_block", () -> new BlockItem(PIGLICH_HEART_BLOCK.get(),new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
@@ -302,9 +298,9 @@ public class ModRegistry {
 	public static final DeferredHolder<Block,Block> OTHER_VIBRANIUM_ORE = BLOCKS.register("other_vibranium_ore", Vibranium_Ore::new);
 	public static final DeferredHolder<Block,Block> UNOBTAINIUM_ORE = BLOCKS.register("unobtainium_ore", Unobtainium_Ore::new);
 
-	public static final DeferredHolder<Block,Block> ALLTHEMODIUM_BLOCK = BLOCKS.register("allthemodium_block", Allthemodium_Block::new);
-	public static final DeferredHolder<Block,Block> VIBRANIUM_BLOCK = BLOCKS.register("vibranium_block", Vibranium_Block::new);
-	public static final DeferredHolder<Block,Block> UNOBTAINIUM_BLOCK = BLOCKS.register("unobtainium_block", Unobtainium_Block::new);
+	public static final DeferredHolder<Block,Block> ALLTHEMODIUM_BLOCK = BLOCKS.register("allthemodium_block", ATM_Block::new);
+	public static final DeferredHolder<Block,Block> VIBRANIUM_BLOCK = BLOCKS.register("vibranium_block", VIB_Block::new);
+	public static final DeferredHolder<Block,Block> UNOBTAINIUM_BLOCK = BLOCKS.register("unobtainium_block", UNOB_Block::new);
 
 	public static final DeferredHolder<Block,Block> RAW_ALLTHEMODIUM_BLOCK = BLOCKS.register("raw_allthemodium_block", Raw_ATM::new);
 	public static final DeferredHolder<Block,Block> RAW_VIBRANIUM_BLOCK = BLOCKS.register("raw_vibranium_block", Raw_VIB::new);

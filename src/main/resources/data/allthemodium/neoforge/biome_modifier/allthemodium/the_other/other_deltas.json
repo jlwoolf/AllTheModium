@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "allthemodium:basalt_deltas",
+  "features": "allthemodium:other_deltas",
+  "step": "top_layer_modification"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "neoforge:nuggets/vibranium"
+  },
+  "value": 1,
+  "needed": 9,
+  "material": "allthemodium:vibranium",
+  "conditions": [
+      {
+          "type": "neoforge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

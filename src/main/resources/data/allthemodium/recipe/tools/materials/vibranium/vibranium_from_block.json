@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:storage_blocks/vibranium"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "allthemodium:vibranium",
+  "conditions": [
+      {
+          "type": "neoforge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

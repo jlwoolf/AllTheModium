@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:storage_blocks/unobtainium"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "allthemodium:unobtainium",
+  "conditions": [
+      {
+          "type": "neoforge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

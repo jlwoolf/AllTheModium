@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "tag": "neoforge:molten_allthemodium",
+      "amount": 90
+    },
+    {
+      "tag": "neoforge:molten_unobtainium",
+      "amount": 90
+    }
+  ],
+  "result": {
+    "fluid": "allthemodium:molten_atmunob",
+    "amount": 90
+  },
+  "temperature": 9000,
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

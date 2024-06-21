@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:purifying",
+  "chemical_input": {
+    "amount": 2,
+    "gas": "mekanism:oxygen"
+  },
+  "item_input": {
+    "count": 1,
+    "tag": "c:storage_blocks/raw_unobtainium"
+  },
+  "output": {
+    "count": 18,
+    "id": "allthemodium:unobtainium_clump"
+  },
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
+}

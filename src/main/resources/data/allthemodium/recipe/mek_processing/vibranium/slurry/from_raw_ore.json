@@ -1,0 +1,23 @@
+{
+  "type": "mekanism:dissolution",
+  "item_input": {
+    "count": 3,
+    "tag": "c:raw_materials/vibranium"
+    
+  },
+  "gas_input": {
+    "amount": 1,
+    "gas": "mekanism:sulfuric_acid"
+  },
+  "output": {
+    "id": "allthemodium:dirty_vibranium",
+    "amount": 2000,
+    "chemical_type": "slurry"
+  },
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
+}

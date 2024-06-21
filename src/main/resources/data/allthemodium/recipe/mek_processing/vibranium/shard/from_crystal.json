@@ -1,0 +1,22 @@
+{
+  "type": "mekanism:injecting",
+  "item_input": {
+    "count": 1,
+      "item": "allthemodium:vibranium_crystal"
+  
+  },
+  "chemical_input": {
+    "amount": 1,
+    "gas": "mekanism:hydrogen_chloride"
+  },
+  "output": {
+    "id": "allthemodium:vibranium_shard",
+    "count": 1
+  },
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
+}
