@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "a": {
+      "tag": "allthemodium:ancient_planks"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "   ",
+    "sas",
+    "sas"
+  ],
+  "result": {
+    "count": 1,
+    "id": "allthemodium:ancient_wooden_fence_gate"
+  }
+}

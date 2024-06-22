@@ -13,19 +13,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -53,18 +48,18 @@ public class TeleportPad extends Block {
 
 		return TELEPORTPAD_AABB;
 	}
-/*
+
 	@Override
-	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player,
-								 InteractionHand handIn, BlockHitResult hit) {
+	public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+	BlockHitResult hitResult) {
 		if ((player instanceof ServerPlayer) && (player.isCrouching() == true)) {
 
 			transferPlayer((ServerPlayer) player, pos);
-			worldIn.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
+			level.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
 		}
-		return super.use(state, worldIn, pos, player, handIn, hit);
+		return super.useWithoutItem(state, level, pos, player, hitResult);
 	}
- */
+
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
 		if(player.level().dimension().registry().getNamespace().contains(Reference.MOD_ID)) {
@@ -109,7 +104,7 @@ public class TeleportPad extends Block {
 						player.yya);
 			}
 
-		}
+		}/*
 		else if (player.level().dimension().equals(AllTheModium.Nether)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_OTHER);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), Math.round(pos.getY()), Math.round(pos.getZ()));
@@ -126,6 +121,7 @@ public class TeleportPad extends Block {
 
 			}
 		}
+		
 		else if (player.level().dimension().equals(LevelRegistry.THE_OTHER)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Nether);
 			int y = 128;
@@ -159,7 +155,7 @@ public class TeleportPad extends Block {
 						player.yya);
 
 			}
-		}
+		} */
 		else if (player.level().dimension().equals(AllTheModium.The_End)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_BEYOND);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX() *50), Math.round(pos.getY()), Math.round(pos.getZ()*50));

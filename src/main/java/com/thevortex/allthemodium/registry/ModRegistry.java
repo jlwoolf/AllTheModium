@@ -66,26 +66,26 @@ public class ModRegistry {
 
 	// FOOD
 
-	public static DeferredHolder<Item,Item> ALLTHEMODIUM_APPLE = ITEMS.register("allthemodium_apple", () -> new Allthemodium_Apple(new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE).rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,Item> ALLTHEMODIUM_CARROT = ITEMS.register("allthemodium_carrot", () -> new Allthemodium_Carrot(new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT).rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,Item> ALLTHEMODIUM_APPLE = ITEMS.register("allthemodium_apple", () -> new Allthemodium_Apple(new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE).rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,Item> ALLTHEMODIUM_CARROT = ITEMS.register("allthemodium_carrot", () -> new Allthemodium_Carrot(new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT).rarity(Rarity.EPIC)));
 
 	// ARMORS
 
-	public static DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.ATM, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.ATM, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.ATM, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> new Allthemodium_Boots(ArmorRegistries.ATM, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.ATM, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.ATM, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.ATM, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> new Allthemodium_Boots(ArmorRegistries.ATM, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
 
-	public static DeferredHolder<Item,ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.VIB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.VIB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.VIB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> new Allthemodium_Boots(ArmorRegistries.VIB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.VIB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.VIB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.VIB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> new Allthemodium_Boots(ArmorRegistries.VIB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
-	public static DeferredHolder<Item,ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.UNOB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.UNOB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.UNOB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static DeferredHolder<Item,ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> new Allthemodium_Boots(ArmorRegistries.UNOB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.UNOB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.UNOB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.UNOB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> new Allthemodium_Boots(ArmorRegistries.UNOB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
 	
 	
@@ -417,7 +417,7 @@ public class ModRegistry {
 			.build()
 	);
 
-
+	
 
 /*
 	private static <T extends Monster> DeferredHolder<EntityType<T>, EntityType<PiglichEntity>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {

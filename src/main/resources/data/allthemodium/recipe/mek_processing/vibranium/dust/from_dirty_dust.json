@@ -6,7 +6,8 @@
     
   },
   "output": {
-    "item": "allthemodium:vibranium_dust"
+    "id": "allthemodium:vibranium_dust",
+    "count": 1
   },
   "conditions": [
     {

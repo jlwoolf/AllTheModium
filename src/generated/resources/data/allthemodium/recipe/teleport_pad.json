@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "a": {
+      "item": "minecraft:ender_pearl"
+    },
+    "n": {
+      "tag": "c:nuggets/allthemodium"
+    }
+  },
+  "pattern": [
+    " n ",
+    "nan",
+    " n "
+  ],
+  "result": {
+    "count": 1,
+    "id": "allthemodium:teleport_pad"
+  }
+}

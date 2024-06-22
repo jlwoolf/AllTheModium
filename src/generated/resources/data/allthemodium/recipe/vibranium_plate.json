@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "a": {
+      "tag": "c:ingots/vibranium"
+    }
+  },
+  "pattern": [
+    "aa ",
+    "aa ",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "allthemodium:vibranium_plate"
+  }
+}

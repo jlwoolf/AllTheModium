@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "allthemodium",
+  "ingredients": [
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    },
+    {
+      "tag": "c:raw_materials/vibranium"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "allthemodium:raw_vibranium_block"
+  }
+}

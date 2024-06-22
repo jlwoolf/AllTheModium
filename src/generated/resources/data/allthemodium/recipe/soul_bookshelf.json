@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "a": {
+      "tag": "allthemodium:soul_planks"
+    },
+    "b": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    "aaa",
+    "bbb",
+    "aaa"
+  ],
+  "result": {
+    "count": 1,
+    "id": "allthemodium:soul_bookshelf"
+  }
+}

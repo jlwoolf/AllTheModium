@@ -6,7 +6,8 @@
     
   },
   "output": {
-    "item": "allthemodium:allthemodium_dust"
+    "id": "allthemodium:allthemodium_dust",
+    "count": 1
   },
   "conditions": [
     {
