@@ -14,6 +14,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -54,7 +55,7 @@ public class ShapedBlockBuilder {
 
 
 
-    public ShapedBlockBuilder setBlock(DeferredHolder<Item,Item> object) {
+    public ShapedBlockBuilder setBlock(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.BLOCK, object.get());
         return this;
     }

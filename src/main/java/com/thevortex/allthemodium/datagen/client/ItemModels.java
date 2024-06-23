@@ -41,6 +41,13 @@ public class ItemModels extends ItemModelProvider {
         basicItem(ModRegistry.ATM_SMITHING.get());
         basicItem(ModRegistry.VIB_SMITHING.get());
         basicItem(ModRegistry.UNO_SMITHING.get());
+        
+        // Saplings
+        basicItem(ModRegistry.ANCIENT_SAPLING_Item.get());
+        basicItem(ModRegistry.DEMONIC_SAPLING_Item.get());
+        basicItem(ModRegistry.SOUL_SAPLING_Item.get());
+
+        
 
         stairs("ancient_wooden_stairs",
                 ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"block/ancient_planks"),

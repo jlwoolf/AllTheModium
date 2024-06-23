@@ -31,6 +31,7 @@ public class BlockStates extends BlockStateProvider {
             .stream().map(DeferredHolder::get)
             .filter(block -> !(block instanceof GrassBlock))
             .filter(block -> !(block instanceof LiquidBlock))
+            .filter(block -> !(block instanceof SaplingBlock))
             .collect(Collectors.toList());
 
         entries.forEach(this::simpleBlockAndItem);
@@ -49,6 +50,7 @@ public class BlockStates extends BlockStateProvider {
         simpleBlockItem(ModRegistry.ANCIENT_BOOKSHELF.get(),models().getBuilder("ancient_bookshelf"));
         //
         stairsBlock(ModRegistry.ANCIENT_WOODEN_STAIRS.get(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"block/ancient_planks"));
+        
 
         logBlock((RotatedPillarBlock)ModRegistry.SOUL_LOG.get());
         logBlock((RotatedPillarBlock)ModRegistry.SOUL_LOG_0.get());

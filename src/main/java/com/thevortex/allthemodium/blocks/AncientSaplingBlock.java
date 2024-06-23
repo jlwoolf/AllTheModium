@@ -39,7 +39,7 @@ public class AncientSaplingBlock extends SaplingBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter p_51043_, BlockPos p_51044_) {
-        return (state.is(TagRegistry.ANCIENT_DIRT) || state.is(Blocks.WARPED_NYLIUM) || state.is(Blocks.CRIMSON_NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get()));
+        return (state.is(TagRegistry.ANCIENT_DIRT));
     }
 
     @Override

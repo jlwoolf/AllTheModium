@@ -9,7 +9,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -35,13 +39,26 @@ public class AllTheModium
 	public static final ResourceKey<Level> Nether = Level.NETHER;
 	public static final ResourceKey<Level> The_End = Level.END;
 	public static final ResourceLocation MINING_DIM_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID,"mining");
-	//public static final ResourceLocation THE_OTHER_DIM_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID,"the_other");
+	public static final ResourceLocation THE_OTHER_DIM_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID,"the_other");
 
 	public static final ResourceLocation THE_BEYOND_DIM_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID,"the_beyond");
 
 	public static final ResourceKey<DimensionType> Mining_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, MINING_DIM_ID);
-	//public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, THE_OTHER_DIM_ID);
+	public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, THE_OTHER_DIM_ID);
 	public static final ResourceKey<DimensionType> THE_BEYOND = ResourceKey.create(Registries.DIMENSION_TYPE,THE_BEYOND_DIM_ID);
+
+	public static final ResourceKey<Biome> Basalt_Deltas = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MOD_ID, "basalt_deltas"));
+	public static final ResourceKey<Biome> Crimson_Forest = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MOD_ID, "crimson_forest"));
+	public static final ResourceKey<Biome> Warped_Forest = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MOD_ID, "warped_forest"));
+	public static final ResourceKey<Biome> Soul_Sand_Valley = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MOD_ID, "soul_sand_valley"));
+	public static final ResourceKey<Biome> Desert = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MOD_ID, "desert"));
+	public static final ResourceKey<Biome> Desert_Hills = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MOD_ID, "desert_hills"));
+	public static final ResourceKey<Biome> The_Other = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MOD_ID, "the_other"));
+
+	public static final ResourceKey<ConfiguredFeature<?,?>> SOUL_TREE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "soul_tree"));
+	public static final ResourceKey<ConfiguredFeature<?,?>> DEMONIC_TREE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "demonic_tree"));
+	public static final ResourceKey<ConfiguredFeature<?,?>> ANCIENT_TREE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "ancient_tree"));
+	public static final ResourceKey<ConfiguredFeature<?,?>> OTHER_DELTAS = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "other_deltas"));
 
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static boolean ALLOW_TELEPORT_MINING = false;

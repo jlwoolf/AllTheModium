@@ -17,5 +17,5 @@ public class ItemRegistry {
     public static final DeferredHolder<Item,BucketItem> MOLTEN_VIB_BUCKET = ITEMS.register("molten_vibranium_bucket", () -> new BucketItem(FluidRegistry.VIBRANIUM.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final DeferredHolder<Item,BucketItem> MOLTEN_UNOB_BUCKET = ITEMS.register("molten_unobtainium_bucket", () -> new BucketItem(FluidRegistry.UNOBTAINIUM.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
-    public static final DeferredHolder<Item,BlockItem> SUS_CLAY_ITEM = ITEMS.register("suspicious_clay", () -> new BlockItem(BlockRegistry.SUS_CLAY.get(),new Item.Properties()));
+   // public static final DeferredHolder<Item,BlockItem> SUS_CLAY_ITEM = ITEMS.register("suspicious_clay", () -> new BlockItem(BlockRegistry.SUS_CLAY.get(),new Item.Properties()));
    }

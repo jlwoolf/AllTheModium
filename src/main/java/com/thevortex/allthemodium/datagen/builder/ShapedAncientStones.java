@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -48,43 +49,43 @@ public class ShapedAncientStones {
         return new ShapedAncientStones(ancientstone);
     }
 
-    public ShapedAncientStones setBookShelf(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setBookShelf(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.BOOKSHELF, object.get());
         return this;
     }
-    public ShapedAncientStones setDoor(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setDoor(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.DOOR, object.get());
         return this;
     }
-    public ShapedAncientStones setTrapDoor(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setTrapDoor(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.TRAPDOOR, object.get());
         return this;
     }
-    public ShapedAncientStones setBrick(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setBrick(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.BRICK, object.get());
         return this;
     }
-    public ShapedAncientStones setStairs(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setStairs(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.STAIRS, object.get());
         return this;
     }
 
-    public ShapedAncientStones setFence(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setFence(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.FENCE, object.get());
         return this;
     }
 
-    public ShapedAncientStones setFenceGate(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setFenceGate(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.FENCEGATE, object.get());
         return this;
     }
 
-    public ShapedAncientStones setSlab(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setSlab(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.SLAB, object.get());
         return this;
     }
 
-    public ShapedAncientStones setWall(DeferredHolder<Item,Item> object) {
+    public ShapedAncientStones setWall(DeferredHolder<Item,BlockItem> object) {
         pieces.put(Slot.WALL, object.get());
         return this;
     }
