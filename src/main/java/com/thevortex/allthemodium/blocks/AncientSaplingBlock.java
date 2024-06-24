@@ -1,6 +1,13 @@
 package com.thevortex.allthemodium.blocks;
 
 import com.thevortex.allthemodium.registry.TagRegistry;
+
+import io.netty.handler.logging.LogLevel;
+
+import org.jetbrains.annotations.ApiStatus.OverrideOnly;
+
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -18,9 +25,9 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
+import com.thevortex.allthemodium.AllTheModium;
 public class AncientSaplingBlock extends SaplingBlock {
-
+public static MapCodec<SaplingBlock> CODEC; 
 
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
     protected static final float AABB_OFFSET = 6.0F;
@@ -30,17 +37,27 @@ public class AncientSaplingBlock extends SaplingBlock {
     public AncientSaplingBlock(TreeGrower p_55978_, BlockBehaviour.Properties p_55979_) {
         super(p_55978_,p_55979_);
         this.treeGrower = p_55978_;
+        CODEC = RecordCodecBuilder.mapCodec((p_308834_) -> {
+            return p_308834_.group(TreeGrower.CODEC.fieldOf("tree").forGetter((p_304391_) -> {
+               return this.treeGrower;
+            }), propertiesCodec()).apply(p_308834_, AncientSaplingBlock::new);
+         });
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
     }
-
+    @Override
+    public MapCodec<? extends SaplingBlock> codec() {
+      return CODEC;
+    }
     public VoxelShape getShape(BlockState p_56008_, BlockGetter p_56009_, BlockPos p_56010_, CollisionContext p_56011_) {
         return SHAPE;
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter p_51043_, BlockPos p_51044_) {
-        return (state.is(TagRegistry.ANCIENT_DIRT));
+    
+        return (state.is(TagRegistry.ANCIENT_DIRT) || state.is(Blocks.WARPED_NYLIUM) || state.is(Blocks.CRIMSON_NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get()));
     }
+
 
     @Override
     public VoxelShape getBlockSupportShape(BlockState p_60581_, BlockGetter p_60582_, BlockPos p_60583_) {

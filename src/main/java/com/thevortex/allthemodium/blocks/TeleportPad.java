@@ -104,7 +104,7 @@ public class TeleportPad extends Block {
 						player.yya);
 			}
 
-		}/*
+		}
 		else if (player.level().dimension().equals(AllTheModium.Nether)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_OTHER);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), Math.round(pos.getY()), Math.round(pos.getZ()));
@@ -155,7 +155,7 @@ public class TeleportPad extends Block {
 						player.yya);
 
 			}
-		} */
+		} 
 		else if (player.level().dimension().equals(AllTheModium.The_End)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_BEYOND);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX() *50), Math.round(pos.getY()), Math.round(pos.getZ()*50));

@@ -6,6 +6,7 @@ import net.minecraft.client.model.Model;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.TrapDoorBlock;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -47,7 +48,7 @@ public class ItemModels extends ItemModelProvider {
         basicItem(ModRegistry.DEMONIC_SAPLING_Item.get());
         basicItem(ModRegistry.SOUL_SAPLING_Item.get());
 
-        
+
 
         stairs("ancient_wooden_stairs",
                 ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"block/ancient_planks"),
