@@ -34,14 +34,15 @@ repositories {
     }
 }
 def at = rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
-if (at.exists()) {
-    minecraft.accessTransformers {
-        file at
-        entry 'public-f net.minecraft.world.level.block.SaplingBlock treeGrower'
-    }
+minecraft {
+        modIdentifier 'minecraft'
+        accessTransformers {
+            file at
+            entry 'public-f net.minecraft.world.level.block.SaplingBlock treeGrower'
+        }
 }
 runs {
-    // applies to all the run configs below
+        // applies to all the run configs below
     configureEach {
         // Recommended logging data for a userdev environment
         // The markers can be added/remove as needed separated by commas.
