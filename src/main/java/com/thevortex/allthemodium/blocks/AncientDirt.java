@@ -6,7 +6,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.IPlantable;
 
 public class AncientDirt extends Block {
     public AncientDirt(Properties p_49795_) {
@@ -14,8 +13,5 @@ public class AncientDirt extends Block {
     }
 
 
-    @Override
-    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable) {
-        return true;
-    }
+   
 }

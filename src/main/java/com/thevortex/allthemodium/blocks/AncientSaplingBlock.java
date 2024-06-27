@@ -27,7 +27,12 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import com.thevortex.allthemodium.AllTheModium;
 public class AncientSaplingBlock extends SaplingBlock {
-public static MapCodec<SaplingBlock> CODEC; 
+
+    public static MapCodec<SaplingBlock> CODEC = RecordCodecBuilder.mapCodec((p_308834_) -> {
+        return p_308834_.group(TreeGrower.CODEC.fieldOf("tree").forGetter((p_304391_) -> {
+           return p_304391_.treeGrower;
+        }), propertiesCodec()).apply(p_308834_, AncientSaplingBlock::new);
+     });
 
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
     protected static final float AABB_OFFSET = 6.0F;
@@ -37,11 +42,7 @@ public static MapCodec<SaplingBlock> CODEC;
     public AncientSaplingBlock(TreeGrower p_55978_, BlockBehaviour.Properties p_55979_) {
         super(p_55978_,p_55979_);
         this.treeGrower = p_55978_;
-        CODEC = RecordCodecBuilder.mapCodec((p_308834_) -> {
-            return p_308834_.group(TreeGrower.CODEC.fieldOf("tree").forGetter((p_304391_) -> {
-               return this.treeGrower;
-            }), propertiesCodec()).apply(p_308834_, AncientSaplingBlock::new);
-         });
+        
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
     }
     @Override
