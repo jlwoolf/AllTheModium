@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.material;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
 
 import net.minecraft.tags.TagKey;
@@ -16,9 +17,9 @@ public class ATMTier implements Tier {
     private int uses;
 
     public static final ATMTier ALLTHEMODIUM = createTier(TagRegistry.NEEDS_VIBRANIUM_TOOL, 15.0F, -1,  12.0F, 85, Ingredient.of(TagRegistry.ALLTHEMODIUM_INGOT));
-    public static final ATMTier VIBRANIUM = createTier(TagRegistry.NEEDS_UNOBTAINIUM_TOOL, 25.0F, -1,  12.0F, 100, Ingredient.of(TagRegistry.VIBRANIUM_INGOT));
-    public static final ATMTier UNOBTAINIUM = createTier(TagRegistry.NEEDS_ALLOY_TOOL, 35.0F, -1,  12.0F, 125, Ingredient.of(TagRegistry.UNOBTAINIUM_INGOT));
-
+    public static final ATMTier VIBRANIUM = createTier(TagRegistry.NEEDS_UNOBTAINIUM_TOOL, 16.0F, -1,  25.0F, 100, Ingredient.of(TagRegistry.VIBRANIUM_INGOT));
+    public static final ATMTier UNOBTAINIUM = createTier(TagRegistry.NEEDS_ALLOY_TOOL, 18.0F, -1,  35.0F, 125, Ingredient.of(TagRegistry.UNOBTAINIUM_INGOT));
+    public static final ATMTier ALLOY = createTier(TagRegistry.NEEDS_ALLOY_TOOL, 20.0F, -1,  65.0F, 200, Ingredient.of(ModRegistry.UNOBTAINIUM_ALLTHEMODIUM_ALLOY.get()));
     public ATMTier(TagKey<Block> incorrectBlocksForDrops, float speed, int uses, float attackBonus, int enchantmentValue, Ingredient repairIngredient) {
         this.attackBonus = attackBonus;
         this.enchantmentValue = enchantmentValue;
