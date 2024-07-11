@@ -508,11 +508,11 @@ public class ModRegistry {
 	public static final DeferredHolder<Item,MaceItem> VIB_MACE = ITEMS.register("vibranium_mace", () -> new ATMMace(ATMTier.VIBRANIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.VIBRANIUM)).attributes(ATMMace.createAttributes(ATMTier.VIBRANIUM))));
 	public static final DeferredHolder<Item,MaceItem> UNO_MACE = ITEMS.register("unobtainium_mace", () -> new ATMMace(ATMTier.UNOBTAINIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.UNOBTAINIUM)).attributes(ATMMace.createAttributes(ATMTier.UNOBTAINIUM))));
 
-	public static final DeferredHolder<Item,BowItem> ATM_BOW = ITEMS.register("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant()));
+	public static final DeferredHolder<Item,BowItem> ATM_BOW = ITEMS.register("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
 
-	public static final DeferredHolder<Item,CrossbowItem> UNO_BOW = ITEMS.register("unobtainium_crossbow", () -> new Unobow((new Item.Properties()).fireResistant()));
+	public static final DeferredHolder<Item,CrossbowItem> UNO_BOW = ITEMS.register("unobtainium_crossbow", () -> new Unobow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
 
-	public static final DeferredHolder<Item,ShieldItem> VIB_SHIELD = ITEMS.register("vibranium_shield", () -> new ShieldItem((new Item.Properties()).fireResistant().stacksTo(1).durability(10000)));
+	public static final DeferredHolder<Item,ShieldItem> VIB_SHIELD = ITEMS.register("vibranium_shield", () -> new ShieldItem((new Item.Properties()).fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
 
 	public static final DeferredHolder<Item,TridentItem> ALLOY_TRIDENT = ITEMS.register("alloy_trident", () -> new ATMTrident((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).attributes(ATMTrident.createAttributes()).component(DataComponents.TOOL, ATMTrident.createToolProperties())));
 
