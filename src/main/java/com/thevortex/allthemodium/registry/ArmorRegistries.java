@@ -46,9 +46,9 @@ public class ArmorRegistries {
     
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, Reference.MOD_ID);
 
-    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> ATM = ARMOR_MATERIALS.register("allthemodium", () -> new ArmorMaterial(ALLTHEMODIUM, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get()), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"allthemodium"), "_overlay", false)), 5.0F, 0.5f));
-    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> VIB = ARMOR_MATERIALS.register("vibranium", () -> new ArmorMaterial(VIBRANIUM, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get()), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"vibranium"), "_overlay", false)), 9.0F, 0.8f));
-    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> UNOB = ARMOR_MATERIALS.register("unobtainium", () -> new ArmorMaterial(UNOBTAINIUM, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"unobtainium"), "_overlay", false)), 15.0F, 1.0f));
+    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> ATM = ARMOR_MATERIALS.register("allthemodium", () -> new ArmorMaterial(ALLTHEMODIUM, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get()), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"allthemodium"))), 5.0F, 0.5f));
+    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> VIB = ARMOR_MATERIALS.register("vibranium", () -> new ArmorMaterial(VIBRANIUM, 105, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get()), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"vibranium"))), 9.0F, 0.8f));
+    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> UNOB = ARMOR_MATERIALS.register("unobtainium", () -> new ArmorMaterial(UNOBTAINIUM, 125, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get()), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"unobtainium"))), 15.0F, 1.0f));
 
 
 }

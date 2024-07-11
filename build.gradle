@@ -33,14 +33,9 @@ repositories {
         }
     }
 }
-def at = rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
-minecraft {
-        modIdentifier 'minecraft'
-        accessTransformers {
-            file at
-            entry 'public-f net.minecraft.world.level.block.SaplingBlock treeGrower'
-        }
-}
+minecraft.accessTransformers.files(
+        file('src/main/resources/META-INF/accesstransformer.cfg')
+)
 runs {
         // applies to all the run configs below
     configureEach {
@@ -108,7 +103,7 @@ dependencies {
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
     
     implementation "curse.maven:${mekanism}"
-    implementation "curse.maven:${jei}"
+    //implementation "curse.maven:${jei}"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html

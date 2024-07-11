@@ -19,7 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class allthemodium_helmet<T extends LivingEntity> extends HumanoidModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "allthemodium_armor"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "allthemodium"), "");
 	protected final EquipmentSlot slot;
 
 	public allthemodium_helmet(ModelPart root, EquipmentSlot slot) {

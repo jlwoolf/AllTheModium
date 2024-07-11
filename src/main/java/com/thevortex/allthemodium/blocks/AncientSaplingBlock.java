@@ -5,13 +5,16 @@ import com.thevortex.allthemodium.registry.TagRegistry;
 import io.netty.handler.logging.LogLevel;
 
 import org.jetbrains.annotations.ApiStatus.OverrideOnly;
+import org.jetbrains.annotations.Nullable;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -25,15 +28,12 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.SpecialPlantable;
+
 import com.thevortex.allthemodium.AllTheModium;
-public class AncientSaplingBlock extends SaplingBlock {
+public class AncientSaplingBlock extends SaplingBlock implements SpecialPlantable {
 
-    public static MapCodec<SaplingBlock> CODEC = RecordCodecBuilder.mapCodec((p_308834_) -> {
-        return p_308834_.group(TreeGrower.CODEC.fieldOf("tree").forGetter((p_304391_) -> {
-           return p_304391_.treeGrower;
-        }), propertiesCodec()).apply(p_308834_, AncientSaplingBlock::new);
-     });
-
+   
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
     protected static final float AABB_OFFSET = 6.0F;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
@@ -102,5 +102,13 @@ public class AncientSaplingBlock extends SaplingBlock {
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_56001_) {
         p_56001_.add(STAGE);
+    }
+    @Override
+    public boolean canPlacePlantAtPosition(ItemStack arg0, LevelReader arg1, BlockPos arg2, @Nullable Direction arg3) {
+        return arg1.getBlockState(arg2).is(TagRegistry.ANCIENT_DIRT) || arg1.getBlockState(arg2).is(Blocks.WARPED_NYLIUM) || arg1.getBlockState(arg2).is(Blocks.CRIMSON_NYLIUM) || arg1.getBlockState(arg2).is(ModRegistry.ANCIENT_GRASS.get());
+    }
+    @Override
+    public void spawnPlantAtPosition(ItemStack arg0, LevelReader arg1, BlockPos arg2, @Nullable Direction arg3) {
+       
     }
 }

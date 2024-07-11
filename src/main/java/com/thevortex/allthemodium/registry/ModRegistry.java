@@ -5,18 +5,28 @@ import com.thevortex.allthemodium.blocks.entity.ATMBrushableBlockEntity;
 import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.items.toolitems.armor.*;
+import com.thevortex.allthemodium.items.toolitems.tools.ATMBow;
+import com.thevortex.allthemodium.items.toolitems.tools.ATMMace;
+import com.thevortex.allthemodium.items.toolitems.tools.ATMTrident;
+import com.thevortex.allthemodium.items.toolitems.tools.Unobow;
+import com.thevortex.allthemodium.material.ATMTier;
+import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -466,12 +476,45 @@ public class ModRegistry {
 	public static void addEntityAttributes(EntityAttributeCreationEvent event) {
 		//event.put(PIGLICH.get(), PiglichEntity.createAttributes().build());
 		//event.put(ATM_SHULKER.get(), UNOBShulkerEntity.createAttributes().build());
+
 	}
 	private static RotatedPillarBlock log(DyeColor color1, DyeColor color2) {
 		return new RotatedPillarBlock(BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD));
 	}
 
 
+	public static final DeferredHolder<Item,SwordItem> ATM_SWORD = ITEMS.register("allthemodium_sword", () -> new SwordItem(ATMTier.ALLTHEMODIUM, (new Item.Properties()).fireResistant().attributes(SwordItem.createAttributes(ATMTier.ALLTHEMODIUM, 5, -1.4F))));
+	public static final DeferredHolder<Item,SwordItem> VIB_SWORD = ITEMS.register("vibranium_sword", () -> new SwordItem(ATMTier.VIBRANIUM, (new Item.Properties()).fireResistant().attributes(SwordItem.createAttributes(ATMTier.VIBRANIUM, 10, -0.4F))));
+	public static final DeferredHolder<Item,SwordItem> UNO_SWORD = ITEMS.register("unobtainium_sword", () -> new SwordItem(ATMTier.UNOBTAINIUM, (new Item.Properties()).fireResistant().attributes(SwordItem.createAttributes(ATMTier.UNOBTAINIUM, 15, 0.4F))));
+
+	public static final DeferredHolder<Item,PickaxeItem> ATM_PICKAXE = ITEMS.register("allthemodium_pickaxe", () -> new PickaxeItem(ATMTier.ALLTHEMODIUM, (new Item.Properties()).fireResistant().attributes(PickaxeItem.createAttributes(ATMTier.ALLTHEMODIUM, 2.0F, -1.0F))));
+	public static final DeferredHolder<Item,PickaxeItem> VIB_PICKAXE = ITEMS.register("vibranium_pickaxe", () -> new PickaxeItem(ATMTier.VIBRANIUM, (new Item.Properties()).fireResistant().attributes(PickaxeItem.createAttributes(ATMTier.VIBRANIUM, 4.0F, -0.8F))));
+	public static final DeferredHolder<Item,PickaxeItem> UNO_PICKAXE = ITEMS.register("unobtainium_pickaxe", () -> new PickaxeItem(ATMTier.UNOBTAINIUM, (new Item.Properties()).fireResistant().attributes(PickaxeItem.createAttributes(ATMTier.UNOBTAINIUM, 6.0F, -0.6F))));
+
+	public static final DeferredHolder<Item,AxeItem> ATM_AXE = ITEMS.register("allthemodium_axe", () -> new AxeItem(ATMTier.ALLTHEMODIUM,(new Item.Properties()).fireResistant().attributes(AxeItem.createAttributes(ATMTier.ALLTHEMODIUM, 9.0F, -3.2F))));
+	public static final DeferredHolder<Item,AxeItem> VIB_AXE = ITEMS.register("vibranium_axe", () -> new AxeItem(ATMTier.VIBRANIUM,(new Item.Properties()).fireResistant().attributes(AxeItem.createAttributes(ATMTier.VIBRANIUM, 12.0F, -3.0F))));
+	public static final DeferredHolder<Item,AxeItem> UNO_AXE = ITEMS.register("unobtainium_axe", () -> new AxeItem(ATMTier.UNOBTAINIUM,(new Item.Properties()).fireResistant().attributes(AxeItem.createAttributes(ATMTier.UNOBTAINIUM, 15.0F, -2.8F))));
+
+	public static final DeferredHolder<Item,ShovelItem> ATM_SHOVEL = ITEMS.register("allthemodium_shovel", () -> new ShovelItem(ATMTier.ALLTHEMODIUM,(new Item.Properties()).fireResistant().attributes(ShovelItem.createAttributes(ATMTier.ALLTHEMODIUM, 2.0F, -1.0F))));
+	public static final DeferredHolder<Item,ShovelItem> VIB_SHOVEL = ITEMS.register("vibranium_shovel", () -> new ShovelItem(ATMTier.VIBRANIUM,(new Item.Properties()).fireResistant().attributes(ShovelItem.createAttributes(ATMTier.VIBRANIUM, 4.0F, -0.8F))));
+	public static final DeferredHolder<Item,ShovelItem> UNO_SHOVEL = ITEMS.register("unobtainium_shovel", () -> new ShovelItem(ATMTier.UNOBTAINIUM,(new Item.Properties()).fireResistant().attributes(ShovelItem.createAttributes(ATMTier.UNOBTAINIUM, 6.0F, -0.6F))));
+
+	public static final DeferredHolder<Item,HoeItem> ATM_HOE = ITEMS.register("allthemodium_hoe", () -> new HoeItem(ATMTier.ALLTHEMODIUM, (new Item.Properties()).fireResistant().attributes(HoeItem.createAttributes(ATMTier.ALLTHEMODIUM, -3, 0.0F))));
+	public static final DeferredHolder<Item,HoeItem> VIB_HOE = ITEMS.register("vibranium_hoe", () -> new HoeItem(ATMTier.VIBRANIUM, (new Item.Properties()).fireResistant().attributes(HoeItem.createAttributes(ATMTier.VIBRANIUM, -2, 0.0F))));
+	public static final DeferredHolder<Item,HoeItem> UNO_HOE = ITEMS.register("unobtainium_hoe", () -> new HoeItem(ATMTier.UNOBTAINIUM, (new Item.Properties()).fireResistant().attributes(HoeItem.createAttributes(ATMTier.UNOBTAINIUM, -1, 0.0F))));	
 
 
+	public static final DeferredHolder<Item,MaceItem> ATM_MACE = ITEMS.register("allthemodium_mace", () -> new ATMMace(ATMTier.ALLTHEMODIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.ALLTHEMODIUM)).attributes(ATMMace.createAttributes(ATMTier.ALLTHEMODIUM))));
+	public static final DeferredHolder<Item,MaceItem> VIB_MACE = ITEMS.register("vibranium_mace", () -> new ATMMace(ATMTier.VIBRANIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.VIBRANIUM)).attributes(ATMMace.createAttributes(ATMTier.VIBRANIUM))));
+	public static final DeferredHolder<Item,MaceItem> UNO_MACE = ITEMS.register("unobtainium_mace", () -> new ATMMace(ATMTier.UNOBTAINIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.UNOBTAINIUM)).attributes(ATMMace.createAttributes(ATMTier.UNOBTAINIUM))));
+
+	public static final DeferredHolder<Item,BowItem> ATM_BOW = ITEMS.register("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant()));
+
+	public static final DeferredHolder<Item,CrossbowItem> UNO_BOW = ITEMS.register("unobtainium_crossbow", () -> new Unobow((new Item.Properties()).fireResistant()));
+
+	public static final DeferredHolder<Item,ShieldItem> VIB_SHIELD = ITEMS.register("vibranium_shield", () -> new ShieldItem((new Item.Properties()).fireResistant().stacksTo(1).durability(10000)));
+
+	public static final DeferredHolder<Item,TridentItem> ALLOY_TRIDENT = ITEMS.register("alloy_trident", () -> new ATMTrident((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).attributes(ATMTrident.createAttributes()).component(DataComponents.TOOL, ATMTrident.createToolProperties())));
+
+	
 }
