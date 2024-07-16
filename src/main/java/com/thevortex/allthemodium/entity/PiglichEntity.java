@@ -45,6 +45,7 @@ public class PiglichEntity extends Piglin implements GeoEntity {
     public PiglichEntity(EntityType<? extends Piglin> type, Level world) {
             super(type, world);
             this.level = world;
+            this.createAttributes();
             this.setImmuneToZombification(true);
             this.registerGoals();
         }
@@ -57,6 +58,7 @@ public class PiglichEntity extends Piglin implements GeoEntity {
         return true;
     }
 
+    
     protected void populateDefaultEquipementSlots(DifficultyInstance diff) {
             if (this.isAdult()) {
                 this.maybeWearArmor(EquipmentSlot.HEAD, new ItemStack(ModRegistry.ALLTHEMODIUM_HELMET.get()));
@@ -98,7 +100,7 @@ public class PiglichEntity extends Piglin implements GeoEntity {
         super.setImmuneToZombification(true);
     }
    
-
+    
     public static AttributeSupplier.Builder createAttributes() {
             return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.21F).add(Attributes.ATTACK_DAMAGE,12).add(Attributes.ARMOR,24).add(Attributes.ARMOR_TOUGHNESS,24).add(Attributes.MAX_HEALTH,9999);
     }
