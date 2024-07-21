@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.events;
 import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.entity.PiglichRenderer;
 import com.thevortex.allthemodium.entity.ThrownATMTridentRenderer;
+import com.thevortex.allthemodium.entity.TridentRenderSetup;
 import com.thevortex.allthemodium.entity.alloy_trident;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
 import com.thevortex.allthemodium.reference.Reference;
@@ -23,6 +24,7 @@ public class ClientEvents {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
                 event.registerEntityRenderer(ModRegistry.PIGLICH.get(), PiglichRenderer::new);
         event.registerBlockEntityRenderer(ModRegistry.BRUSHABLE_BLOCK.get(), BrushableBlockRenderer::new);
+        
         event.registerEntityRenderer(ModRegistry.ALLOY_TRIDENT_ENTITY.get(), ThrownATMTridentRenderer::new);
 
     }

@@ -8,8 +8,11 @@ import net.minecraft.world.entity.projectile.ThrownTrident;
 
 import java.util.List;
 
+import org.jetbrains.annotations.ApiStatus.OverrideOnly;
+
 import com.thevortex.allthemodium.entity.ThrownATMTrident;
 
+import io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue.Consumer;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -24,6 +27,7 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
@@ -32,8 +36,10 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class ATMTrident extends TridentItem{
 
+public class ATMTrident extends TridentItem implements ProjectileItem {
+
+   private Object renderProperties;
     public ATMTrident(Properties p_43381_) {
         super(p_43381_);
         
@@ -105,5 +111,15 @@ public class ATMTrident extends TridentItem{
          p_43406_.startUsingItem(p_43407_);
          return InteractionResultHolder.consume(itemstack);
       }
+   }
+  
+   @Override
+   public void initializeClient(Consumer<ATMTrident> consumer) {
+      consumer.accept(() -> {
+         @Override
+         public Object getRenderProperties() {
+         return this.renderProperties;
+      });
+     
    }
 }
