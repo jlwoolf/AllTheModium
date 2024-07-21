@@ -1,6 +1,6 @@
 {
 	"credit": "Model created by Zorak Design - Contact me on discord for work: CesarZorak#0808",
-	"parent": "minecraft:item/generated",
+	"parent": "minecraft:item/trident",
 	"texture_size": [32, 32],
 	"textures": {
 		"layer0": "allthemodium:item/alloy_trident",

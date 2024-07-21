@@ -8,6 +8,8 @@ import net.minecraft.world.entity.projectile.ThrownTrident;
 
 import java.util.List;
 
+import com.thevortex.allthemodium.entity.ThrownATMTrident;
+
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -55,7 +57,7 @@ public class ATMTrident extends TridentItem{
                if (!level.isClientSide) {
                   trident.hurtAndBreak(1, player, LivingEntity.getSlotForHand(thrower.getUsedItemHand()));
                   if (f == 0.0F) {
-                     ThrownTrident throwntrident = new ThrownTrident(level, player, trident);
+                     ThrownATMTrident throwntrident = new ThrownATMTrident(level, player, trident);
                      throwntrident.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
                      if (player.hasInfiniteMaterials()) {
                         throwntrident.pickup = Pickup.CREATIVE_ONLY;

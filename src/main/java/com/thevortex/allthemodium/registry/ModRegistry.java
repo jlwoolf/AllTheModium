@@ -13,6 +13,8 @@ import com.thevortex.allthemodium.material.ATMTier;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.entity.PiglichEntity;
+import com.thevortex.allthemodium.entity.ThrownATMTrident;
+import com.thevortex.allthemodium.entity.alloy_trident;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -34,6 +36,8 @@ import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -171,9 +175,9 @@ public class ModRegistry {
 	public static final DeferredHolder<Block, FenceGateBlock> DEMONIC_WOOD_FENCE_GATE = PILLARBLOCKS.register("demonic_wooden_fence_gate", () -> new FenceGateBlock(ATMBlockSets.DEMONICWOOD,BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
 	public static final DeferredHolder<Block, DoorBlock> DEMONIC_DOOR_ = PILLARBLOCKS.register("demonic_door", () -> new DoorBlock(ATMBlockSets.DEMONIC, BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD)));
 
-	public static final DeferredHolder<Block, AncientSaplingBlock> SOUL_SAPLING = BLOCKS.register("soul_sapling", () -> new AncientSaplingBlock(new TreeGrower("soul_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.SOUL_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().randomTicks().noCollission().instabreak().sound(SoundType.WOOD)));
-	public static final DeferredHolder<Block, AncientSaplingBlock> ANCIENT_SAPLING = BLOCKS.register("ancient_sapling", () -> new AncientSaplingBlock(new TreeGrower("ancient_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.ANCIENT_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().randomTicks().noCollission().instabreak().sound(SoundType.WOOD)));
-	public static final DeferredHolder<Block, AncientSaplingBlock> DEMONIC_SAPLING = BLOCKS.register("demonic_sapling", () -> new AncientSaplingBlock(new TreeGrower("demonic_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.DEMONIC_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().randomTicks().noCollission().instabreak().sound(SoundType.WOOD)));
+	public static final DeferredHolder<Block, AncientSaplingBlock> SOUL_SAPLING = BLOCKS.register("soul_sapling", () -> new AncientSaplingBlock(new TreeGrower("soul_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.SOUL_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+	public static final DeferredHolder<Block, AncientSaplingBlock> ANCIENT_SAPLING = BLOCKS.register("ancient_sapling", () -> new AncientSaplingBlock(new TreeGrower("ancient_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.ANCIENT_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+	public static final DeferredHolder<Block, AncientSaplingBlock> DEMONIC_SAPLING = BLOCKS.register("demonic_sapling", () -> new AncientSaplingBlock(new TreeGrower("demonic_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.DEMONIC_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
 
 	public static final DeferredHolder<Item, BlockItem> SOUL_SAPLING_Item = ITEMS.register("soul_sapling", () -> new BlockItem(SOUL_SAPLING.get(), new Item.Properties()));
 	public static final DeferredHolder<Item, BlockItem> ANCIENT_SAPLING_Item = ITEMS.register("ancient_sapling", () -> new BlockItem(ANCIENT_SAPLING.get(), new Item.Properties()));
@@ -515,6 +519,6 @@ public class ModRegistry {
 	public static final DeferredHolder<Item,ShieldItem> VIB_SHIELD = ITEMS.register("vibranium_shield", () -> new ShieldItem((new Item.Properties()).fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
 
 	public static final DeferredHolder<Item,TridentItem> ALLOY_TRIDENT = ITEMS.register("alloy_trident", () -> new ATMTrident((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).attributes(ATMTrident.createAttributes()).component(DataComponents.TOOL, ATMTrident.createToolProperties())));
-
+	public static final DeferredHolder<EntityType<?>,EntityType<ThrownATMTrident>> ALLOY_TRIDENT_ENTITY = ENTITIES.register("alloy_trident", () -> EntityType.Builder.<ThrownATMTrident>of(ThrownATMTrident::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10).build("alloy_trident"));
 	
 }

@@ -19,7 +19,7 @@ import net.minecraft.world.entity.Entity;
 
 public class alloy_trident<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "alloy_trident"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "alloy_trident"), "bb_main");
 	private final ModelPart bb_main;
 
 	public alloy_trident(ModelPart root) {
