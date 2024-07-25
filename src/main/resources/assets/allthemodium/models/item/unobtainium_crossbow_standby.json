@@ -1,7 +1,7 @@
 {
-    "parent": "item/crossbow",
+    "parent": "item/handheld",
     "textures": {
-        "layer0": "allthemodium:item/unobtainium_crossbow"
+        "layer0": "allthemodium:item/unobtainium_crossbow_standby"
     },
     "display": {
         "thirdperson_righthand": {
