@@ -1,0 +1,17 @@
+{
+    "required": true,
+    "package": "com.thevortex.allthemodium.mixins",
+    "compatibilityLevel": "JAVA_21",
+    "minVersion": "0.8",
+    "refmap": "allthemodium.refmap.json",
+    "mixins": [
+  
+    ],
+    "client": [
+      "MixinItemRenderer"
+    ],
+    "injectors": {
+      "defaultRequire": 1
+    }
+  }
+  

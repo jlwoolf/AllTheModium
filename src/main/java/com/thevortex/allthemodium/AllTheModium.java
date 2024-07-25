@@ -27,7 +27,10 @@ import static com.thevortex.allthemodium.reference.Reference.MOD_ID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.launch.MixinBootstrap;
+
 import com.thevortex.allthemodium.events.BlockBreak;
+import com.thevortex.allthemodium.mixins.MixinConnector;
 
 import java.util.Set;
 
@@ -67,6 +70,7 @@ public class AllTheModium
 
     public AllTheModium(IEventBus modEventBus, ModContainer modContainer) {
         // Register the setup method for modloading
+		MixinBootstrap.init();
 		modEventBus.register(ModRegistry.class);
 
 		FluidTypeRegistry.FLUID_TYPES.register(modEventBus);

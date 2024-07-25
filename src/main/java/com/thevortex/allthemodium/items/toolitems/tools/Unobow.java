@@ -16,6 +16,11 @@ public class Unobow extends CrossbowItem{
 
     @Override
     public int getDefaultProjectileRange() {
-        return 30;
+        return 90;
     }
+    @Override
+        public int getEnchantmentValue() {
+        return 145;
+    }
+
 }

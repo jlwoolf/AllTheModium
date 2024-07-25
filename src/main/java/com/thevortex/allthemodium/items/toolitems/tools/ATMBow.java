@@ -15,12 +15,16 @@ public class ATMBow extends BowItem {
     }
     
     @Override
-    public int getUseDuration(ItemStack p_40680_, LivingEntity p_345962_) {
-      return 20;
-   }
+        public int getUseDuration(ItemStack p_40680_, LivingEntity p_345962_) {
+        return 36000;
+    }
 
-   @Override
-   public int getDefaultProjectileRange() {
-    return 30;
- }
+    @Override
+        public int getDefaultProjectileRange() {
+        return 60;
+    }
+    @Override
+        public int getEnchantmentValue() {
+        return 85;
+    }
 }
