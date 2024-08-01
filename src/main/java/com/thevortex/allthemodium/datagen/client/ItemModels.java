@@ -48,6 +48,30 @@ public class ItemModels extends ItemModelProvider {
         basicItem(ModRegistry.DEMONIC_SAPLING_Item.get());
         basicItem(ModRegistry.SOUL_SAPLING_Item.get());
 
+        cubeAll("ancient_dirt", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_dirt"));
+        cubeAll("piglich_heart_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/piglich_heart_block"));
+        cubeAll("ancient_smooth_stone", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_smooth_stone"));
+        cubeAll("ancient_stone", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_stone"));
+        cubeAll("ancient_mossy_stone", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_mossy_stone"));
+        cubeAll("ancient_polished_stone", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_polished_stone"));
+        cubeAll("ancient_stone_bricks", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_stone_bricks"));
+        cubeAll("ancient_chiseled_stone_bricks", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_chiseled_stone_bricks"));
+        cubeAll("ancient_cracked_stone_bricks", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_cracked_stone_bricks"));
+        cubeAll("raw_allthemodium_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/raw_allthemodium_block"));
+        cubeAll("allthemodium_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/allthemodium_block"));
+        cubeAll("allthemodium_ore", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/allthemodium_ore"));
+        cubeAll("allthemodium_slate_ore", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/allthemodium_slate_ore"));
+        cubeAll("raw_vibranium_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/raw_vibranium_block"));
+        cubeAll("vibranium_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vibranium_block"));
+        cubeAll("vibranium_ore", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vibranium_ore"));
+        cubeAll("other_vibranium_ore", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/other_vibranium_ore"));
+        cubeAll("raw_unobtainium_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/raw_unobtainium_block"));
+        cubeAll("unobtainium_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/unobtainium_block"));
+        cubeAll("unobtainium_ore", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/unobtainium_ore"));
+
+        cubeAll("unobtainium_allthemodium_alloy_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/unobtainium_allthemodium_alloy_block"));
+        cubeAll("unobtainium_vibranium_alloy_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/unobtainium_vibranium_alloy_block"));
+        cubeAll("vibranium_allthemodium_alloy_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vibranium_allthemodium_alloy_block"));
 
 
         stairs("ancient_wooden_stairs",

@@ -7,7 +7,8 @@
     "item": "minecraft:netherite_axe"
   },
   "result": {
-    "item": "allthemodium:allthemodium_axe"
+    "count": 1,
+    "id": "allthemodium:allthemodium_axe"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"

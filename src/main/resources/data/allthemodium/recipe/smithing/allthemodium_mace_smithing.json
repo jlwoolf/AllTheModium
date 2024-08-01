@@ -1,14 +1,14 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "allthemodium:allthemodium_ingot"
+    "item": "allthemodium:allthemodium_block"
   },
   "base": {
-    "item": "minecraft:netherite_shovel"
+    "item": "minecraft:mace"
   },
   "result": {
     "count": 1,
-    "id": "allthemodium:allthemodium_shovel"
+    "id": "allthemodium:allthemodium_mace"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"

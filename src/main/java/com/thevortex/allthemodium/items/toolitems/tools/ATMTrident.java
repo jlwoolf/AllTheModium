@@ -113,13 +113,5 @@ public class ATMTrident extends TridentItem implements ProjectileItem {
       }
    }
   
-   @Override
-   public void initializeClient(Consumer<ATMTrident> consumer) {
-      consumer.accept(() -> {
-         @Override
-         public Object getRenderProperties() {
-         return this.renderProperties;
-      });
-     
-   }
+
 }

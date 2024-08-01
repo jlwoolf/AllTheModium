@@ -7,7 +7,8 @@
     "item": "allthemodium:allthemodium_chestplate"
   },
   "result": {
-    "item": "allthemodium:vibranium_chestplate"
+    "count": 1,
+    "id": "allthemodium:vibranium_chestplate"
   },
   "template": {
     "item": "allthemodium:vibranium_upgrade_smithing_template"

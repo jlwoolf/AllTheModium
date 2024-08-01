@@ -7,7 +7,8 @@
     "item": "allthemodium:vibranium_hoe"
   },
   "result": {
-    "item": "allthemodium:unobtainium_hoe"
+    "count": 1,
+    "id": "allthemodium:unobtainium_hoe"
   },
   "template": {
     "item": "allthemodium:unobtainium_upgrade_smithing_template"

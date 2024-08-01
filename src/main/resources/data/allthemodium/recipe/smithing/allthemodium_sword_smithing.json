@@ -7,7 +7,8 @@
     "item": "minecraft:netherite_sword"
   },
   "result": {
-    "item": "allthemodium:allthemodium_sword"
+    "count": 1,
+    "id": "allthemodium:allthemodium_sword"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"

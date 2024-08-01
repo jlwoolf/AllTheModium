@@ -7,7 +7,8 @@
     "item": "minecraft:netherite_boots"
   },
   "result": {
-    "item": "allthemodium:allthemodium_boots"
+    "count": 1,
+    "id": "allthemodium:allthemodium_boots"
   },
   "template": {
     "item": "allthemodium:allthemodium_upgrade_smithing_template"

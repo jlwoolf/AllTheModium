@@ -7,7 +7,8 @@
     "item": "allthemodium:allthemodium_boots"
   },
   "result": {
-    "item": "allthemodium:vibranium_boots"
+    "count": 1,
+    "id": "allthemodium:vibranium_boots"
   },
   "template": {
     "item": "allthemodium:vibranium_upgrade_smithing_template"

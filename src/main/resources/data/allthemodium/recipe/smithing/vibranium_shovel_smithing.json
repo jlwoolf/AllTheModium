@@ -7,7 +7,8 @@
     "item": "allthemodium:allthemodium_shovel"
   },
   "result": {
-    "item": "allthemodium:vibranium_shovel"
+    "count": 1,
+    "id": "allthemodium:vibranium_shovel"
   },
   "template": {
     "item": "allthemodium:vibranium_upgrade_smithing_template"

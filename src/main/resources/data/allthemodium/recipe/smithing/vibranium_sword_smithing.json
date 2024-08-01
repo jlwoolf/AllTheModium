@@ -7,7 +7,8 @@
     "item": "allthemodium:allthemodium_sword"
   },
   "result": {
-    "item": "allthemodium:vibranium_sword"
+    "count": 1,
+    "id": "allthemodium:vibranium_sword"
   },
   "template": {
     "item": "allthemodium:vibranium_upgrade_smithing_template"

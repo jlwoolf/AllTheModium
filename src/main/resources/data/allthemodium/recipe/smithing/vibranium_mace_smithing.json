@@ -1,14 +1,14 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "allthemodium:vibranium_ingot"
+    "item": "allthemodium:vibranium_block"
   },
   "base": {
-    "item": "allthemodium:allthemodium_pickaxe"
+    "item": "allthemodium:allthemodium_mace"
   },
   "result": {
     "count": 1,
-    "id": "allthemodium:vibranium_pickaxe"
+    "id": "allthemodium:vibranium_mace"
   },
   "template": {
     "item": "allthemodium:vibranium_upgrade_smithing_template"
