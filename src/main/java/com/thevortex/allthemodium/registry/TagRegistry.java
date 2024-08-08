@@ -23,19 +23,25 @@ public class TagRegistry {
 
     public static final TagKey<Block> OTHER_PROTECTION = BlockTags.create(Reference.atm("blocks/blocklist"));
 
-    public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
 
+    
+    public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
+    public static final TagKey<Block> INCORRECT_FOR_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("incorrect_for_allthemodium_tool"));
+    public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = BlockTags.create(Reference.forge("incorrect_for_vibranium_tool"));
     public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(Reference.forge("needs_vibranium_tool"));
 
+
     public static final TagKey<Block> NEEDS_UNOBTAINIUM_TOOL = BlockTags.create(Reference.forge("needs_unobtainium_tool"));
+    public static final TagKey<Block> INCORRECT_FOR_UNOBTAINIUM_TOOL = BlockTags.create(Reference.forge("incorrect_for_unobtainium_tool"));
     public static final TagKey<Block> NEEDS_ALLOY_TOOL = BlockTags.create(Reference.forge("needs_allthemodiumalloy_tool"));
+    public static final TagKey<Block> INCORRECT_FOR_ALLOY_TOOL = BlockTags.create(Reference.forge("incorrect_for_allthemodiumalloy_tool"));
 
     public static final TagKey<Item> FORGE_SWORDS = ItemTags.create(Reference.forge("tools/swords"));
     public static final TagKey<Item> FORGE_PICKAXES = ItemTags.create(Reference.forge("tools/pickaxes"));
     public static final TagKey<Item> FORGE_AXES = ItemTags.create(Reference.forge("tools/axes"));
     public static final TagKey<Item> FORGE_SHOVELS = ItemTags.create(Reference.forge("tools/shovels"));
     public static final TagKey<Item> FORGE_HOES = ItemTags.create(Reference.forge("tools/hoes"));
-     public static final TagKey<Block> PAXEL_TARGETS = BlockTags.create(Reference.atm("paxel_effective"));
+    public static final TagKey<Block> PAXEL_TARGETS = BlockTags.create(Reference.atm("paxel_effective"));
 
     public static final TagKey<Item> PIGLIN_LOVED = ItemTags.create(Reference.location("minecraft:items/piglin_loved"));
     public static final TagKey<Item> RAW_MATERIALS = ItemTags.create(Reference.forge("raw_materials"));

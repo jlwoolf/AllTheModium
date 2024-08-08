@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.MaceItem;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
@@ -18,7 +19,7 @@ public class ATMMace extends MaceItem {
 
     private Tier tier = ATMTier.ALLTHEMODIUM;
     public ATMMace(Tier tier, Properties p_333796_) {
-        super(p_333796_);
+        super(p_333796_.rarity(Rarity.EPIC));
         this.tier = tier;
     }
     public static ItemAttributeModifiers createAttributes(Tier tier) {

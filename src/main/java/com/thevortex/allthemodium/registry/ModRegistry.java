@@ -521,4 +521,11 @@ public class ModRegistry {
 	public static final DeferredHolder<Item,TridentItem> ALLOY_TRIDENT = ITEMS.register("alloy_trident", () -> new ATMTrident((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).attributes(ATMTrident.createAttributes()).component(DataComponents.TOOL, ATMTrident.createToolProperties())));
 	public static final DeferredHolder<EntityType<?>,EntityType<ThrownATMTrident>> ALLOY_TRIDENT_ENTITY = ENTITIES.register("alloy_trident", () -> EntityType.Builder.<ThrownATMTrident>of(ThrownATMTrident::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10).build("alloy_trident"));
 	
+	public static final DeferredHolder<Item,SwordItem> ALLOY_SWORD = ITEMS.register("alloy_sword", () -> new SwordItem(ATMTier.ALLOY, new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(SwordItem.createAttributes(ATMTier.ALLOY, 5, -1.4F))));
+	public static final DeferredHolder<Item,AxeItem> ALLOY_AXE = ITEMS.register("alloy_axe", () -> new AxeItem(ATMTier.ALLOY, new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(AxeItem.createAttributes(ATMTier.ALLOY, 5, -1.4F))));
+	public static final DeferredHolder<Item,PickaxeItem> ALLOY_PICKAXE = ITEMS.register("alloy_pick", () -> new PickaxeItem(ATMTier.ALLOY, new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(PickaxeItem.createAttributes(ATMTier.ALLOY, 5, -1.4F))));
+	public static final DeferredHolder<Item,ShovelItem> ALLOY_SHOVEL = ITEMS.register("alloy_shovel", () -> new ShovelItem(ATMTier.ALLOY, new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(ShovelItem.createAttributes(ATMTier.ALLOY, 5, -1.4F))));
+	public static final DeferredHolder<Item,DiggerItem> ALLOY_DIGGER = ITEMS.register("alloy_paxel", () -> new DiggerItem(ATMTier.ALLOY, ToolTiers.ALLOY_TOOL_TAG, new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(DiggerItem.createAttributes(ATMTier.ALLOY, 5, -1.4F))));
+	
+
 }
