@@ -39,7 +39,7 @@ private final static IntProvider xpRange = new IntProvider() {
 		}
 	};
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
-		super(xpRange, Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(15.0f,2500.0f));
+		super(xpRange, Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(-1.0f,2500.0f));
 	}
 	
 	@Override
@@ -53,4 +53,14 @@ private final static IntProvider xpRange = new IntProvider() {
 	}
 
 
+    @Override
+    protected float getDestroyProgress(final BlockState state, final Player player, final BlockGetter getter,
+                                       final BlockPos blockPos) {
+        BlockEntity blockEntity = getter.getBlockEntity(blockPos);
+        if (canEntityDestroy(state,getter,blockPos, player)) {
+            int i = player.hasCorrectToolForDrops(state, player.level(), blockPos) ? 250 : 1500;
+            return player.getDigSpeed(state, blockPos) / 2.0F / i;
+        }
+        return 0.0F;
+    }
 }

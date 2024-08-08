@@ -26,7 +26,7 @@ import net.neoforged.neoforge.common.util.FakePlayer;
 public class Allthemodium_Ore extends RedStoneOreBlock {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 	public Allthemodium_Ore() {	//func_235861_h_ = setRequiresTool
-		super(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(15.0f,1500.0f));
+		super(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(-1.0f,1500.0f));
 	}
 
 	
@@ -43,7 +43,16 @@ public class Allthemodium_Ore extends RedStoneOreBlock {
 
 
 
-
+    @Override
+    protected float getDestroyProgress(final BlockState state, final Player player, final BlockGetter getter,
+                                       final BlockPos blockPos) {
+        BlockEntity blockEntity = getter.getBlockEntity(blockPos);
+        if (canEntityDestroy(state,getter,blockPos, player)) {
+            int i = player.hasCorrectToolForDrops(state, player.level(), blockPos) ? 250 : 1500;
+            return player.getDigSpeed(state, blockPos) / 2.0F / i;
+        }
+        return 0.0F;
+    }
 
 
 	@OnlyIn(Dist.CLIENT)
