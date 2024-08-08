@@ -26,7 +26,7 @@ import net.neoforged.neoforge.common.util.FakePlayer;
 public class Allthemodium_Ore extends RedStoneOreBlock {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 	public Allthemodium_Ore() {	//func_235861_h_ = setRequiresTool
-		super(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(-1.0f,1500.0f));
+		super(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(15.0f,1500.0f));
 	}
 
 	

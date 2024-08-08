@@ -39,7 +39,7 @@ private final static IntProvider xpRange = new IntProvider() {
 		}
 	};
 	public Unobtainium_Ore() {//func_235861_h_ = setRequiresTool
-		super(xpRange, Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE).strength(-1.0f,5000f));
+		super(xpRange, Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE).strength(15.0f,5000f));
 	}
 		@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {

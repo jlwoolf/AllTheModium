@@ -39,7 +39,7 @@ private final static IntProvider xpRange = new IntProvider() {
 		}
 	};
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
-		super(xpRange, Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(-1.0f,2500.0f));
+		super(xpRange, Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(15.0f,2500.0f));
 	}
 	
 	@Override

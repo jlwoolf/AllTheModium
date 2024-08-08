@@ -27,6 +27,35 @@ public class ATMBlockTags extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
+        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.FURNACE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BLAST_FURNACE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BREWING_STAND);
