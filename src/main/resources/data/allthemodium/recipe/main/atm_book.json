@@ -1,15 +1,24 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "minecraft:book"
-        },
-        {
-            "item": "minecraft:book"
-        }
-    ],
-    "result": {
-        "item": "patchouli:guide_book",
-        "nbt": { "patchouli:book": "allthemodium:allthemodium_book" }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "minecraft:book"
     }
+  ],
+  "result": {
+    "type": "component",
+    "id": "patchouli:guide_book",
+    "components": {
+      "patchouli:book": "allthemodium:allthemodium_book"
+    }
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "patchouli"
+    }
+  ]
 }
