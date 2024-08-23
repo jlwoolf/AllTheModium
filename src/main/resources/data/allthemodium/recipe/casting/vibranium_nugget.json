@@ -9,7 +9,7 @@
   },
   "result": "allthemodium:vibranium_nugget",
   "cooling_time": 59,
-  "conditions": [
+  "neoforge:conditions": [
       {
           "type": "neoforge:mod_loaded",
           "modid": "tconstruct"

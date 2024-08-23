@@ -1,15 +1,15 @@
 {
   "type": "mekanism:crystallizing",
-  "chemical_type": "slurry",
+  
   "input": {
     "amount": 200,
-    "slurry": "allthemodium:clean_unobtainium"
+    "chemical": "allthemodium:clean_unobtainium"
   },
   "output": {
     "count": 1,
     "id": "allthemodium:unobtainium_crystal"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

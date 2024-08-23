@@ -3,7 +3,7 @@
   "biomes": "#allthemodium:mining_features/mining_biomes",
   "features": "alltheores:ore_peridot_placed",
   "step": "underground_ores",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "alltheores"

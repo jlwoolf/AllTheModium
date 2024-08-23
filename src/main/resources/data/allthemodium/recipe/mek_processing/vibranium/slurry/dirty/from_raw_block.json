@@ -1,6 +1,6 @@
 {
   "type": "mekanism:dissolution",
-  "gas_input": {
+  "chemical_input": {
     "amount": 2,
     "gas": "mekanism:sulfuric_acid"
   },
@@ -11,10 +11,11 @@
   },
   "output": {
     "amount": 6000,
-    "chemical_type": "slurry",
+    
     "id": "allthemodium:dirty_vibranium"
   },
-  "conditions": [
+  "per_tick_usage": true,
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

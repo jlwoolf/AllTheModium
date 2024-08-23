@@ -9,7 +9,7 @@
     "id": "allthemodium:dirty_vibranium_dust",
     "count": 1
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

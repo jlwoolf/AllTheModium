@@ -60,7 +60,7 @@ public class ATMTier implements Tier {
 
     @Override
     public int getUses() {
-        return Integer.MAX_VALUE;
+        return this.uses;
     }
 
 }

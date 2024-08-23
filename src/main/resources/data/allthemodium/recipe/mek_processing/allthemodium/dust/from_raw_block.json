@@ -9,7 +9,7 @@
     "count": 12,
     "id": "allthemodium:allthemodium_dust"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

@@ -13,7 +13,8 @@
     "count": 24,
     "id": "allthemodium:allthemodium_shard"
   },
-  "conditions": [
+  "per_tick_usage": true,
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

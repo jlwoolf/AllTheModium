@@ -9,7 +9,7 @@
   },
   "result": "allthemodium:allthemodium_nugget",
   "cooling_time": 29,
-  "conditions": [
+  "neoforge:conditions": [
       {
           "type": "neoforge:mod_loaded",
           "modid": "tconstruct"

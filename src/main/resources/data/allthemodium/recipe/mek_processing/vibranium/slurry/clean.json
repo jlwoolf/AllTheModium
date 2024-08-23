@@ -4,15 +4,15 @@
     "amount": 5,
     "tag": "minecraft:water"
   },
-  "slurry_input": {
+  "chemical_input": {
     "amount": 1,
-    "slurry": "allthemodium:dirty_vibranium"
+    "chemical": "allthemodium:dirty_vibranium"
   },
   "output": {
     "id": "allthemodium:clean_vibranium",
     "amount": 1
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

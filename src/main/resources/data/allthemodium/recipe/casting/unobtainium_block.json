@@ -6,7 +6,7 @@
   },
   "result": "allthemodium:unobtainium_block",
   "cooling_time": 1888,
-  "conditions": [
+  "neoforge:conditions": [
       {
           "type": "neoforge:mod_loaded",
           "modid": "tconstruct"

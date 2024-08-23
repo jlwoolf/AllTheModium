@@ -9,7 +9,7 @@
   },
   "temperature": 9000,
   "time": 175,
-  "conditions": [
+  "neoforge:conditions": [
       {
           "type": "neoforge:mod_loaded",
           "modid": "tconstruct"

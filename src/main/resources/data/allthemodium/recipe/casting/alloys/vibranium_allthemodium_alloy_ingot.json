@@ -10,7 +10,7 @@
   },
   "result": "allthemodium:vibranium_allthemodium_alloy_ingot",
   "cooling_time": 740,
-  "conditions": [
+  "neoforge:conditions": [
       {
           "type": "neoforge:mod_loaded",
           "modid": "tconstruct"

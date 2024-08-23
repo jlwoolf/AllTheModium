@@ -15,7 +15,7 @@
     "amount": 90
   },
   "temperature": 9000,
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "tconstruct"
