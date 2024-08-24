@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrassBlock;
@@ -22,7 +23,7 @@ public class AncientDirt extends Block implements SpecialPlantable {
     
 
     @Override
-    public void spawnPlantAtPosition(ItemStack arg0, LevelReader arg1, BlockPos arg2, @Nullable Direction arg3) {
+    public void spawnPlantAtPosition(ItemStack arg0, LevelAccessor arg1, BlockPos arg2, @Nullable Direction arg3) {
        
     }
 

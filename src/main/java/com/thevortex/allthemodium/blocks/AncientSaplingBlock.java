@@ -17,6 +17,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
@@ -108,7 +109,7 @@ public class AncientSaplingBlock extends SaplingBlock implements SpecialPlantabl
         return arg1.getBlockState(arg2).is(TagRegistry.ANCIENT_DIRT) || arg1.getBlockState(arg2).is(Blocks.WARPED_NYLIUM) || arg1.getBlockState(arg2).is(Blocks.CRIMSON_NYLIUM) || arg1.getBlockState(arg2).is(ModRegistry.ANCIENT_GRASS.get());
     }
     @Override
-    public void spawnPlantAtPosition(ItemStack arg0, LevelReader arg1, BlockPos arg2, @Nullable Direction arg3) {
+    public void spawnPlantAtPosition(ItemStack arg0, LevelAccessor arg1, BlockPos arg2, @Nullable Direction arg3) {
        
     }
 }
