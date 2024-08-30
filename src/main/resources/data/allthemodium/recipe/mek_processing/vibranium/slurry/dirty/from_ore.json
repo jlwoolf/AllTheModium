@@ -2,18 +2,19 @@
   "type": "mekanism:dissolution",
   "item_input": {
     "count": 1,
-      "tag": "c:ores/allthemodium"
+      "tag": "c:ores/vibranium"
     
   },
   "chemical_input": {
     "amount": 1,
-    "gas": "mekanism:sulfuric_acid"
+    "chemical": "mekanism:sulfuric_acid"
   },
   "output": {
-    "id": "allthemodium:dirty_allthemodium",
-    "amount": 1000,
-    "chemical_type": "chemical"
+    "id": "allthemodium:dirty_vibranium",
+    "amount": 1000
   },
+  "per_tick_usage": true,
+  
   "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",

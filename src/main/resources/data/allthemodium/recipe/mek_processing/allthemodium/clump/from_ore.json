@@ -6,7 +6,7 @@
   },
   "chemical_input": {
     "amount": 1,
-    "gas": "mekanism:oxygen"
+    "chemical": "mekanism:oxygen"
   },
   "output": {
     "id": "allthemodium:allthemodium_clump",

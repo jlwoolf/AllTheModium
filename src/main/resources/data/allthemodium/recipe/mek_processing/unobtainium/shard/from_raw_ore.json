@@ -7,7 +7,7 @@
   },
   "chemical_input": {
     "amount": 1,
-    "gas": "mekanism:hydrogen_chloride"
+    "chemical": "mekanism:hydrogen_chloride"
   },
   "output": {
     "id": "allthemodium:unobtainium_shard",
