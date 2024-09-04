@@ -43,6 +43,12 @@ public class TagRegistry {
     public static final TagKey<Item> FORGE_HOES = ItemTags.create(Reference.forge("tools/hoes"));
     public static final TagKey<Block> PAXEL_TARGETS = BlockTags.create(Reference.atm("paxel_effective"));
 
+    public static final TagKey<Item> HELMETS = ItemTags.create(Reference.forge("armor/helmets"));
+    public static final TagKey<Item> CHESTPLATES = ItemTags.create(Reference.forge("armor/chestplates"));
+    public static final TagKey<Item> LEGGINGS = ItemTags.create(Reference.forge("armor/leggings"));
+    public static final TagKey<Item> BOOTS = ItemTags.create(Reference.forge("armor/boots"));
+    
+
     public static final TagKey<Item> PIGLIN_LOVED = ItemTags.create(Reference.location("minecraft:items/piglin_loved"));
     public static final TagKey<Item> RAW_MATERIALS = ItemTags.create(Reference.forge("raw_materials"));
 

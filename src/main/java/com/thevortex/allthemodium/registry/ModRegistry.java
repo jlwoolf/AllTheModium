@@ -479,7 +479,7 @@ public class ModRegistry {
 
 	@SubscribeEvent
 	public static void addEntityAttributes(EntityAttributeCreationEvent event) {
-		//event.put(PIGLICH.get(), PiglichEntity.createAttributes().build());
+		event.put(PIGLICH.get(), PiglichEntity.createAttributes().build());
 		//event.put(ATM_SHULKER.get(), UNOBShulkerEntity.createAttributes().build());
 
 	}

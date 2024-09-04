@@ -24,6 +24,36 @@ public class ATMItemTags extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
+        tag(net.minecraft.tags.ItemTags.HEAD_ARMOR).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
+        tag(net.minecraft.tags.ItemTags.CHEST_ARMOR).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(net.minecraft.tags.ItemTags.LEG_ARMOR).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(net.minecraft.tags.ItemTags.FOOT_ARMOR).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+
+        tag(net.minecraft.tags.ItemTags.HEAD_ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
+        tag(net.minecraft.tags.ItemTags.CHEST_ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(net.minecraft.tags.ItemTags.LEG_ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(net.minecraft.tags.ItemTags.FOOT_ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+
+        tag(net.minecraft.tags.ItemTags.HEAD_ARMOR).add(ModRegistry.VIBRANIUM_HELMET.get());
+        tag(net.minecraft.tags.ItemTags.CHEST_ARMOR).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
+        tag(net.minecraft.tags.ItemTags.LEG_ARMOR).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
+        tag(net.minecraft.tags.ItemTags.FOOT_ARMOR).add(ModRegistry.VIBRANIUM_BOOTS.get());
+
+        tag(net.minecraft.tags.ItemTags.HEAD_ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_HELMET.get());
+        tag(net.minecraft.tags.ItemTags.CHEST_ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
+        tag(net.minecraft.tags.ItemTags.LEG_ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
+        tag(net.minecraft.tags.ItemTags.FOOT_ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_BOOTS.get());
+
+        tag(net.minecraft.tags.ItemTags.HEAD_ARMOR).add(ModRegistry.UNOBTAINIUM_HELMET.get());
+        tag(net.minecraft.tags.ItemTags.CHEST_ARMOR).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
+        tag(net.minecraft.tags.ItemTags.LEG_ARMOR).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
+        tag(net.minecraft.tags.ItemTags.FOOT_ARMOR).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
+
+        tag(net.minecraft.tags.ItemTags.HEAD_ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_HELMET.get());
+        tag(net.minecraft.tags.ItemTags.CHEST_ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
+        tag(net.minecraft.tags.ItemTags.LEG_ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
+        tag(net.minecraft.tags.ItemTags.FOOT_ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
+
         tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_0_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_1_ITEM.get());

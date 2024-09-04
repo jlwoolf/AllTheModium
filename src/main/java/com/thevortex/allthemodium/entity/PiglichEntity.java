@@ -24,6 +24,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -37,7 +38,7 @@ import java.util.EnumSet;
 
 public class PiglichEntity extends Piglin implements GeoEntity {
     private final SimpleContainer inventory = new SimpleContainer(8);
-    private static final RawAnimation ANIMATION = RawAnimation.begin().thenLoop("idle.piglich.nik").thenLoop("walk.piglich.nik");
+    private static final RawAnimation ANIMATION = RawAnimation.begin().thenPlay("walk.piglich.nik").thenPlay("summon.piglich.nik").thenPlay("meleeattack.piglich.nik");
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
     private final Level level;
 
@@ -58,22 +59,8 @@ public class PiglichEntity extends Piglin implements GeoEntity {
         return true;
     }
 
+
     
-    protected void populateDefaultEquipementSlots(DifficultyInstance diff) {
-            if (this.isAdult()) {
-                this.maybeWearArmor(EquipmentSlot.HEAD, new ItemStack(ModRegistry.ALLTHEMODIUM_HELMET.get()));
-                this.maybeWearArmor(EquipmentSlot.CHEST, new ItemStack(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get()));
-                this.maybeWearArmor(EquipmentSlot.LEGS, new ItemStack(ModRegistry.ALLTHEMODIUM_LEGGINGS.get()));
-                this.maybeWearArmor(EquipmentSlot.FEET, new ItemStack(ModRegistry.ALLTHEMODIUM_BOOTS.get()));
-            }
-
-        }
-    private void maybeWearArmor(EquipmentSlot slot, ItemStack stack) {
-        if (this.level.random.nextFloat() < 0.5F) {
-            this.setItemSlot(slot, stack);
-        }
-
-    }
 
     @Override
         protected void registerGoals() {
@@ -195,15 +182,15 @@ public class PiglichEntity extends Piglin implements GeoEntity {
                                 this.piglich.level.levelEvent((Player)null, 1018, this.piglich.blockPosition(), 0);
                             }
 
-                           /* for(int i = 0; i < 3; ++i) {
+                            /*for(int i = 0; i < 3; ++i) {
                                 Vec3 vec3 = this.piglich.getViewVector(1.0F);
                                 this.piglich.isSummoning = true;
-                                LargeFireball largefireball = new LargeFireball(this.piglich.level, this.piglich, d2, d3, d4, (int)this.piglich.getHealth());
+                                LargeFireball largefireball = new LargeFireball(this.piglich.level, this.piglich, new Vec3(d2, d3, d4), (int)this.piglich.getHealth());
                                 largefireball.setPos(this.piglich.getX() + vec3.x * 4.0D, this.piglich.getY(0.5D) + 0.5D, largefireball.getZ() + vec3.z * 4.0D);
                                 this.piglich.level.addFreshEntity(largefireball);
                             }
-
                             */
+                            
                         }
                     }
 
