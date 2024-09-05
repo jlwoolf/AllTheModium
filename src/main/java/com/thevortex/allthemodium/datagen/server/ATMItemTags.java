@@ -8,10 +8,13 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
+
+import org.checkerframework.checker.units.qual.t;
 
 public class ATMItemTags extends ItemTagsProvider {
 
@@ -23,6 +26,40 @@ public class ATMItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_HELMET.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_BOOTS.get());
+
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_HELMET.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
+        tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
+
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.VIBRANIUM_HELMET.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.VIBRANIUM_BOOTS.get());
+
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.UNOBTAINIUM_HELMET.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
+        tag(ItemTags.TRIMMABLE_ARMOR).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
+
+        tag(ItemTags.TRIM_MATERIALS).add(ModRegistry.ALLTHEMODIUM_INGOT.get());
+        tag(ItemTags.TRIM_MATERIALS).add(ModRegistry.VIBRANIUM_INGOT.get());
+        tag(ItemTags.TRIM_MATERIALS).add(ModRegistry.UNOBTAINIUM_INGOT.get());
+
 
         tag(net.minecraft.tags.ItemTags.HEAD_ARMOR).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
         tag(net.minecraft.tags.ItemTags.CHEST_ARMOR).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
@@ -34,6 +71,11 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.LEG_ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
         tag(net.minecraft.tags.ItemTags.FOOT_ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
 
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+        
         tag(net.minecraft.tags.ItemTags.HEAD_ARMOR).add(ModRegistry.VIBRANIUM_HELMET.get());
         tag(net.minecraft.tags.ItemTags.CHEST_ARMOR).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
         tag(net.minecraft.tags.ItemTags.LEG_ARMOR).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
@@ -44,6 +86,11 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.LEG_ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
         tag(net.minecraft.tags.ItemTags.FOOT_ARMOR_ENCHANTABLE).add(ModRegistry.VIBRANIUM_BOOTS.get());
 
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.VIBRANIUM_HELMET.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.VIBRANIUM_BOOTS.get());
+        
         tag(net.minecraft.tags.ItemTags.HEAD_ARMOR).add(ModRegistry.UNOBTAINIUM_HELMET.get());
         tag(net.minecraft.tags.ItemTags.CHEST_ARMOR).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
         tag(net.minecraft.tags.ItemTags.LEG_ARMOR).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
@@ -53,6 +100,89 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.CHEST_ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
         tag(net.minecraft.tags.ItemTags.LEG_ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
         tag(net.minecraft.tags.ItemTags.FOOT_ARMOR_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
+
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_HELMET.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
+
+        
+
+        tag(ItemTags.SWORDS).add(ModRegistry.ATM_SWORD.get());
+        tag(ItemTags.SWORD_ENCHANTABLE).add(ModRegistry.ATM_SWORD.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.ATM_SWORD.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.ATM_SWORD.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.ATM_SWORD.get());
+
+        tag(ItemTags.AXES).add(ModRegistry.ATM_AXE.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.ATM_AXE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.ATM_AXE.get());
+
+        tag(ItemTags.PICKAXES).add(ModRegistry.ATM_PICKAXE.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.ATM_PICKAXE.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.ATM_PICKAXE.get());
+
+        tag(ItemTags.SHOVELS).add(ModRegistry.ATM_SHOVEL.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.ATM_SHOVEL.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.ATM_SHOVEL.get());
+
+        tag(ItemTags.HOES).add(ModRegistry.ATM_HOE.get());
+
+        tag(ItemTags.MACE_ENCHANTABLE).add(ModRegistry.ATM_MACE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.ATM_MACE.get());
+
+        tag(ItemTags.MACE_ENCHANTABLE).add(ModRegistry.VIB_MACE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.VIB_MACE.get());
+
+        tag(ItemTags.MACE_ENCHANTABLE).add(ModRegistry.UNO_MACE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.UNO_MACE.get());
+
+        
+        tag(ItemTags.SWORDS).add(ModRegistry.VIB_SWORD.get());
+        tag(ItemTags.SWORD_ENCHANTABLE).add(ModRegistry.VIB_SWORD.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.VIB_SWORD.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.VIB_SWORD.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.VIB_SWORD.get());
+
+        tag(ItemTags.AXES).add(ModRegistry.VIB_AXE.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.VIB_AXE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.VIB_AXE.get());
+
+        tag(ItemTags.PICKAXES).add(ModRegistry.VIB_PICKAXE.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.VIB_PICKAXE.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.VIB_PICKAXE.get());
+
+        tag(ItemTags.SHOVELS).add(ModRegistry.VIB_SHOVEL.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.VIB_SHOVEL.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.VIB_SHOVEL.get());
+
+        tag(ItemTags.HOES).add(ModRegistry.VIB_HOE.get());
+
+        tag(ItemTags.SWORDS).add(ModRegistry.UNO_SWORD.get());
+        tag(ItemTags.SWORD_ENCHANTABLE).add(ModRegistry.UNO_SWORD.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.UNO_SWORD.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.UNO_SWORD.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.UNO_SWORD.get());
+
+        tag(ItemTags.AXES).add(ModRegistry.UNO_AXE.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.UNO_AXE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.UNO_AXE.get());
+
+        tag(ItemTags.PICKAXES).add(ModRegistry.UNO_PICKAXE.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.UNO_PICKAXE.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.UNO_PICKAXE.get());
+
+        tag(ItemTags.SHOVELS).add(ModRegistry.UNO_SHOVEL.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.UNO_SHOVEL.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.UNO_SHOVEL.get());
+
+        tag(ItemTags.HOES).add(ModRegistry.UNO_HOE.get());
+
+
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
 
         tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_0_ITEM.get());
@@ -72,45 +202,7 @@ public class ATMItemTags extends ItemTagsProvider {
 
         tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
-/*
-        tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ALLTHEMODIUM_PICKAXE.get());
 
-        tag(TagRegistry.FORGE_AXES).add(ModRegistry.ALLTHEMODIUM_AXE.get());
-
-        tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ALLTHEMODIUM_SHOVEL.get());
-
-        tag(TagRegistry.FORGE_HOES).add(ModRegistry.ALLTHEMODIUM_HOE.get());
-
-        tag(TagRegistry.FORGE_SWORDS).add(ModRegistry.ALLTHEMODIUM_SWORD.get());
-        tag(TagRegistry.FORGE_SWORDS).add(ModRegistry.ATM_ALLOY_SWORD.get());
-
-
-        tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ATM_ALLOY_PICK.get());
-        tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ATM_ALLOY_PAXEL.get());
-
-        tag(TagRegistry.FORGE_AXES).add(ModRegistry.ATM_ALLOY_AXE.get());
-
-        tag(TagRegistry.FORGE_AXES).add(ModRegistry.ATM_ALLOY_PAXEL.get());
-
-        tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ATM_ALLOY_SHOVEL.get());
-        tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ATM_ALLOY_PAXEL.get());
-
-        tag(Tags.Items.SHEARS).add(ModRegistry.ATM_ALLOY_PAXEL.get());
-
-        tag(TagRegistry.FORGE_HOES).add(ModRegistry.ATM_ALLOY_PAXEL.get());
-
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_PICKAXE.get());
-
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_AXE.get());
-
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_SHOVEL.get());
-
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HOE.get());
-*/
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
 
         tag(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM).add(ModRegistry.DEMONIC_PLANKS_ITEM.get());
