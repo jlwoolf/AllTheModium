@@ -104,6 +104,7 @@ dependencies {
     
     implementation "curse.maven:${mekanism}"
     implementation "curse.maven:${ato}"
+    runtimeOnly "curse.maven:emi-580555:5619579"
     //implementation "curse.maven:${jei}"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

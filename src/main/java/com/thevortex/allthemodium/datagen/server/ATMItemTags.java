@@ -10,7 +10,9 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.internal.NeoForgeItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -106,7 +108,7 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
 
-        
+
 
         tag(ItemTags.SWORDS).add(ModRegistry.ATM_SWORD.get());
         tag(ItemTags.SWORD_ENCHANTABLE).add(ModRegistry.ATM_SWORD.get());
@@ -128,12 +130,30 @@ public class ATMItemTags extends ItemTagsProvider {
 
         tag(ItemTags.HOES).add(ModRegistry.ATM_HOE.get());
 
+        tag(ItemTags.BREAKS_DECORATED_POTS).add(ModRegistry.ATM_MACE.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.ATM_MACE.get());
+        tag(Tags.Items.ENCHANTABLES).add(ModRegistry.ATM_MACE.get());
+        tag(Tags.Items.TOOLS).add(ModRegistry.ATM_MACE.get());
+        tag(Tags.Items.TOOLS_MACE).add(ModRegistry.ATM_MACE.get());
+        tag(Tags.Items.MELEE_WEAPON_TOOLS).add(ModRegistry.ATM_MACE.get());
         tag(ItemTags.MACE_ENCHANTABLE).add(ModRegistry.ATM_MACE.get());
         tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.ATM_MACE.get());
 
+        tag(ItemTags.BREAKS_DECORATED_POTS).add(ModRegistry.VIB_MACE.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.VIB_MACE.get());
+        tag(Tags.Items.ENCHANTABLES).add(ModRegistry.VIB_MACE.get());
+        tag(Tags.Items.TOOLS).add(ModRegistry.VIB_MACE.get());
+        tag(Tags.Items.TOOLS_MACE).add(ModRegistry.VIB_MACE.get());
+        tag(Tags.Items.MELEE_WEAPON_TOOLS).add(ModRegistry.VIB_MACE.get());
         tag(ItemTags.MACE_ENCHANTABLE).add(ModRegistry.VIB_MACE.get());
         tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.VIB_MACE.get());
 
+        tag(ItemTags.BREAKS_DECORATED_POTS).add(ModRegistry.UNO_MACE.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.UNO_MACE.get());
+        tag(Tags.Items.ENCHANTABLES).add(ModRegistry.UNO_MACE.get());
+        tag(Tags.Items.TOOLS).add(ModRegistry.UNO_MACE.get());
+        tag(Tags.Items.TOOLS_MACE).add(ModRegistry.UNO_MACE.get());
+        tag(Tags.Items.MELEE_WEAPON_TOOLS).add(ModRegistry.UNO_MACE.get());
         tag(ItemTags.MACE_ENCHANTABLE).add(ModRegistry.UNO_MACE.get());
         tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.UNO_MACE.get());
 
@@ -178,7 +198,48 @@ public class ATMItemTags extends ItemTagsProvider {
 
         tag(ItemTags.HOES).add(ModRegistry.UNO_HOE.get());
 
+        tag(ItemTags.TRIDENT_ENCHANTABLE).add(ModRegistry.ALLOY_TRIDENT.get());
+        
+        tag(ItemTags.SWORDS).add(ModRegistry.ALLOY_SWORD.get());
+        tag(ItemTags.SWORD_ENCHANTABLE).add(ModRegistry.ALLOY_SWORD.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.ALLOY_SWORD.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.ALLOY_SWORD.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.ALLOY_SWORD.get());
 
+        tag(ItemTags.AXES).add(ModRegistry.ALLOY_AXE.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.ALLOY_AXE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.ALLOY_AXE.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.ALLOY_AXE.get());
+
+        tag(ItemTags.PICKAXES).add(ModRegistry.ALLOY_PICKAXE.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.ALLOY_PICKAXE.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.ALLOY_PICKAXE.get());
+
+        tag(ItemTags.SHOVELS).add(ModRegistry.ALLOY_SHOVEL.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.ALLOY_SHOVEL.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.ALLOY_SHOVEL.get());
+
+        tag(ItemTags.HOES).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.SHOVELS).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.AXES).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.PICKAXES).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.SWORDS).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ModRegistry.ALLOY_DIGGER.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.ALLOY_DIGGER.get());
+        
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.VIB_SHIELD.get());
+        tag(ItemTags.CROSSBOW_ENCHANTABLE).add(ModRegistry.UNO_BOW.get());
+        tag(ItemTags.BOW_ENCHANTABLE).add(ModRegistry.ATM_BOW.get());
+
+        tag(Tags.Items.TOOLS_BOW).add(ModRegistry.ATM_BOW.get());
+        tag(Tags.Items.TOOLS_CROSSBOW).add(ModRegistry.UNO_BOW.get());
+
+        tag(Tags.Items.TOOLS_SHIELD).add(ModRegistry.VIB_SHIELD.get());
+
+        
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
