@@ -16,37 +16,31 @@ import net.minecraftforge.server.command.TextComponentHelper;
 
 public class AllthemodiumOreItem extends BlockItem {
 
-    public AllthemodiumOreItem(Block block, Properties properties) {
-        super(block, properties);
-    }
+	public AllthemodiumOreItem(Block block, Properties properties) {
+		super(block, properties);
+	}
 
-    @Override
-    public void appendHoverText(
-        @Nonnull ItemStack stack,
-        @Nullable Level worldIn,
-        @Nonnull List<Component> tooltip,
-        @Nonnull TooltipFlag flagIn
-    ) {
-        tooltip.add(
-            TextComponentHelper
-                .createComponentTranslation(
-                    CommandSource.NULL,
-                    "allthemodium.loc",
-                    new Object()
-                )
-                .withStyle(ChatFormatting.GOLD)
-        );
-        if (
-            !AllthemodiumServerConfigs.ALLTHEMODIUM_QUARRYABLE.get()
-        ) tooltip.add(
-            TextComponentHelper
-                .createComponentTranslation(
-                    CommandSource.NULL,
-                    "allthemodium.mine",
-                    new Object()
-                )
-                .withStyle(ChatFormatting.GOLD)
-        );
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
-    }
+	@Override
+	public void appendHoverText(
+			@Nonnull ItemStack stack,
+			@Nullable Level worldIn,
+			@Nonnull List<Component> tooltip,
+			@Nonnull TooltipFlag flagIn) {
+		tooltip.add(
+				TextComponentHelper
+						.createComponentTranslation(
+								CommandSource.NULL,
+								"allthemodium.loc",
+								new Object())
+						.withStyle(ChatFormatting.GOLD));
+		if (!AllthemodiumServerConfigs.ALLTHEMODIUM_QUARRYABLE.get())
+			tooltip.add(
+					TextComponentHelper
+							.createComponentTranslation(
+									CommandSource.NULL,
+									"allthemodium.mine",
+									new Object())
+							.withStyle(ChatFormatting.GOLD));
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
+	}
 }

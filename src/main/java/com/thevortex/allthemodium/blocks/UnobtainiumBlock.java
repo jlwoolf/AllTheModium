@@ -13,20 +13,18 @@ import net.minecraft.world.level.storage.loot.LootContext;
 
 public class UnobtainiumBlock extends Block {
 
-    public UnobtainiumBlock() {
-        super(
-            Properties.of(Material.METAL).sound(SoundType.STONE).strength(7.0f)
-        );
-    }
+	public UnobtainiumBlock() {
+		super(
+				Properties.of(Material.METAL).sound(SoundType.STONE).strength(7.0f));
+	}
 
-    @Deprecated
-    @Override
-    public List<ItemStack> getDrops(
-        @Nonnull BlockState state,
-        @Nonnull LootContext.Builder builder
-    ) {
-        List<ItemStack> list = new ArrayList<ItemStack>();
-        list.add(new ItemStack(ModRegistry.UNOBTAINIUM_BLOCK.get()));
-        return list;
-    }
+	@Deprecated
+	@Override
+	public List<ItemStack> getDrops(
+			@Nonnull BlockState state,
+			@Nonnull LootContext.Builder builder) {
+		List<ItemStack> list = new ArrayList<ItemStack>();
+		list.add(new ItemStack(ModRegistry.UNOBTAINIUM_BLOCK.get()));
+		return list;
+	}
 }

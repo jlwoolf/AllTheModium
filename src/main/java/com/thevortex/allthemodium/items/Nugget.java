@@ -4,7 +4,7 @@ import net.minecraft.world.item.Item;
 
 public class Nugget extends Item {
 
-    public Nugget(Properties properties) {
-        super(properties);
-    }
+	public Nugget(Properties properties) {
+		super(properties);
+	}
 }

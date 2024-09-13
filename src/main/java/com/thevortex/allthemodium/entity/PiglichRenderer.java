@@ -15,38 +15,35 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 @OnlyIn(Dist.CLIENT)
 public class PiglichRenderer extends GeoEntityRenderer<PiglichEntity> {
 
-    public PiglichRenderer(EntityRendererProvider.Context context) {
-        super(context, new PiglichModel());
-        this.shadowRadius = 0.3f;
-    }
+	public PiglichRenderer(EntityRendererProvider.Context context) {
+		super(context, new PiglichModel());
+		this.shadowRadius = 0.3f;
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(PiglichEntity instance) {
-        return new ResourceLocation(
-            Reference.MOD_ID,
-            "textures/entity/piglich.png"
-        );
-    }
+	@Override
+	public ResourceLocation getTextureLocation(PiglichEntity instance) {
+		return new ResourceLocation(
+				Reference.MOD_ID,
+				"textures/entity/piglich.png");
+	}
 
-    @Override
-    public RenderType getRenderType(
-        PiglichEntity animatable,
-        float partialTicks,
-        PoseStack stack,
-        @Nullable MultiBufferSource renderTypeBuffer,
-        @Nullable VertexConsumer vertexBuilder,
-        int packedLightIn,
-        ResourceLocation textureLocation
-    ) {
-        stack.scale(1.1f, 1.1f, 1.1f);
-        return super.getRenderType(
-            animatable,
-            partialTicks,
-            stack,
-            renderTypeBuffer,
-            vertexBuilder,
-            packedLightIn,
-            textureLocation
-        );
-    }
+	@Override
+	public RenderType getRenderType(
+			PiglichEntity animatable,
+			float partialTicks,
+			PoseStack stack,
+			@Nullable MultiBufferSource renderTypeBuffer,
+			@Nullable VertexConsumer vertexBuilder,
+			int packedLightIn,
+			ResourceLocation textureLocation) {
+		stack.scale(1.1f, 1.1f, 1.1f);
+		return super.getRenderType(
+				animatable,
+				partialTicks,
+				stack,
+				renderTypeBuffer,
+				vertexBuilder,
+				packedLightIn,
+				textureLocation);
+	}
 }

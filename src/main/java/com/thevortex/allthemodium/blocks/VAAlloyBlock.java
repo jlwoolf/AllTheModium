@@ -13,20 +13,18 @@ import net.minecraft.world.level.storage.loot.LootContext;
 
 public class VAAlloyBlock extends Block {
 
-    public VAAlloyBlock() {
-        super(
-            Properties.of(Material.STONE).sound(SoundType.STONE).strength(7.0f)
-        );
-    }
+	public VAAlloyBlock() {
+		super(
+				Properties.of(Material.STONE).sound(SoundType.STONE).strength(7.0f));
+	}
 
-    @Deprecated
-    @Override
-    public List<ItemStack> getDrops(
-        @Nonnull BlockState state,
-        @Nonnull LootContext.Builder builder
-    ) {
-        List<ItemStack> list = new ArrayList<ItemStack>();
-        list.add(new ItemStack(ModRegistry.VA_ALLOY_ITEM.get()));
-        return list;
-    }
+	@Deprecated
+	@Override
+	public List<ItemStack> getDrops(
+			@Nonnull BlockState state,
+			@Nonnull LootContext.Builder builder) {
+		List<ItemStack> list = new ArrayList<ItemStack>();
+		list.add(new ItemStack(ModRegistry.VA_ALLOY_ITEM.get()));
+		return list;
+	}
 }
