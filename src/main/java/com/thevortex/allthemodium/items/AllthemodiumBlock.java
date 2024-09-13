@@ -5,7 +5,7 @@ import net.minecraft.world.item.BlockItem;
 
 public class AllthemodiumBlock extends BlockItem {
 
-	public AllthemodiumBlock(Properties properties) {
-		super(ModRegistry.ALLTHEMODIUM_BLOCK.get(), properties);
-	}
+    public AllthemodiumBlock(Properties properties) {
+        super(ModRegistry.ALLTHEMODIUM_BLOCK.get(), properties);
+    }
 }

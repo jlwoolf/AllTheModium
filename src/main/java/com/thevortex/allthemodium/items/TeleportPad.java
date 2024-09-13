@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.Block;
 
 public class TeleportPad extends BlockItem {
 
-	public TeleportPad(Block blockIn, Properties builder) {
-		super(blockIn, builder);
-	}
+    public TeleportPad(Block blockIn, Properties builder) {
+        super(blockIn, builder);
+    }
 }

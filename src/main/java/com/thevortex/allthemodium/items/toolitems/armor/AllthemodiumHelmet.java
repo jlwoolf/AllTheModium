@@ -12,36 +12,36 @@ import net.minecraft.world.level.Level;
 
 public class AllthemodiumHelmet extends ArmorItem {
 
-	public AllthemodiumHelmet(
-			ArmorMaterial materialIn,
-			EquipmentSlot slot,
-			Properties builder) {
-		super(materialIn, slot, builder);
-	}
+    public AllthemodiumHelmet(
+            ArmorMaterial materialIn,
+            EquipmentSlot slot,
+            Properties builder) {
+        super(materialIn, slot, builder);
+    }
 
-	@Override
-	public boolean isEnchantable(@Nonnull ItemStack stack) {
-		return true;
-	}
+    @Override
+    public boolean isEnchantable(@Nonnull ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	public boolean canBeDepleted() {
-		return false;
-	}
+    @Override
+    public boolean canBeDepleted() {
+        return false;
+    }
 
-	@Override
-	public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-		return true;
-	}
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
+        return true;
+    }
 
-	@Override
-	public void onArmorTick(ItemStack stack, Level world, Player player) {
-		if ((stack.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get()) &&
-				(!world.isClientSide)) {
-			if (player.isInWater() && player.isSwimming()) {
-				player.setAirSupply(300);
-			}
-		}
-		super.onArmorTick(stack, world, player);
-	}
+    @Override
+    public void onArmorTick(ItemStack stack, Level world, Player player) {
+        if ((stack.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get()) &&
+                (!world.isClientSide)) {
+            if (player.isInWater() && player.isSwimming()) {
+                player.setAirSupply(300);
+            }
+        }
+        super.onArmorTick(stack, world, player);
+    }
 }

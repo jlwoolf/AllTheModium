@@ -4,7 +4,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 
 public class AncientLog extends RotatedPillarBlock {
 
-	public AncientLog(Properties prop) {
-		super(prop);
-	}
+    public AncientLog(Properties prop) {
+        super(prop);
+    }
 }

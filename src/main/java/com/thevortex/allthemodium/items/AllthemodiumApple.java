@@ -18,43 +18,43 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class AllthemodiumApple extends Item {
 
-	public AllthemodiumApple(Properties properties) {
-		super(properties);
-	}
+    public AllthemodiumApple(Properties properties) {
+        super(properties);
+    }
 
-	@Override
-	public ItemStack finishUsingItem(
-			@Nonnull ItemStack stack,
-			@Nonnull Level worldIn,
-			@Nonnull LivingEntity entityLiving) {
-		if ((entityLiving instanceof Player) &&
-				(stack.getItem() == ModRegistry.ALLTHEMODIUM_APPLE.get())) {
-			Player player = (Player) entityLiving;
-			player.addEffect(
-					new MobEffectInstance(
-							MobEffects.REGENERATION,
-							600,
-							1,
-							false,
-							false));
-			player.addEffect(
-					new MobEffectInstance(
-							MobEffects.ABSORPTION,
-							600,
-							1,
-							false,
-							false));
-		}
-		return super.finishUsingItem(stack, worldIn, entityLiving);
-	}
+    @Override
+    public ItemStack finishUsingItem(
+            @Nonnull ItemStack stack,
+            @Nonnull Level worldIn,
+            @Nonnull LivingEntity entityLiving) {
+        if ((entityLiving instanceof Player) &&
+                (stack.getItem() == ModRegistry.ALLTHEMODIUM_APPLE.get())) {
+            Player player = (Player) entityLiving;
+            player.addEffect(
+                    new MobEffectInstance(
+                            MobEffects.REGENERATION,
+                            600,
+                            1,
+                            false,
+                            false));
+            player.addEffect(
+                    new MobEffectInstance(
+                            MobEffects.ABSORPTION,
+                            600,
+                            1,
+                            false,
+                            false));
+        }
+        return super.finishUsingItem(stack, worldIn, entityLiving);
+    }
 
-	@OnlyIn(Dist.CLIENT)
-	@Override
-	public void appendHoverText(
-			@Nonnull ItemStack stack,
-			@Nullable Level worldIn,
-			@Nonnull List<Component> tooltip,
-			@Nonnull TooltipFlag flagIn) {
-		super.appendHoverText(stack, worldIn, tooltip, flagIn);
-	}
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void appendHoverText(
+            @Nonnull ItemStack stack,
+            @Nullable Level worldIn,
+            @Nonnull List<Component> tooltip,
+            @Nonnull TooltipFlag flagIn) {
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    }
 }

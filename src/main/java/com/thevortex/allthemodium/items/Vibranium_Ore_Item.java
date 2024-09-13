@@ -16,31 +16,31 @@ import net.minecraftforge.server.command.TextComponentHelper;
 
 public class Vibranium_Ore_Item extends BlockItem {
 
-	public Vibranium_Ore_Item(Block block, Properties properties) {
-		super(block, properties);
-	}
+    public Vibranium_Ore_Item(Block block, Properties properties) {
+        super(block, properties);
+    }
 
-	@Override
-	public void appendHoverText(
-			@Nonnull ItemStack stack,
-			@Nullable Level worldIn,
-			@Nonnull List<Component> tooltip,
-			@Nonnull TooltipFlag flagIn) {
-		tooltip.add(
-				TextComponentHelper
-						.createComponentTranslation(
-								CommandSource.NULL,
-								"vibranium.loc",
-								new Object())
-						.withStyle(ChatFormatting.GOLD));
-		if (!AllthemodiumServerConfigs.VIBRANIUM_QUARRYABLE.get())
-			tooltip.add(
-					TextComponentHelper
-							.createComponentTranslation(
-									CommandSource.NULL,
-									"allthemodium.mine",
-									new Object())
-							.withStyle(ChatFormatting.GOLD));
-		super.appendHoverText(stack, worldIn, tooltip, flagIn);
-	}
+    @Override
+    public void appendHoverText(
+            @Nonnull ItemStack stack,
+            @Nullable Level worldIn,
+            @Nonnull List<Component> tooltip,
+            @Nonnull TooltipFlag flagIn) {
+        tooltip.add(
+                TextComponentHelper
+                        .createComponentTranslation(
+                                CommandSource.NULL,
+                                "vibranium.loc",
+                                new Object())
+                        .withStyle(ChatFormatting.GOLD));
+        if (!AllthemodiumServerConfigs.VIBRANIUM_QUARRYABLE.get())
+            tooltip.add(
+                    TextComponentHelper
+                            .createComponentTranslation(
+                                    CommandSource.NULL,
+                                    "allthemodium.mine",
+                                    new Object())
+                            .withStyle(ChatFormatting.GOLD));
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    }
 }

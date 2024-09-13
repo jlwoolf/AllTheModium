@@ -12,7 +12,7 @@ import net.minecraft.world.item.BlockItem;
  */
 public class VibraniumBlock extends BlockItem {
 
-	public VibraniumBlock(Properties properties) {
-		super(ModRegistry.VIBRANIUM_BLOCK.get(), properties);
-	}
+    public VibraniumBlock(Properties properties) {
+        super(ModRegistry.VIBRANIUM_BLOCK.get(), properties);
+    }
 }

@@ -9,11 +9,11 @@ import net.minecraft.world.level.Level;
 
 public class LevelRegistry {
 
-	public static final ResourceKey<Level> Mining = ResourceKey.create(
-			Registry.DIMENSION_REGISTRY,
-			MINING_DIM_ID);
+    public static final ResourceKey<Level> Mining = ResourceKey.create(
+            Registry.DIMENSION_REGISTRY,
+            MINING_DIM_ID);
 
-	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(
-			Registry.DIMENSION_REGISTRY,
-			THE_OTHER_DIM_ID);
+    public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(
+            Registry.DIMENSION_REGISTRY,
+            THE_OTHER_DIM_ID);
 }

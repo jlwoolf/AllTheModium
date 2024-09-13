@@ -8,30 +8,30 @@ import net.minecraft.world.item.*;
 
 public class AllthemodiumBoots extends ArmorItem {
 
-	public AllthemodiumBoots(
-			ArmorMaterial materialIn,
-			EquipmentSlot slot,
-			Properties builder) {
-		super(materialIn, slot, builder);
-	}
+    public AllthemodiumBoots(
+            ArmorMaterial materialIn,
+            EquipmentSlot slot,
+            Properties builder) {
+        super(materialIn, slot, builder);
+    }
 
-	@Override
-	public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer) {
-		return stack.is(ModRegistry.ALLTHEMODIUM_BOOTS.get());
-	}
+    @Override
+    public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer) {
+        return stack.is(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+    }
 
-	@Override
-	public boolean isEnchantable(@Nonnull ItemStack stack) {
-		return true;
-	}
+    @Override
+    public boolean isEnchantable(@Nonnull ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	public boolean canBeDepleted() {
-		return false;
-	}
+    @Override
+    public boolean canBeDepleted() {
+        return false;
+    }
 
-	@Override
-	public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-		return true;
-	}
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
+        return true;
+    }
 }

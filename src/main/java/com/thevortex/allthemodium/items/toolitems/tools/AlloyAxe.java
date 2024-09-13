@@ -20,60 +20,60 @@ import net.minecraftforge.server.command.TextComponentHelper;
 
 public class AlloyAxe extends AxeItem {
 
-	public AlloyAxe(Tier tier, int damage, float speed, Properties properties) {
-		super(tier, damage, speed, properties);
-	}
+    public AlloyAxe(Tier tier, int damage, float speed, Properties properties) {
+        super(tier, damage, speed, properties);
+    }
 
-	@Override
-	public float getDestroySpeed(
-			@Nonnull ItemStack stack,
-			@Nonnull BlockState state) {
-		if (state.is(BlockTags.MINEABLE_WITH_AXE))
-			return speed;
-		return super.getDestroySpeed(stack, state);
-	}
+    @Override
+    public float getDestroySpeed(
+            @Nonnull ItemStack stack,
+            @Nonnull BlockState state) {
+        if (state.is(BlockTags.MINEABLE_WITH_AXE))
+            return speed;
+        return super.getDestroySpeed(stack, state);
+    }
 
-	@Override
-	public boolean isEnchantable(@Nonnull ItemStack stack) {
-		return true;
-	}
+    @Override
+    public boolean isEnchantable(@Nonnull ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	public boolean canBeDepleted() {
-		return false;
-	}
+    @Override
+    public boolean canBeDepleted() {
+        return false;
+    }
 
-	@Override
-	public void appendHoverText(
-			@Nonnull ItemStack stack,
-			@Nullable Level worldIn,
-			@Nonnull List<Component> tooltip,
-			@Nonnull TooltipFlag flagIn) {
-		tooltip.add(
-				TextComponentHelper
-						.createComponentTranslation(
-								CommandSource.NULL,
-								"indestructible",
-								new Object())
-						.withStyle(ChatFormatting.GOLD));
+    @Override
+    public void appendHoverText(
+            @Nonnull ItemStack stack,
+            @Nullable Level worldIn,
+            @Nonnull List<Component> tooltip,
+            @Nonnull TooltipFlag flagIn) {
+        tooltip.add(
+                TextComponentHelper
+                        .createComponentTranslation(
+                                CommandSource.NULL,
+                                "indestructible",
+                                new Object())
+                        .withStyle(ChatFormatting.GOLD));
 
-		super.appendHoverText(stack, worldIn, tooltip, flagIn);
-	}
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    }
 
-	protected TranslatableContents getTooltip(String key) {
-		return new TranslatableContents(key);
-	}
+    protected TranslatableContents getTooltip(String key) {
+        return new TranslatableContents(key);
+    }
 
-	@Override
-	public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
-		if (state.is(BlockTags.MINEABLE_WITH_AXE))
-			return TierSortingRegistry.isCorrectTierForDrops(
-					ToolTiers.ALLOY_TIER,
-					state);
-		if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))
-			return TierSortingRegistry.isCorrectTierForDrops(
-					ToolTiers.ALLOY_TIER,
-					state);
-		return false;
-	}
+    @Override
+    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
+        if (state.is(BlockTags.MINEABLE_WITH_AXE))
+            return TierSortingRegistry.isCorrectTierForDrops(
+                    ToolTiers.ALLOY_TIER,
+                    state);
+        if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))
+            return TierSortingRegistry.isCorrectTierForDrops(
+                    ToolTiers.ALLOY_TIER,
+                    state);
+        return false;
+    }
 }

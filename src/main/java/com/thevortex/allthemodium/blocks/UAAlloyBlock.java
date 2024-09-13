@@ -13,18 +13,18 @@ import net.minecraft.world.level.storage.loot.LootContext;
 
 public class UAAlloyBlock extends Block {
 
-	public UAAlloyBlock() {
-		super(
-				Properties.of(Material.STONE).sound(SoundType.STONE).strength(7.0f));
-	}
+    public UAAlloyBlock() {
+        super(
+                Properties.of(Material.STONE).sound(SoundType.STONE).strength(7.0f));
+    }
 
-	@Deprecated
-	@Override
-	public List<ItemStack> getDrops(
-			@Nonnull BlockState state,
-			@Nonnull LootContext.Builder builder) {
-		List<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ModRegistry.UA_ALLOY_ITEM.get()));
-		return list;
-	}
+    @Deprecated
+    @Override
+    public List<ItemStack> getDrops(
+            @Nonnull BlockState state,
+            @Nonnull LootContext.Builder builder) {
+        List<ItemStack> list = new ArrayList<ItemStack>();
+        list.add(new ItemStack(ModRegistry.UA_ALLOY_ITEM.get()));
+        return list;
+    }
 }

@@ -4,7 +4,7 @@ import net.minecraft.world.item.Item;
 
 public class AlloyDust extends Item {
 
-	public AlloyDust(Properties properties) {
-		super(properties);
-	}
+    public AlloyDust(Properties properties) {
+        super(properties);
+    }
 }
