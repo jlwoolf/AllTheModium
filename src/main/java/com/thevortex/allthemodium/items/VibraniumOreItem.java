@@ -14,9 +14,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.server.command.TextComponentHelper;
 
-public class Vibranium_Ore_Item extends BlockItem {
+public class VibraniumOreItem extends BlockItem {
 
-    public Vibranium_Ore_Item(Block block, Properties properties) {
+    public VibraniumOreItem(Block block, Properties properties) {
         super(block, properties);
     }
 

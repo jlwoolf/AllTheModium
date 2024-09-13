@@ -1151,12 +1151,12 @@ public class ModRegistry {
 
     public static final RegistryObject<Item> VIBRANIUM_ORE_ITEM = ITEMS.register(
             "vibranium_ore",
-            () -> new Vibranium_Ore_Item(
+            () -> new VibraniumOreItem(
                     VIBRANIUM_ORE.get(),
                     new Item.Properties().tab(AllTheModium.GROUP)));
     public static final RegistryObject<Item> OTHER_VIBRANIUM_ORE_ITEM = ITEMS.register(
             "other_vibranium_ore",
-            () -> new Vibranium_Ore_Item(
+            () -> new VibraniumOreItem(
                     OTHER_VIBRANIUM_ORE.get(),
                     new Item.Properties().tab(AllTheModium.GROUP)));
     public static final RegistryObject<Item> UNOBTAINIUM_ORE_ITEM = ITEMS.register(
