@@ -1,22 +1,10 @@
 package com.thevortex.allthemodium.registry;
 
 import com.thevortex.allthemodium.reference.Reference;
-import net.minecraft.core.Registry;
-import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
-import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
 
 public class TagRegistry {
 
@@ -163,14 +151,14 @@ public class TagRegistry {
     public static final TagKey<Item> RAW_VIBRANIUM = ItemTags.create(Reference.material("vibranium"));
     public static final TagKey<Item> RAW_UNOBTAINIUM = ItemTags.create(Reference.material("unobtainium"));
 
-    public static final TagKey<Item> DIRTYDUST = ItemTags.create(Reference.mek("dirty_dusts"));
+    public static final TagKey<Item> DIRTY_DUST = ItemTags.create(Reference.mek("dirty_dusts"));
     public static final TagKey<Item> CRYSTAL = ItemTags.create(Reference.mek("crystals"));
     public static final TagKey<Item> CLUMP = ItemTags.create(Reference.mek("clumps"));
     public static final TagKey<Item> SHARD = ItemTags.create(Reference.mek("shards"));
 
-    public static final TagKey<Item> ALLTHEMODIUM_DIRTYDUST = ItemTags.create(Reference.dirty("allthemodium"));
-    public static final TagKey<Item> VIBRANIUM_DIRTYDUST = ItemTags.create(Reference.dirty("vibranium"));
-    public static final TagKey<Item> UNOBTAINIUM_DIRTYDUST = ItemTags.create(Reference.dirty("unobtainium"));
+    public static final TagKey<Item> ALLTHEMODIUM_DIRTY_DUST = ItemTags.create(Reference.dirty("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_DIRTY_DUST = ItemTags.create(Reference.dirty("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_DIRTY_DUST = ItemTags.create(Reference.dirty("unobtainium"));
 
     public static final TagKey<Item> ALLTHEMODIUM_CRYSTAL = ItemTags.create(Reference.crystal("allthemodium"));
     public static final TagKey<Item> VIBRANIUM_CRYSTAL = ItemTags.create(Reference.crystal("vibranium"));

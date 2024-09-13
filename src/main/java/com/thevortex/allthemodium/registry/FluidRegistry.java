@@ -7,7 +7,6 @@ import com.thevortex.allthemodium.fluid.FluidVIB;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;

@@ -7,7 +7,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -15,6 +14,8 @@ import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
 import java.util.Optional;
+
+import javax.annotation.Nonnull;
 
 public class PVStructure extends Structure {
 
@@ -70,9 +71,9 @@ public class PVStructure extends Structure {
      *
      * If you are doing Nether structures, you'll probably want to spawn your structure on top of ledges.
      * Best way to do that is to use getBaseColumn to grab a column of blocks at the structure's x/z position.
-     * Then loop through it and look for land with air above it and set blockpos's Y value to it.
+     * Then loop through it and look for land with air above it and set blockPos's Y value to it.
      * Make sure to set the final boolean in JigsawPlacement.addPieces to false so
-     * that the structure spawns at blockpos's y value instead of placing the structure on the Bedrock roof!
+     * that the structure spawns at blockPos's y value instead of placing the structure on the Bedrock roof!
      *
      * Also, please for the love of god, do not do dimension checking here.
      * If you do and another mod's dimension is trying to spawn your structure,
@@ -82,28 +83,26 @@ public class PVStructure extends Structure {
      */
     private static boolean extraSpawningChecks(Structure.GenerationContext context) {
         // Grabs the chunk position we are at
-        ChunkPos chunkpos = context.chunkPos();
+        ChunkPos chunkPos = context.chunkPos();
 
         // Checks to make sure our structure does not spawn above land that's higher than y = 150
         // to demonstrate how this method is good for checking extra conditions for spawning
         return context.chunkGenerator().getFirstOccupiedHeight(
-                chunkpos.getMinBlockX(),
-                chunkpos.getMinBlockZ(),
+                chunkPos.getMinBlockX(),
+                chunkPos.getMinBlockZ(),
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 context.heightAccessor(),
                 context.randomState()) < 100;
     }
 
     @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
+    public Optional<Structure.GenerationStub> findGenerationPoint(@Nonnull Structure.GenerationContext context) {
 
         // Check if the spot is valid for our structure. This is just as another method for cleanness.
         // Returning an empty optional tells the game to skip this spot as it will not generate the structure.
         if (!PVStructure.extraSpawningChecks(context)) {
             return Optional.empty();
         }
-        int startY = this.startHeight.sample(context.random(),
-                new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets corner of that chunk)
         ChunkPos chunkPos = context.chunkPos();
@@ -116,9 +115,9 @@ public class PVStructure extends Structure {
                 this.size, // How deep a branch of pieces can go away from center piece. (5 means branches cannot be longer than 5 pieces from center piece)
                 blockPos, // Where to spawn the structure.
                 false, // "useExpansionHack" This is for legacy villages to generate properly. You should keep this false always.
-                this.projectStartToHeightmap, // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
-                // Here, blockpos's y value is 60 which means the structure spawn 60 blocks above terrain height.
-                // Set this to false for structure to be place only at the passed in blockpos's Y value instead.
+                this.projectStartToHeightmap, // Adds the terrain height's y value to the passed in blockPos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
+                // Here, blockPos's y value is 60 which means the structure spawn 60 blocks above terrain height.
+                // Set this to false for structure to be place only at the passed in blockPos's Y value instead.
                 // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
                 this.maxDistanceFromCenter); // Maximum limit for how far pieces can spawn from center. You cannot set this bigger than 128 or else pieces gets cutoff.
 

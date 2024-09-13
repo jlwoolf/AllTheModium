@@ -1,5 +1,8 @@
 package com.thevortex.allthemodium.blocks;
 
+import javax.annotation.Nonnull;
+
+import com.thevortex.allthemodium.config.AllthemodiumServerConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -7,22 +10,23 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.minecraftforge.common.util.FakePlayer;
 
-public class Unobtainium_Ore extends DropExperienceBlock {
+public class UnobtainiumOre extends DropExperienceBlock {
 
-    public Unobtainium_Ore() {//func_235861_h_ = setRequiresTool
+    public UnobtainiumOre() {//func_235861_h_ = setRequiresTool
         super(Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE).strength(-1.0f, 5000f));
     }
 
     @Override
-    @SuppressWarnings("java:S1874") // deprecated method from super class
-    public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
-        BlockEntity blockEntity = getter.getBlockEntity(blockPos);
+    @SuppressWarnings("deprecation")
+    public float getDestroyProgress(@Nonnull BlockState state, @Nonnull Player player, @Nonnull BlockGetter getter,
+            @Nonnull BlockPos blockPos) {
         if (canEntityDestroy(state, getter, blockPos, player)) {
+            if (AllthemodiumServerConfigs.UNOBTAINIUM_QUARRYABLE.get())
+                return super.getDestroyProgress(state, player, getter, blockPos);
             int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 750 : 5500;
             return player.getDigSpeed(state, blockPos) / 2.0F / i;
         }
@@ -32,7 +36,7 @@ public class Unobtainium_Ore extends DropExperienceBlock {
     @Override
     public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
         if ((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.UNOBTAINIUM_ORE.get())) {
-            return false;
+            return AllthemodiumServerConfigs.UNOBTAINIUM_QUARRYABLE.get();
         }
         return super.canEntityDestroy(state, world, pos, player) && (distanceTo(pos, player.blockPosition()) < 16.0F);
     }

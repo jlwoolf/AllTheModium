@@ -1,20 +1,14 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
+import javax.annotation.Nonnull;
+
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.RedStoneOreBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.FakePlayer;
 
 public class AncientStone extends DropExperienceBlock {
@@ -26,9 +20,8 @@ public class AncientStone extends DropExperienceBlock {
     }
 
     @Override
-    @SuppressWarnings("java:S1874") // deprecated method from super class
-    public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
-        BlockEntity blockEntity = getter.getBlockEntity(blockPos);
+    public float getDestroyProgress(@Nonnull BlockState state, @Nonnull Player player, @Nonnull BlockGetter getter,
+            @Nonnull BlockPos blockPos) {
         if (canEntityDestroy(state, getter, blockPos, player)) {
             int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 250 : 1500;
             return player.getDigSpeed(state, blockPos) / 2.0F / i;

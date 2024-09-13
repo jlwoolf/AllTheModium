@@ -61,10 +61,10 @@ public class AllTheModium {
         BlockRegistry.BLOCKS.register(modEventBus);
         ModRegistry.BLOCKS.register(modEventBus);
         ModRegistry.SHAPED_BLOCKS.register(modEventBus);
-        ModRegistry.STAIRBLOCKS.register(modEventBus);
-        ModRegistry.SLABBLOCKS.register(modEventBus);
-        ModRegistry.WALLBLOCKS.register(modEventBus);
-        ModRegistry.PILLARBLOCKS.register(modEventBus);
+        ModRegistry.STAIR_BLOCKS.register(modEventBus);
+        ModRegistry.SLAB_BLOCKS.register(modEventBus);
+        ModRegistry.WALL_BLOCKS.register(modEventBus);
+        ModRegistry.PILLAR_BLOCKS.register(modEventBus);
 
         ItemRegistry.ITEMS.register(modEventBus);
         ModRegistry.ITEMS.register(modEventBus);

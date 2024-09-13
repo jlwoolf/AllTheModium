@@ -151,47 +151,47 @@ public class ATMItemTags extends ItemTagsProvider {
 
         tag(TagRegistry.ALLTHEMODIUM_GEAR).add(ModRegistry.ATM_GEAR.get());
         tag(TagRegistry.VIBRANIUM_GEAR).add(ModRegistry.VIB_GEAR.get());
-        tag(TagRegistry.UNOBTAINIUM_GEAR).add(ModRegistry.ONOB_GEAR.get());
+        tag(TagRegistry.UNOBTAINIUM_GEAR).add(ModRegistry.UNOB_GEAR.get());
 
         tag(TagRegistry.ALLTHEMODIUM_PLATE).add(ModRegistry.ATM_PLATE.get());
         tag(TagRegistry.VIBRANIUM_PLATE).add(ModRegistry.VIB_PLATE.get());
-        tag(TagRegistry.UNOBTAINIUM_PLATE).add(ModRegistry.ONOB_PLATE.get());
+        tag(TagRegistry.UNOBTAINIUM_PLATE).add(ModRegistry.UNOB_PLATE.get());
 
         tag(TagRegistry.ALLTHEMODIUM_ROD).add(ModRegistry.ATM_ROD.get());
         tag(TagRegistry.VIBRANIUM_ROD).add(ModRegistry.VIB_ROD.get());
-        tag(TagRegistry.UNOBTAINIUM_ROD).add(ModRegistry.ONOB_ROD.get());
+        tag(TagRegistry.UNOBTAINIUM_ROD).add(ModRegistry.UNOB_ROD.get());
 
         tag(TagRegistry.ALLTHEMODIUM_SHARD).add(ModRegistry.ATM_SHARD.get());
         tag(TagRegistry.VIBRANIUM_SHARD).add(ModRegistry.VIB_SHARD.get());
-        tag(TagRegistry.UNOBTAINIUM_SHARD).add(ModRegistry.ONOB_SHARD.get());
+        tag(TagRegistry.UNOBTAINIUM_SHARD).add(ModRegistry.UNOB_SHARD.get());
 
         tag(TagRegistry.ALLTHEMODIUM_CLUMP).add(ModRegistry.ATM_CLUMP.get());
         tag(TagRegistry.VIBRANIUM_CLUMP).add(ModRegistry.VIB_CLUMP.get());
-        tag(TagRegistry.UNOBTAINIUM_CLUMP).add(ModRegistry.ONOB_CLUMP.get());
+        tag(TagRegistry.UNOBTAINIUM_CLUMP).add(ModRegistry.UNOB_CLUMP.get());
 
         tag(TagRegistry.ALLTHEMODIUM_CRYSTAL).add(ModRegistry.ATM_CRYSTAL.get());
         tag(TagRegistry.VIBRANIUM_CRYSTAL).add(ModRegistry.VIB_CRYSTAL.get());
-        tag(TagRegistry.UNOBTAINIUM_CRYSTAL).add(ModRegistry.ONOB_CRYSTAL.get());
+        tag(TagRegistry.UNOBTAINIUM_CRYSTAL).add(ModRegistry.UNOB_CRYSTAL.get());
 
-        tag(TagRegistry.ALLTHEMODIUM_DIRTYDUST).add(ModRegistry.ATM_DIRTY.get());
-        tag(TagRegistry.VIBRANIUM_DIRTYDUST).add(ModRegistry.VIB_DIRTY.get());
-        tag(TagRegistry.UNOBTAINIUM_DIRTYDUST).add(ModRegistry.ONOB_DIRTY.get());
+        tag(TagRegistry.ALLTHEMODIUM_DIRTY_DUST).add(ModRegistry.ATM_DIRTY.get());
+        tag(TagRegistry.VIBRANIUM_DIRTY_DUST).add(ModRegistry.VIB_DIRTY.get());
+        tag(TagRegistry.UNOBTAINIUM_DIRTY_DUST).add(ModRegistry.UNOB_DIRTY.get());
 
         tag(TagRegistry.SHARD).add(ModRegistry.ATM_SHARD.get());
         tag(TagRegistry.SHARD).add(ModRegistry.VIB_SHARD.get());
-        tag(TagRegistry.SHARD).add(ModRegistry.ONOB_SHARD.get());
+        tag(TagRegistry.SHARD).add(ModRegistry.UNOB_SHARD.get());
 
         tag(TagRegistry.CLUMP).add(ModRegistry.ATM_CLUMP.get());
         tag(TagRegistry.CLUMP).add(ModRegistry.VIB_CLUMP.get());
-        tag(TagRegistry.CLUMP).add(ModRegistry.ONOB_CLUMP.get());
+        tag(TagRegistry.CLUMP).add(ModRegistry.UNOB_CLUMP.get());
 
         tag(TagRegistry.CRYSTAL).add(ModRegistry.ATM_CRYSTAL.get());
         tag(TagRegistry.CRYSTAL).add(ModRegistry.VIB_CRYSTAL.get());
-        tag(TagRegistry.CRYSTAL).add(ModRegistry.ONOB_CRYSTAL.get());
+        tag(TagRegistry.CRYSTAL).add(ModRegistry.UNOB_CRYSTAL.get());
 
-        tag(TagRegistry.DIRTYDUST).add(ModRegistry.ATM_DIRTY.get());
-        tag(TagRegistry.DIRTYDUST).add(ModRegistry.VIB_DIRTY.get());
-        tag(TagRegistry.DIRTYDUST).add(ModRegistry.ONOB_DIRTY.get());
+        tag(TagRegistry.DIRTY_DUST).add(ModRegistry.ATM_DIRTY.get());
+        tag(TagRegistry.DIRTY_DUST).add(ModRegistry.VIB_DIRTY.get());
+        tag(TagRegistry.DIRTY_DUST).add(ModRegistry.UNOB_DIRTY.get());
 
     }
 }

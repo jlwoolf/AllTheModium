@@ -1,5 +1,5 @@
 package com.thevortex.allthemodium.blocks;
 
-public class Raw_ATM extends AllthemodiumOre {
+public class RawATM extends AllthemodiumOre {
 
 }

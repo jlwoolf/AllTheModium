@@ -1,8 +1,8 @@
 package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.blocks.AllthemodiumOre;
-import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
-import com.thevortex.allthemodium.blocks.Vibranium_Ore;
+import com.thevortex.allthemodium.blocks.UnobtainiumOre;
+import com.thevortex.allthemodium.blocks.VibraniumOre;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.item.Items;
@@ -23,7 +23,7 @@ public class ATMLootTables extends VanillaBlockLoot {
 
     }
 
-    private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[] { 0.05F, 0.0625F, 0.083333336F, 0.1F };
+    // private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[] { 0.05F, 0.0625F, 0.083333336F, 0.1F };
 
     private void dropRaw(Block block) {
         if (block instanceof LiquidBlock) {
@@ -35,15 +35,15 @@ public class ATMLootTables extends VanillaBlockLoot {
                 return createSingleItemTableWithSilkTouch(p_124241_, Items.BOOK, ConstantValue.exactly(3.0F));
             });
         }
-        String oretype = block.getName().getString();
+        String oreType = block.getName().getString();
 
         if (block instanceof AllthemodiumOre) {
             this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_ALLTHEMODIUM.get()));
-        } else if (block instanceof Vibranium_Ore) {
+        } else if (block instanceof VibraniumOre) {
             this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_VIBRANIUM.get()));
-        } else if (block instanceof Unobtainium_Ore) {
+        } else if (block instanceof UnobtainiumOre) {
             this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_UNOBTAINIUM.get()));
-        } else if (oretype.contains("raw_")) {
+        } else if (oreType.contains("raw_")) {
             this.dropSelf(block);
         } else {
             this.dropSelf(block);
@@ -54,10 +54,10 @@ public class ATMLootTables extends VanillaBlockLoot {
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return Stream.of(ModRegistry.BLOCKS.getEntries(),
-                ModRegistry.STAIRBLOCKS.getEntries(),
-                ModRegistry.SLABBLOCKS.getEntries(),
-                ModRegistry.WALLBLOCKS.getEntries(),
-                ModRegistry.PILLARBLOCKS.getEntries())
+                ModRegistry.STAIR_BLOCKS.getEntries(),
+                ModRegistry.SLAB_BLOCKS.getEntries(),
+                ModRegistry.WALL_BLOCKS.getEntries(),
+                ModRegistry.PILLAR_BLOCKS.getEntries())
                 .filter(block -> !(block instanceof LeavesBlock))
                 .flatMap(Collection::stream)
                 .map(RegistryObject::get)
@@ -66,28 +66,28 @@ public class ATMLootTables extends VanillaBlockLoot {
     }
 
     protected Iterable<Block> getKnownStairs() {
-        return ModRegistry.STAIRBLOCKS.getEntries()
+        return ModRegistry.STAIR_BLOCKS.getEntries()
                 .stream().map(RegistryObject::get)
                 .collect(Collectors.toList());
 
     }
 
     protected Iterable<Block> getKnownSlabs() {
-        return ModRegistry.SLABBLOCKS.getEntries()
+        return ModRegistry.SLAB_BLOCKS.getEntries()
                 .stream().map(RegistryObject::get)
                 .collect(Collectors.toList());
 
     }
 
     protected Iterable<Block> getKnownWalls() {
-        return ModRegistry.WALLBLOCKS.getEntries()
+        return ModRegistry.WALL_BLOCKS.getEntries()
                 .stream().map(RegistryObject::get)
                 .collect(Collectors.toList());
 
     }
 
-    protected Iterable<Block> getunKnownBlocks() {
-        return ModRegistry.PILLARBLOCKS.getEntries()
+    protected Iterable<Block> getUnknownBlocks() {
+        return ModRegistry.PILLAR_BLOCKS.getEntries()
                 .stream().map(RegistryObject::get)
                 .collect(Collectors.toList());
 

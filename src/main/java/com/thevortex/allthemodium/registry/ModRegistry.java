@@ -4,10 +4,10 @@ import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.blocks.AllthemodiumBlock;
 import com.thevortex.allthemodium.blocks.AllthemodiumOre;
 import com.thevortex.allthemodium.blocks.TeleportPad;
-import com.thevortex.allthemodium.blocks.Unobtainium_Block;
-import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
-import com.thevortex.allthemodium.blocks.Vibranium_Block;
-import com.thevortex.allthemodium.blocks.Vibranium_Ore;
+import com.thevortex.allthemodium.blocks.UnobtainiumBlock;
+import com.thevortex.allthemodium.blocks.UnobtainiumOre;
+import com.thevortex.allthemodium.blocks.VibraniumBlock;
+import com.thevortex.allthemodium.blocks.VibraniumOre;
 import com.thevortex.allthemodium.blocks.entity.ATMBrushableBlockEntity;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.init.ModFoods;
@@ -18,11 +18,11 @@ import com.thevortex.allthemodium.material.AArmorMaterial;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -33,16 +33,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
 
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -52,8 +48,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.server.command.TextComponentHelper;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModRegistry {
@@ -62,13 +60,13 @@ public class ModRegistry {
             Reference.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
             Reference.MOD_ID);
-    public static final DeferredRegister<Block> STAIRBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+    public static final DeferredRegister<Block> STAIR_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
             Reference.MOD_ID);
-    public static final DeferredRegister<Block> WALLBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+    public static final DeferredRegister<Block> WALL_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
             Reference.MOD_ID);
-    public static final DeferredRegister<Block> SLABBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+    public static final DeferredRegister<Block> SLAB_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
             Reference.MOD_ID);
-    public static final DeferredRegister<Block> PILLARBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+    public static final DeferredRegister<Block> PILLAR_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
             Reference.MOD_ID);
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES,
             Reference.MOD_ID);
@@ -88,66 +86,65 @@ public class ModRegistry {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES,
             Reference.MOD_ID);
 
-    private static ArrayList<Item> SPAWN_EGGS = new ArrayList<Item>();
+    // private static ArrayList<Item> SPAWN_EGGS = new ArrayList<Item>(); // TODO: Add spawn eggs
 
     // BIOMES
-
     RegistryObject<Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
-    //
 
     // FOOD
 
     public static RegistryObject<Item> ALLTHEMODIUM_APPLE = ITEMS.register("allthemodium_apple",
-            () -> new Allthemodium_Apple(
+            () -> new AllthemodiumApple(
                     new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE).rarity(Rarity.EPIC)));
     public static RegistryObject<Item> ALLTHEMODIUM_CARROT = ITEMS.register("allthemodium_carrot",
-            () -> new Allthemodium_Carrot(
+            () -> new AllthemodiumCarrot(
                     new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT).rarity(Rarity.EPIC)));
 
     // ARMORS
 
     public static RegistryObject<ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots",
-            () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.FEET,
+            () -> (ArmorItem) new AllthemodiumBoots(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.FEET,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings",
-            () -> (ArmorItem) new Allthemodium_Leggings(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.LEGS,
+            () -> (ArmorItem) new AllthemodiumLeggings(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.LEGS,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate",
-            () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST,
+            () -> (ArmorItem) new AllthemodiumChestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet",
-            () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD,
+            () -> (ArmorItem) new AllthemodiumHelmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
     public static RegistryObject<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots",
-            () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET,
+            () -> (ArmorItem) new AllthemodiumBoots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings",
-            () -> new Allthemodium_Leggings(AArmorMaterial.VIBRANIUM, EquipmentSlot.LEGS,
+            () -> new AllthemodiumLeggings(AArmorMaterial.VIBRANIUM, EquipmentSlot.LEGS,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate",
-            () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST,
+            () -> (ArmorItem) new AllthemodiumChestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet",
-            () -> new Allthemodium_Helmet(AArmorMaterial.VIBRANIUM, EquipmentSlot.HEAD,
+            () -> new AllthemodiumHelmet(AArmorMaterial.VIBRANIUM, EquipmentSlot.HEAD,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
     public static RegistryObject<ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots",
-            () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET,
+            () -> (ArmorItem) new AllthemodiumBoots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings",
-            () -> new Allthemodium_Leggings(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.LEGS,
+            () -> new AllthemodiumLeggings(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.LEGS,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate",
-            () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST,
+            () -> (ArmorItem) new AllthemodiumChestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static RegistryObject<ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet",
-            () -> new Allthemodium_Helmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD,
+            () -> new AllthemodiumHelmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD,
                     new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
     //Volcano
 
-    public static final RegistryObject<AncientCaveVines> ANCIENT_CAVEVINES_ = PILLARBLOCKS.register("ancient_cavevines",
+    public static final RegistryObject<AncientCaveVines> ANCIENT_CAVEVINES_ = PILLAR_BLOCKS.register(
+            "ancient_cavevines",
             () -> new AncientCaveVines(BlockBehaviour.Properties.of()
                     .randomTicks()
                     .noCollission()
@@ -156,7 +153,7 @@ public class ModRegistry {
                     .instabreak()
                     .sound(SoundType.CAVE_VINES), Direction.DOWN, ACaveVines.SHAPE, false, 0.1D));
 
-    public static final RegistryObject<AncientCaveVinesPlant> ANCIENT_CAVEVINES_PLANT_ = PILLARBLOCKS
+    public static final RegistryObject<AncientCaveVinesPlant> ANCIENT_CAVEVINES_PLANT_ = PILLAR_BLOCKS
             .register("ancient_cavevines_plant", () -> new AncientCaveVinesPlant(BlockBehaviour.Properties.of()
                     .noCollission()
                     .noOcclusion()
@@ -169,7 +166,7 @@ public class ModRegistry {
     public static final RegistryObject<Item> PIGLICH_HEART_BLOCK_ITEM = ITEMS.register("piglich_heart_block",
             () -> new BlockItem(PIGLICH_HEART_BLOCK.get(), new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
-    public static final RegistryObject<Block> ANCIENT_HERB = PILLARBLOCKS.register("ancient_herb",
+    public static final RegistryObject<Block> ANCIENT_HERB = PILLAR_BLOCKS.register("ancient_herb",
             () -> new AncientHerb(
                     BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noCollission()));
 
@@ -192,116 +189,116 @@ public class ModRegistry {
     public static final RegistryObject<Block> ANCIENT_POLISHED_STONE = BLOCKS.register("ancient_polished_stone",
             () -> new AncientStone());
 
-    public static final RegistryObject<Block> ANCIENT_LOG_0 = PILLARBLOCKS.register("ancient_log_0",
+    public static final RegistryObject<Block> ANCIENT_LOG_0 = PILLAR_BLOCKS.register("ancient_log_0",
             () -> log(DyeColor.BLUE, DyeColor.BLUE));
-    public static final RegistryObject<Block> ANCIENT_LOG_1 = PILLARBLOCKS.register("ancient_log_1",
+    public static final RegistryObject<Block> ANCIENT_LOG_1 = PILLAR_BLOCKS.register("ancient_log_1",
             () -> log(DyeColor.BLUE, DyeColor.BLUE));
-    public static final RegistryObject<Block> ANCIENT_LOG_2 = PILLARBLOCKS.register("ancient_log_2",
+    public static final RegistryObject<Block> ANCIENT_LOG_2 = PILLAR_BLOCKS.register("ancient_log_2",
             () -> log(DyeColor.BLUE, DyeColor.BLUE));
-    public static final RegistryObject<Block> ANCIENT_LOG_STRIPPED = PILLARBLOCKS.register("stripped_ancient_log",
+    public static final RegistryObject<Block> ANCIENT_LOG_STRIPPED = PILLAR_BLOCKS.register("stripped_ancient_log",
             () -> log(DyeColor.BLUE, DyeColor.BLUE));
     public static final RegistryObject<Block> ANCIENT_LEAVES = BLOCKS.register("ancient_leaves",
             () -> new AncientLeaves(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.AZALEA_LEAVES).noOcclusion().mapColor(DyeColor.PURPLE)));
-    public static final RegistryObject<Block> ANCIENT_LEAVES_BOTTOM = PILLARBLOCKS.register("ancient_leaves_bottom",
+    public static final RegistryObject<Block> ANCIENT_LEAVES_BOTTOM = PILLAR_BLOCKS.register("ancient_leaves_bottom",
             () -> new AncientLeavesBottom(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.AZALEA_LEAVES).noCollission().noOcclusion()));
     public static final RegistryObject<Block> ANCIENT_PLANKS = BLOCKS.register("ancient_planks",
             () -> new Block(BlockBehaviour.Properties.of().strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final RegistryObject<TrapDoorBlock> ANCIENT_TRAPDOOR = PILLARBLOCKS.register("ancient_trap_door",
+    public static final RegistryObject<TrapDoorBlock> ANCIENT_TRAPDOOR = PILLAR_BLOCKS.register("ancient_trap_door",
             () -> new TrapDoorBlock(
                     BlockBehaviour.Properties.of().strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion(),
                     ATMBlockSets.ANCIENT));
-    public static final RegistryObject<FenceBlock> ANCIENT_WOOD_FENCE = PILLARBLOCKS.register("ancient_wooden_fence",
+    public static final RegistryObject<FenceBlock> ANCIENT_WOOD_FENCE = PILLAR_BLOCKS.register("ancient_wooden_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
-    public static final RegistryObject<FenceGateBlock> ANCIENT_WOOD_FENCE_GATE = PILLARBLOCKS.register(
+    public static final RegistryObject<FenceGateBlock> ANCIENT_WOOD_FENCE_GATE = PILLAR_BLOCKS.register(
             "ancient_wooden_fence_gate",
             () -> new FenceGateBlock(BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD),
                     ATMBlockSets.ANCIENTWOOD));
-    public static final RegistryObject<DoorBlock> ANCIENT_DOOR_ = PILLARBLOCKS.register("ancient_door",
+    public static final RegistryObject<DoorBlock> ANCIENT_DOOR_ = PILLAR_BLOCKS.register("ancient_door",
             () -> new DoorBlock(BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD),
                     ATMBlockSets.ANCIENT));
 
-    public static final RegistryObject<Block> DEMONIC_HERB = PILLARBLOCKS.register("demonic_herb",
+    public static final RegistryObject<Block> DEMONIC_HERB = PILLAR_BLOCKS.register("demonic_herb",
             () -> new AncientHerb(
                     BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noCollission()));
-    public static final RegistryObject<Block> DEMONIC_LOG = PILLARBLOCKS.register("demonic_log",
+    public static final RegistryObject<Block> DEMONIC_LOG = PILLAR_BLOCKS.register("demonic_log",
             () -> log(DyeColor.RED, DyeColor.RED));
-    public static final RegistryObject<Block> DEMONIC_LOG_STRIPPED = PILLARBLOCKS.register("stripped_demonic_log",
+    public static final RegistryObject<Block> DEMONIC_LOG_STRIPPED = PILLAR_BLOCKS.register("stripped_demonic_log",
             () -> log(DyeColor.RED, DyeColor.RED));
     public static final RegistryObject<Block> DEMONIC_LEAVES = BLOCKS.register("demonic_leaves",
             () -> new DemonicLeaves(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.AZALEA_LEAVES).noOcclusion()));
-    public static final RegistryObject<Block> DEMONIC_LEAVES_BOTTOM = PILLARBLOCKS.register("demonic_leaves_bottom",
+    public static final RegistryObject<Block> DEMONIC_LEAVES_BOTTOM = PILLAR_BLOCKS.register("demonic_leaves_bottom",
             () -> new DemonicLeavesBottom(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.AZALEA_LEAVES).noCollission().noOcclusion()));
     public static final RegistryObject<Block> DEMONIC_PLANKS = BLOCKS.register("demonic_planks",
             () -> new Block(BlockBehaviour.Properties.of().strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final RegistryObject<TrapDoorBlock> DEMONIC_TRAPDOOR = PILLARBLOCKS.register("demonic_trap_door",
+    public static final RegistryObject<TrapDoorBlock> DEMONIC_TRAPDOOR = PILLAR_BLOCKS.register("demonic_trap_door",
             () -> new TrapDoorBlock(
                     BlockBehaviour.Properties.of().strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion(),
                     ATMBlockSets.DEMONIC));
-    public static final RegistryObject<FenceBlock> DEMONIC_WOOD_FENCE = PILLARBLOCKS.register("demonic_wooden_fence",
+    public static final RegistryObject<FenceBlock> DEMONIC_WOOD_FENCE = PILLAR_BLOCKS.register("demonic_wooden_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
-    public static final RegistryObject<FenceGateBlock> DEMONIC_WOOD_FENCE_GATE = PILLARBLOCKS.register(
+    public static final RegistryObject<FenceGateBlock> DEMONIC_WOOD_FENCE_GATE = PILLAR_BLOCKS.register(
             "demonic_wooden_fence_gate",
             () -> new FenceGateBlock(BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD),
                     ATMBlockSets.DEMONICWOOD));
-    public static final RegistryObject<DoorBlock> DEMONIC_DOOR_ = PILLARBLOCKS.register("demonic_door",
+    public static final RegistryObject<DoorBlock> DEMONIC_DOOR_ = PILLAR_BLOCKS.register("demonic_door",
             () -> new DoorBlock(BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD),
                     ATMBlockSets.DEMONIC));
 
-    public static final RegistryObject<Block> SOUL_HERB = PILLARBLOCKS.register("soul_herb", () -> new AncientHerb(
+    public static final RegistryObject<Block> SOUL_HERB = PILLAR_BLOCKS.register("soul_herb", () -> new AncientHerb(
             BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noCollission()));
-    public static final RegistryObject<Block> SOUL_LOG = PILLARBLOCKS.register("soul_log",
+    public static final RegistryObject<Block> SOUL_LOG = PILLAR_BLOCKS.register("soul_log",
             () -> log(DyeColor.LIGHT_BLUE, DyeColor.LIGHT_BLUE));
-    public static final RegistryObject<Block> SOUL_LOG_0 = PILLARBLOCKS.register("soul_log_0",
+    public static final RegistryObject<Block> SOUL_LOG_0 = PILLAR_BLOCKS.register("soul_log_0",
             () -> log(DyeColor.LIGHT_BLUE, DyeColor.LIGHT_BLUE));
-    public static final RegistryObject<Block> SOUL_LOG_1 = PILLARBLOCKS.register("soul_log_1",
+    public static final RegistryObject<Block> SOUL_LOG_1 = PILLAR_BLOCKS.register("soul_log_1",
             () -> log(DyeColor.LIGHT_BLUE, DyeColor.LIGHT_BLUE));
-    public static final RegistryObject<Block> SOUL_LOG_2 = PILLARBLOCKS.register("soul_log_2",
+    public static final RegistryObject<Block> SOUL_LOG_2 = PILLAR_BLOCKS.register("soul_log_2",
             () -> log(DyeColor.LIGHT_BLUE, DyeColor.LIGHT_BLUE));
-    public static final RegistryObject<Block> SOUL_LOG_STRIPPED = PILLARBLOCKS.register("stripped_soul_log",
+    public static final RegistryObject<Block> SOUL_LOG_STRIPPED = PILLAR_BLOCKS.register("stripped_soul_log",
             () -> log(DyeColor.LIGHT_BLUE, DyeColor.LIGHT_BLUE));
     public static final RegistryObject<Block> SOUL_LEAVES = BLOCKS.register("soul_leaves", () -> new SoulLeaves(
             BlockBehaviour.Properties.of().strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion()));
-    public static final RegistryObject<Block> SOUL_LEAVES_BOTTOM = PILLARBLOCKS.register("soul_leaves_bottom",
+    public static final RegistryObject<Block> SOUL_LEAVES_BOTTOM = PILLAR_BLOCKS.register("soul_leaves_bottom",
             () -> new SoulLeavesBottom(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.AZALEA_LEAVES).noCollission().noOcclusion()));
     public static final RegistryObject<Block> SOUL_PLANKS = BLOCKS.register("soul_planks",
             () -> new Block(BlockBehaviour.Properties.of().strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final RegistryObject<TrapDoorBlock> SOUL_TRAPDOOR = PILLARBLOCKS.register("soul_trap_door",
+    public static final RegistryObject<TrapDoorBlock> SOUL_TRAPDOOR = PILLAR_BLOCKS.register("soul_trap_door",
             () -> new TrapDoorBlock(
                     BlockBehaviour.Properties.of().strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion(),
                     ATMBlockSets.SOUL));
-    public static final RegistryObject<FenceBlock> SOUL_WOOD_FENCE = PILLARBLOCKS.register("soul_wooden_fence",
+    public static final RegistryObject<FenceBlock> SOUL_WOOD_FENCE = PILLAR_BLOCKS.register("soul_wooden_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
-    public static final RegistryObject<FenceGateBlock> SOUL_WOOD_FENCE_GATE = PILLARBLOCKS.register(
+    public static final RegistryObject<FenceGateBlock> SOUL_WOOD_FENCE_GATE = PILLAR_BLOCKS.register(
             "soul_wooden_fence_gate",
             () -> new FenceGateBlock(BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD),
                     ATMBlockSets.SOULWOOD));
-    public static final RegistryObject<DoorBlock> SOUL_DOOR_ = PILLARBLOCKS.register("soul_door",
+    public static final RegistryObject<DoorBlock> SOUL_DOOR_ = PILLAR_BLOCKS.register("soul_door",
             () -> new DoorBlock(BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD),
                     ATMBlockSets.SOUL));
 
-    public static final RegistryObject<WallBlock> ANCIENT_STONE_WALL = WALLBLOCKS.register("ancient_stone_wall",
+    public static final RegistryObject<WallBlock> ANCIENT_STONE_WALL = WALL_BLOCKS.register("ancient_stone_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
-    public static final RegistryObject<WallBlock> ANCIENT_SMOOTH_STONE_WALL = WALLBLOCKS.register(
+    public static final RegistryObject<WallBlock> ANCIENT_SMOOTH_STONE_WALL = WALL_BLOCKS.register(
             "ancient_smooth_stone_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE.get())));
-    public static final RegistryObject<WallBlock> ANCIENT_POLISHED_STONE_WALL = WALLBLOCKS.register(
+    public static final RegistryObject<WallBlock> ANCIENT_POLISHED_STONE_WALL = WALL_BLOCKS.register(
             "ancient_polished_stone_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_POLISHED_STONE.get())));
-    public static final RegistryObject<WallBlock> ANCIENT_STONE_BRICK_WALL = WALLBLOCKS.register(
+    public static final RegistryObject<WallBlock> ANCIENT_STONE_BRICK_WALL = WALL_BLOCKS.register(
             "ancient_stone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_BRICKS.get())));
-    public static final RegistryObject<WallBlock> ANCIENT_CHISELED_STONE_BRICK_WALL = WALLBLOCKS.register(
+    public static final RegistryObject<WallBlock> ANCIENT_CHISELED_STONE_BRICK_WALL = WALL_BLOCKS.register(
             "ancient_chiseled_stone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CHISELED_STONE_BRICKS.get())));
-    public static final RegistryObject<WallBlock> ANCIENT_CRACKED_STONE_BRICK_WALL = WALLBLOCKS.register(
+    public static final RegistryObject<WallBlock> ANCIENT_CRACKED_STONE_BRICK_WALL = WALL_BLOCKS.register(
             "ancient_cracked_stone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CRACKED_STONE_BRICKS.get())));
-    public static final RegistryObject<WallBlock> ANCIENT_MOSSY_STONE_WALL = WALLBLOCKS.register(
+    public static final RegistryObject<WallBlock> ANCIENT_MOSSY_STONE_WALL = WALL_BLOCKS.register(
             "ancient_mossy_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
 
     public static final RegistryObject<Item> ANCIENT_CAVEVINE_PLANT_ITEM = ITEMS.register("ancient_cavevines_plant",
@@ -339,74 +336,76 @@ public class ModRegistry {
     public static final RegistryObject<Item> ANCIENT_MOSSY_STONE_WALL_ITEM = ITEMS.register("ancient_mossy_stone_wall",
             () -> new BlockItem(ANCIENT_MOSSY_STONE_WALL.get(), new Item.Properties()));
 
-    public static final RegistryObject<Block> ANCIENT_BOOKSHELF = PILLARBLOCKS.register("ancient_bookshelf",
+    public static final RegistryObject<Block> ANCIENT_BOOKSHELF = PILLAR_BLOCKS.register("ancient_bookshelf",
             () -> new AncientBookShelf(
                     BlockBehaviour.Properties.of().strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> DEMONIC_BOOKSHELF = PILLARBLOCKS.register("demonic_bookshelf",
+    public static final RegistryObject<Block> DEMONIC_BOOKSHELF = PILLAR_BLOCKS.register("demonic_bookshelf",
             () -> new AncientBookShelf(
                     BlockBehaviour.Properties.of().strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> SOUL_BOOKSHELF = PILLARBLOCKS.register("soul_bookshelf",
+    public static final RegistryObject<Block> SOUL_BOOKSHELF = PILLAR_BLOCKS.register("soul_bookshelf",
             () -> new AncientBookShelf(
                     BlockBehaviour.Properties.of().strength(0.8F).randomTicks().sound(SoundType.WOOD)));
 
-    public static final RegistryObject<StairBlock> ANCIENT_WOODEN_STAIRS = STAIRBLOCKS.register("ancient_wooden_stairs",
+    public static final RegistryObject<StairBlock> ANCIENT_WOODEN_STAIRS = STAIR_BLOCKS.register(
+            "ancient_wooden_stairs",
             () -> new StairBlock(() -> ANCIENT_PLANKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_PLANKS.get())));
-    public static final RegistryObject<StairBlock> DEMONIC_WOODEN_STAIRS = STAIRBLOCKS.register("demonic_wooden_stairs",
+    public static final RegistryObject<StairBlock> DEMONIC_WOODEN_STAIRS = STAIR_BLOCKS.register(
+            "demonic_wooden_stairs",
             () -> new StairBlock(() -> DEMONIC_PLANKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(DEMONIC_PLANKS.get())));
-    public static final RegistryObject<StairBlock> SOUL_WOODEN_STAIRS = STAIRBLOCKS.register("soul_wooden_stairs",
+    public static final RegistryObject<StairBlock> SOUL_WOODEN_STAIRS = STAIR_BLOCKS.register("soul_wooden_stairs",
             () -> new StairBlock(() -> SOUL_PLANKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(SOUL_PLANKS.get())));
-    public static final RegistryObject<StairBlock> ANCIENT_STONE_STAIRS = STAIRBLOCKS.register("ancient_stone_stairs",
+    public static final RegistryObject<StairBlock> ANCIENT_STONE_STAIRS = STAIR_BLOCKS.register("ancient_stone_stairs",
             () -> new StairBlock(() -> ANCIENT_STONE.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
-    public static final RegistryObject<StairBlock> ANCIENT_SMOOTH_STONE_STAIRS = STAIRBLOCKS.register(
+    public static final RegistryObject<StairBlock> ANCIENT_SMOOTH_STONE_STAIRS = STAIR_BLOCKS.register(
             "ancient_smooth_stone_stairs", () -> new StairBlock(() -> ANCIENT_SMOOTH_STONE.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE.get())));
-    public static final RegistryObject<StairBlock> ANCIENT_STONE_BRICK_STAIRS = STAIRBLOCKS.register(
+    public static final RegistryObject<StairBlock> ANCIENT_STONE_BRICK_STAIRS = STAIR_BLOCKS.register(
             "ancient_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_STONE_BRICKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
 
-    public static final RegistryObject<StairBlock> ANCIENT_MOSSY_STONE_STAIRS = STAIRBLOCKS.register(
+    public static final RegistryObject<StairBlock> ANCIENT_MOSSY_STONE_STAIRS = STAIR_BLOCKS.register(
             "ancient_mossy_stone_stairs", () -> new StairBlock(() -> ANCIENT_MOSSY_STONE.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
-    public static final RegistryObject<StairBlock> ANCIENT_CHISELED_STONE_STAIRS = STAIRBLOCKS.register(
+    public static final RegistryObject<StairBlock> ANCIENT_CHISELED_STONE_STAIRS = STAIR_BLOCKS.register(
             "ancient_chiseled_stone_brick_stairs",
             () -> new StairBlock(() -> ANCIENT_CHISELED_STONE_BRICKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
-    public static final RegistryObject<StairBlock> ANCIENT_CRACKED_STONE_STAIRS = STAIRBLOCKS.register(
+    public static final RegistryObject<StairBlock> ANCIENT_CRACKED_STONE_STAIRS = STAIR_BLOCKS.register(
             "ancient_cracked_stone_brick_stairs",
             () -> new StairBlock(() -> ANCIENT_CRACKED_STONE_BRICKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
-    public static final RegistryObject<StairBlock> ANCIENT_POLISHED_STONE_STAIRS = STAIRBLOCKS.register(
+    public static final RegistryObject<StairBlock> ANCIENT_POLISHED_STONE_STAIRS = STAIR_BLOCKS.register(
             "ancient_polished_stone_stairs",
             () -> new StairBlock(() -> ANCIENT_POLISHED_STONE.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
 
-    public static final RegistryObject<SlabBlock> ANCIENT_WOODEN_SLABS = SLABBLOCKS.register("ancient_wooden_slabs",
+    public static final RegistryObject<SlabBlock> ANCIENT_WOODEN_SLABS = SLAB_BLOCKS.register("ancient_wooden_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_PLANKS.get())));
-    public static final RegistryObject<SlabBlock> DEMONIC_WOODEN_SLABS = SLABBLOCKS.register("demonic_wooden_slabs",
+    public static final RegistryObject<SlabBlock> DEMONIC_WOODEN_SLABS = SLAB_BLOCKS.register("demonic_wooden_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(DEMONIC_PLANKS.get())));
-    public static final RegistryObject<SlabBlock> SOUL_WOODEN_SLABS = SLABBLOCKS.register("soul_wooden_slabs",
+    public static final RegistryObject<SlabBlock> SOUL_WOODEN_SLABS = SLAB_BLOCKS.register("soul_wooden_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(SOUL_PLANKS.get())));
-    public static final RegistryObject<SlabBlock> ANCIENT_STONE_SLABS = SLABBLOCKS.register("ancient_stone_slabs",
+    public static final RegistryObject<SlabBlock> ANCIENT_STONE_SLABS = SLAB_BLOCKS.register("ancient_stone_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
-    public static final RegistryObject<SlabBlock> ANCIENT_SMOOTH_STONE_SLABS = SLABBLOCKS.register(
+    public static final RegistryObject<SlabBlock> ANCIENT_SMOOTH_STONE_SLABS = SLAB_BLOCKS.register(
             "ancient_smooth_stone_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE.get())));
-    public static final RegistryObject<SlabBlock> ANCIENT_STONE_BRICK_SLABS = SLABBLOCKS.register(
+    public static final RegistryObject<SlabBlock> ANCIENT_STONE_BRICK_SLABS = SLAB_BLOCKS.register(
             "ancient_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
-    public static final RegistryObject<SlabBlock> ANCIENT_MOSSY_STONE_SLABS = SLABBLOCKS.register(
+    public static final RegistryObject<SlabBlock> ANCIENT_MOSSY_STONE_SLABS = SLAB_BLOCKS.register(
             "ancient_mossy_stone_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
-    public static final RegistryObject<SlabBlock> ANCIENT_CHISELED_STONE_SLABS = SLABBLOCKS.register(
+    public static final RegistryObject<SlabBlock> ANCIENT_CHISELED_STONE_SLABS = SLAB_BLOCKS.register(
             "ancient_chiseled_stone_brick_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
-    public static final RegistryObject<SlabBlock> ANCIENT_CRACKED_STONE_SLABS = SLABBLOCKS.register(
+    public static final RegistryObject<SlabBlock> ANCIENT_CRACKED_STONE_SLABS = SLAB_BLOCKS.register(
             "ancient_cracked_stone_brick_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
-    public static final RegistryObject<SlabBlock> ANCIENT_POLISHED_STONE_SLABS = SLABBLOCKS.register(
+    public static final RegistryObject<SlabBlock> ANCIENT_POLISHED_STONE_SLABS = SLAB_BLOCKS.register(
             "ancient_polished_stone_slabs",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
 
@@ -547,25 +546,25 @@ public class ModRegistry {
     public static final RegistryObject<AllthemodiumOre> ALLTHEMODIUM_SLATE_ORE = BLOCKS
             .register("allthemodium_slate_ore", AllthemodiumOre::new);
 
-    public static final RegistryObject<Block> VIBRANIUM_ORE = BLOCKS.register("vibranium_ore", Vibranium_Ore::new);
+    public static final RegistryObject<Block> VIBRANIUM_ORE = BLOCKS.register("vibranium_ore", VibraniumOre::new);
     public static final RegistryObject<Block> OTHER_VIBRANIUM_ORE = BLOCKS.register("other_vibranium_ore",
-            Vibranium_Ore::new);
+            VibraniumOre::new);
     public static final RegistryObject<Block> UNOBTAINIUM_ORE = BLOCKS.register("unobtainium_ore",
-            Unobtainium_Ore::new);
+            UnobtainiumOre::new);
 
     public static final RegistryObject<Block> ALLTHEMODIUM_BLOCK = BLOCKS.register("allthemodium_block",
             AllthemodiumBlock::new);
     public static final RegistryObject<Block> VIBRANIUM_BLOCK = BLOCKS.register("vibranium_block",
-            Vibranium_Block::new);
+            VibraniumBlock::new);
     public static final RegistryObject<Block> UNOBTAINIUM_BLOCK = BLOCKS.register("unobtainium_block",
-            Unobtainium_Block::new);
+            UnobtainiumBlock::new);
 
     public static final RegistryObject<Block> RAW_ALLTHEMODIUM_BLOCK = BLOCKS.register("raw_allthemodium_block",
-            Raw_ATM::new);
+            RawATM::new);
     public static final RegistryObject<Block> RAW_VIBRANIUM_BLOCK = BLOCKS.register("raw_vibranium_block",
-            Raw_VIB::new);
+            RawVIB::new);
     public static final RegistryObject<Block> RAW_UNOBTAINIUM_BLOCK = BLOCKS.register("raw_unobtainium_block",
-            Raw_UNO::new);
+            RawUNO::new);
 
     public static final RegistryObject<Item> RAW_ALLTHEMODIUM_BLOCK_ITEM = ITEMS.register("raw_allthemodium_block",
             () -> new BlockItem(RAW_ALLTHEMODIUM_BLOCK.get(), new Item.Properties()));
@@ -575,16 +574,16 @@ public class ModRegistry {
             () -> new BlockItem(RAW_UNOBTAINIUM_BLOCK.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> ALLTHEMODIUM_ORE_ITEM = ITEMS.register("allthemodium_ore",
-            () -> new Allthemodium_Ore_Item(ALLTHEMODIUM_ORE.get(), new Item.Properties()));
+            () -> new AllthemodiumOreItem(ALLTHEMODIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> ALLTHEMODIUM_SLATE_ORE_ITEM = ITEMS.register("allthemodium_slate_ore",
-            () -> new Allthemodium_Ore_Item(ALLTHEMODIUM_SLATE_ORE.get(), new Item.Properties()));
+            () -> new AllthemodiumOreItem(ALLTHEMODIUM_SLATE_ORE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> VIBRANIUM_ORE_ITEM = ITEMS.register("vibranium_ore",
-            () -> new Vibranium_Ore_Item(VIBRANIUM_ORE.get(), new Item.Properties()));
+            () -> new VibraniumOreItem(VIBRANIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> OTHER_VIBRANIUM_ORE_ITEM = ITEMS.register("other_vibranium_ore",
-            () -> new Vibranium_Ore_Item(OTHER_VIBRANIUM_ORE.get(), new Item.Properties()));
+            () -> new VibraniumOreItem(OTHER_VIBRANIUM_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> UNOBTAINIUM_ORE_ITEM = ITEMS.register("unobtainium_ore",
-            () -> new Unobtainium_Ore_Item(UNOBTAINIUM_ORE.get(), new Item.Properties()));
+            () -> new UnobtainiumOreItem(UNOBTAINIUM_ORE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> ALLTHEMODIUM_BLOCK_ITEM = ITEMS.register("allthemodium_block",
             () -> new BlockItem(ALLTHEMODIUM_BLOCK.get(), new Item.Properties()));
@@ -604,6 +603,8 @@ public class ModRegistry {
             () -> new BlockItem(BlockRegistry.SUS_CLAY.get(), new Item.Properties()));
     public static final RegistryObject<Item> SUS_SOUL_SAND_ITEM = ITEMS.register("suspicious_soul_sand",
             () -> new BlockItem(BlockRegistry.SUS_SOUL_SAND.get(), new Item.Properties()));
+            
+    @SuppressWarnings("null")
     public static final RegistryObject<BlockEntityType<ATMBrushableBlockEntity>> BRUSHABLE_BLOCK = ENTITY
             .register("brushable_block", () -> BlockEntityType.Builder.of(ATMBrushableBlockEntity::new,
                     BlockRegistry.SUS_CLAY.get(),
@@ -619,21 +620,21 @@ public class ModRegistry {
             () -> new Plate(new Item.Properties()));
     public static final RegistryObject<Item> VIB_PLATE = ITEMS.register("vibranium_plate",
             () -> new Plate(new Item.Properties()));
-    public static final RegistryObject<Item> ONOB_PLATE = ITEMS.register("unobtainium_plate",
+    public static final RegistryObject<Item> UNOB_PLATE = ITEMS.register("unobtainium_plate",
             () -> new Plate(new Item.Properties()));
 
     public static final RegistryObject<Item> ATM_GEAR = ITEMS.register("allthemodium_gear",
             () -> new Gear(new Item.Properties()));
     public static final RegistryObject<Item> VIB_GEAR = ITEMS.register("vibranium_gear",
             () -> new Gear(new Item.Properties()));
-    public static final RegistryObject<Item> ONOB_GEAR = ITEMS.register("unobtainium_gear",
+    public static final RegistryObject<Item> UNOB_GEAR = ITEMS.register("unobtainium_gear",
             () -> new Gear(new Item.Properties()));
 
     public static final RegistryObject<Item> ATM_ROD = ITEMS.register("allthemodium_rod",
             () -> new Rod(new Item.Properties()));
     public static final RegistryObject<Item> VIB_ROD = ITEMS.register("vibranium_rod",
             () -> new Rod(new Item.Properties()));
-    public static final RegistryObject<Item> ONOB_ROD = ITEMS.register("unobtainium_rod",
+    public static final RegistryObject<Item> UNOB_ROD = ITEMS.register("unobtainium_rod",
             () -> new Rod(new Item.Properties()));
 
     public static final RegistryObject<Item> ALLTHEMODIUM_NUGGET = ITEMS.register("allthemodium_nugget",
@@ -654,28 +655,28 @@ public class ModRegistry {
             () -> new Clump(new Item.Properties()));
     public static final RegistryObject<Item> VIB_CLUMP = ITEMS.register("vibranium_clump",
             () -> new Clump(new Item.Properties()));
-    public static final RegistryObject<Item> ONOB_CLUMP = ITEMS.register("unobtainium_clump",
+    public static final RegistryObject<Item> UNOB_CLUMP = ITEMS.register("unobtainium_clump",
             () -> new Clump(new Item.Properties()));
 
     public static final RegistryObject<Item> ATM_SHARD = ITEMS.register("allthemodium_shard",
             () -> new Shard(new Item.Properties()));
     public static final RegistryObject<Item> VIB_SHARD = ITEMS.register("vibranium_shard",
             () -> new Shard(new Item.Properties()));
-    public static final RegistryObject<Item> ONOB_SHARD = ITEMS.register("unobtainium_shard",
+    public static final RegistryObject<Item> UNOB_SHARD = ITEMS.register("unobtainium_shard",
             () -> new Shard(new Item.Properties()));
 
     public static final RegistryObject<Item> ATM_DIRTY = ITEMS.register("dirty_allthemodium_dust",
             () -> new DirtyDust(new Item.Properties()));
     public static final RegistryObject<Item> VIB_DIRTY = ITEMS.register("dirty_vibranium_dust",
             () -> new DirtyDust(new Item.Properties()));
-    public static final RegistryObject<Item> ONOB_DIRTY = ITEMS.register("dirty_unobtainium_dust",
+    public static final RegistryObject<Item> UNOB_DIRTY = ITEMS.register("dirty_unobtainium_dust",
             () -> new DirtyDust(new Item.Properties()));
 
     public static final RegistryObject<Item> ATM_CRYSTAL = ITEMS.register("allthemodium_crystal",
             () -> new Crystal(new Item.Properties()));
     public static final RegistryObject<Item> VIB_CRYSTAL = ITEMS.register("vibranium_crystal",
             () -> new Crystal(new Item.Properties()));
-    public static final RegistryObject<Item> ONOB_CRYSTAL = ITEMS.register("unobtainium_crystal",
+    public static final RegistryObject<Item> UNOB_CRYSTAL = ITEMS.register("unobtainium_crystal",
             () -> new Crystal(new Item.Properties()));
 
     public static final RegistryObject<Item> UNOBTAINIUM_ALLTHEMODIUM_DUST = ITEMS.register(
@@ -701,7 +702,7 @@ public class ModRegistry {
             () -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER, 4, 1.5f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -711,9 +712,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -725,14 +728,14 @@ public class ModRegistry {
             () -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER, 2, 1.0f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -742,9 +745,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -764,14 +769,14 @@ public class ModRegistry {
             () -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER, 6, 1.0f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_AXE))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -781,9 +786,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -803,23 +810,25 @@ public class ModRegistry {
             () -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER, 1, 1.5f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -842,14 +851,14 @@ public class ModRegistry {
             () -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER, 0, 1.5f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_HOE))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -859,9 +868,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -881,7 +892,7 @@ public class ModRegistry {
             () -> new SwordItem(ToolTiers.VIBRANIUM_TIER, 10, 2.8f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -891,9 +902,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -904,14 +917,14 @@ public class ModRegistry {
             () -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER, 7, 2.0f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
                         return speed * 2.0f;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -921,9 +934,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -943,14 +958,14 @@ public class ModRegistry {
             () -> new AxeItem(ToolTiers.VIBRANIUM_TIER, 11, 1.0f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_AXE))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -960,9 +975,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -982,23 +999,25 @@ public class ModRegistry {
             () -> new ShovelItem(ToolTiers.VIBRANIUM_TIER, 2, 1.5f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -1021,14 +1040,14 @@ public class ModRegistry {
             () -> new HoeItem(ToolTiers.VIBRANIUM_TIER, 1, 1.5f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_HOE))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -1038,9 +1057,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -1059,7 +1080,7 @@ public class ModRegistry {
             () -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER, 16, 3.2f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -1069,9 +1090,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -1082,14 +1105,14 @@ public class ModRegistry {
             () -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER, 12, 4.0f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
                         return speed * 8.0f;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -1099,9 +1122,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -1120,14 +1145,14 @@ public class ModRegistry {
             () -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER, 20, 1.4f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_AXE))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -1137,9 +1162,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -1159,23 +1186,25 @@ public class ModRegistry {
             () -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER, 3, 1.5f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -1198,14 +1227,14 @@ public class ModRegistry {
             () -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER, 2, 1.5f,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
                 @Override
-                public float getDestroySpeed(ItemStack stack, BlockState state) {
+                public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
                     if (state.is(BlockTags.MINEABLE_WITH_HOE))
                         return speed;
                     return super.getDestroySpeed(stack, state);
                 }
 
                 @Override
-                public boolean isEnchantable(ItemStack stack) {
+                public boolean isEnchantable(@Nonnull ItemStack stack) {
                     return true;
                 }
 
@@ -1215,9 +1244,11 @@ public class ModRegistry {
                 }
 
                 @Override
-                public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip,
-                        TooltipFlag flagIn) {
-                    tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn,
+                        @Nonnull List<Component> tooltip,
+                        @Nonnull TooltipFlag flagIn) {
+                    tooltip.add(TextComponentHelper
+                            .createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                             .withStyle(ChatFormatting.GOLD));
 
                     super.appendHoverText(stack, worldIn, tooltip, flagIn);
@@ -1233,11 +1264,11 @@ public class ModRegistry {
                 }
             });
     public static final RegistryObject<Block> UA_ALLOY = BLOCKS.register("unobtainium_allthemodium_alloy_block",
-            UAAlloy_Block::new);
+            UAAlloyBlock::new);
     public static final RegistryObject<Block> UV_ALLOY = BLOCKS.register("unobtainium_vibranium_alloy_block",
-            UVAlloy_Block::new);
+            UVAlloyBlock::new);
     public static final RegistryObject<Block> VA_ALLOY = BLOCKS.register("vibranium_allthemodium_alloy_block",
-            VAAlloy_Block::new);
+            VAAlloyBlock::new);
 
     public static final RegistryObject<Item> UA_ALLOY_ITEM = ITEMS.register("unobtainium_allthemodium_alloy_block",
             () -> new BlockItem(UA_ALLOY.get(), new Item.Properties()));

@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.blocks;
 
 import javax.annotation.Nonnull;
 
+import com.thevortex.allthemodium.config.AllthemodiumServerConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,14 +25,16 @@ public class AllthemodiumOre extends RedStoneOreBlock {
         super(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS)
                 .lightLevel((state) -> {
                     return 15;
-                }).strength(-1.0f, 1500.0f));
+                }).strength(80.0f, 1500.0f));
     }
 
     @Override
-    @SuppressWarnings("java:S1874") // deprecated method from super class
+    @SuppressWarnings("deprecation") // deprecated method from super class
     public float getDestroyProgress(@Nonnull BlockState state, @Nonnull Player player, @Nonnull BlockGetter getter,
             @Nonnull BlockPos blockPos) {
         if (canEntityDestroy(state, getter, blockPos, player)) {
+            if (AllthemodiumServerConfigs.ALLTHEMODIUM_QUARRYABLE.get())
+                return super.getDestroyProgress(state, player, getter, blockPos);
             int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 250 : 1500;
             return player.getDigSpeed(state, blockPos) / 2.0F / i;
         }
@@ -41,7 +44,7 @@ public class AllthemodiumOre extends RedStoneOreBlock {
     @Override
     public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
         if ((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.ALLTHEMODIUM_ORE.get())) {
-            return false;
+            return AllthemodiumServerConfigs.ALLTHEMODIUM_QUARRYABLE.get();
         }
 
         return super.canEntityDestroy(state, world, pos, player) && (distanceTo(pos, player.blockPosition()) < 16.0F);
@@ -67,6 +70,7 @@ public class AllthemodiumOre extends RedStoneOreBlock {
 
     }
 
+    @SuppressWarnings("unused")
     @OnlyIn(Dist.CLIENT)
     private static void spawnParticles(Level world, BlockPos worldIn) {
         RandomSource random = world.random;
@@ -81,7 +85,7 @@ public class AllthemodiumOre extends RedStoneOreBlock {
                         : (double) random.nextFloat();
                 double d3 = direction$axis == Direction.Axis.Z ? 0.5D + 0.5625D * (double) direction.getStepZ()
                         : (double) random.nextFloat();
-                // todo spawn particles
+                // TODO: spawn particles
             }
         }
 

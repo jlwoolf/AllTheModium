@@ -5,11 +5,8 @@ import java.util.Iterator;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 
 import com.thevortex.allthemodium.registry.ModRegistry;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.*;
@@ -36,10 +33,15 @@ public class ArmorEvents {
 
     @SubscribeEvent
     public static void onEntityHurt(LivingAttackEvent event) {
+        LivingEntity entity = event.getEntity();
+
+        if (entity == null)
+            return;
+
         if (event.getEntity() instanceof PiglichEntity) {
 
         }
-        if (!event.getEntity().getCommandSenderWorld().isClientSide) {
+        if (!entity.getCommandSenderWorld().isClientSide()) {
             Iterable<ItemStack> armorlist = event.getEntity().getArmorSlots();
             Iterator<ItemStack> iterator = armorlist.iterator();
             while (iterator.hasNext()) {

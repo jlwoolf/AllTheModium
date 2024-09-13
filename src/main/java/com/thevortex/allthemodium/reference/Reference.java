@@ -1,13 +1,12 @@
 package com.thevortex.allthemodium.reference;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 
 public class Reference {
 
-    public static final ResourceLocation ORETYPE = location("forge:ores/allthemodium");
-    public static final ResourceLocation ORETYPE2 = location("forge:ores/vibranium");
-    public static final ResourceLocation ORETYPE3 = location("forge:ores/unobtainium");
+    public static final ResourceLocation ORE_TYPE = location("forge:ores/allthemodium");
+    public static final ResourceLocation ORE_TYPE2 = location("forge:ores/vibranium");
+    public static final ResourceLocation ORE_TYPE3 = location("forge:ores/unobtainium");
     public static final String MOD_ID = "allthemodium";
 
     public static String tab() {

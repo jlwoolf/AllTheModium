@@ -1,22 +1,11 @@
 package com.thevortex.allthemodium.entity;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.thevortex.allthemodium.reference.Reference;
-import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.monster.piglin.PiglinArmPose;
 import software.bernie.geckolib.model.GeoModel;
-import java.util.Random;
 
 public class PiglichModel extends GeoModel<PiglichEntity> {
 
@@ -26,11 +15,12 @@ public class PiglichModel extends GeoModel<PiglichEntity> {
     public PiglichModel() {
     }
 
+    @SuppressWarnings("unused")
     public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition partDefinition = meshDefinition.getRoot();
 
-        PartDefinition head = partdefinition.addOrReplaceChild("head",
+        PartDefinition head = partDefinition.addOrReplaceChild("head",
                 CubeListBuilder.create().texOffs(84, 0)
                         .addBox(-5.0F, -14.0F, -4.0F, 10.0F, 8.0F, 8.0F, new CubeDeformation(0.5F))
                         .texOffs(48, 0).addBox(-5.1F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, new CubeDeformation(0.35F))
@@ -40,12 +30,12 @@ public class PiglichModel extends GeoModel<PiglichEntity> {
                         .texOffs(2, 4).addBox(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)),
                 PartPose.offset(0.0F, -4.0F, -3.0F));
 
-        PartDefinition righTear_r1 = head.addOrReplaceChild("righTear_r1",
+        PartDefinition rightEar_r1 = head.addOrReplaceChild("rightEar_r1",
                 CubeListBuilder.create().texOffs(104, 18).addBox(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F,
                         new CubeDeformation(0.0F)),
                 PartPose.offsetAndRotation(-5.0F, -6.0F, 0.0F, 0.0F, 0.0F, 0.1745F));
 
-        PartDefinition leftTear_r1 = head.addOrReplaceChild("leftTear_r1",
+        PartDefinition leftEar_r1 = head.addOrReplaceChild("leftEar_r1",
                 CubeListBuilder.create().texOffs(115, 18).addBox(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F,
                         new CubeDeformation(0.0F)),
                 PartPose.offsetAndRotation(5.0F, -6.0F, 0.0F, 0.0F, 0.0F, -0.1745F));
@@ -71,7 +61,7 @@ public class PiglichModel extends GeoModel<PiglichEntity> {
                         new CubeDeformation(0.3F)),
                 PartPose.offsetAndRotation(-6.0F, -9.0F, 1.0F, 0.0F, 0.0F, 0.3491F));
 
-        PartDefinition body = partdefinition.addOrReplaceChild("body",
+        PartDefinition body = partDefinition.addOrReplaceChild("body",
                 CubeListBuilder.create().texOffs(81, 38)
                         .addBox(-5.0F, -7.0F, -3.0F, 10.0F, 10.0F, 6.0F, new CubeDeformation(0.2F))
                         .texOffs(33, 35).addBox(-3.0F, -7.0F, -2.0F, 6.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)),
@@ -93,7 +83,7 @@ public class PiglichModel extends GeoModel<PiglichEntity> {
                         new CubeDeformation(0.0F)),
                 PartPose.offsetAndRotation(8.0F, -8.0F, 0.0F, -0.4363F, 0.0F, 0.0F));
 
-        PartDefinition leftLeg = partdefinition.addOrReplaceChild("leftLeg",
+        PartDefinition leftLeg = partDefinition.addOrReplaceChild("leftLeg",
                 CubeListBuilder.create().texOffs(48, 16)
                         .addBox(-2.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.5F))
                         .texOffs(32, 16).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)),
@@ -105,7 +95,7 @@ public class PiglichModel extends GeoModel<PiglichEntity> {
                                 new CubeDeformation(-0.1F)),
                         PartPose.offsetAndRotation(0.0F, 5.0F, 0.0F, 0.6109F, 0.0F, 0.0F));
 
-        PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg",
+        PartDefinition rightLeg = partDefinition.addOrReplaceChild("rightLeg",
                 CubeListBuilder.create().texOffs(16, 16)
                         .addBox(-2.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.5F))
                         .texOffs(0, 16).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, new CubeDeformation(0.0F)),
@@ -117,7 +107,7 @@ public class PiglichModel extends GeoModel<PiglichEntity> {
                                 new CubeDeformation(-0.1F)),
                         PartPose.offsetAndRotation(0.0F, 5.0F, 0.0F, 0.6109F, 0.0F, 0.0F));
 
-        return LayerDefinition.create(meshdefinition, 128, 64);
+        return LayerDefinition.create(meshDefinition, 128, 64);
     }
 
     @Override

@@ -8,7 +8,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
@@ -16,7 +15,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -115,13 +113,13 @@ public class ShapedBlockBuilder {
 
     }
 
-    private ShapedRecipeBuilder ingot(ItemLike provider) {
-        return shaped(provider)
-                .pattern("aaa")
-                .pattern("aaa")
-                .pattern("aaa");
+    // private ShapedRecipeBuilder ingot(ItemLike provider) {
+    //     return shaped(provider)
+    //             .pattern("aaa")
+    //             .pattern("aaa")
+    //             .pattern("aaa");
 
-    }
+    // }
 
     private ShapedRecipeBuilder gear(ItemLike provider) {
         return shaped(provider)

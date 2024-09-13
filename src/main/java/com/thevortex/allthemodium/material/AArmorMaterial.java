@@ -2,6 +2,8 @@ package com.thevortex.allthemodium.material;
 
 import java.util.function.Supplier;
 
+import javax.annotation.Nonnull;
+
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -34,8 +36,10 @@ public enum AArmorMaterial implements ArmorMaterial {
     private final SoundEvent soundEvent;
     private final float toughness;
     private final float knockback;
+    @SuppressWarnings("deprecation")
     private final LazyLoadedValue<Ingredient> repairMaterial;
 
+    @SuppressWarnings("deprecation")
     AArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountsIn, int enchantabilityIn,
             SoundEvent equipSoundIn, float toughness, float knockback, Supplier<Ingredient> repairMaterialSupplier) {
         this.name = nameIn;
@@ -44,7 +48,7 @@ public enum AArmorMaterial implements ArmorMaterial {
         this.enchantability = enchantabilityIn;
         this.soundEvent = equipSoundIn;
         this.toughness = toughness;
-        this.repairMaterial = new LazyLoadedValue(repairMaterialSupplier);
+        this.repairMaterial = new LazyLoadedValue<Ingredient>(repairMaterialSupplier);
         this.knockback = knockback;
     }
 
@@ -57,12 +61,12 @@ public enum AArmorMaterial implements ArmorMaterial {
     }
 
     @Override
-    public int getDurabilityForType(ArmorItem.Type type) {
+    public int getDurabilityForType(@Nonnull ArmorItem.Type type) {
         return this.getDurabilityForSlot(type.getSlot());
     }
 
     @Override
-    public int getDefenseForType(ArmorItem.Type type) {
+    public int getDefenseForType(@Nonnull ArmorItem.Type type) {
         return this.getDefenseForSlot(type.getSlot());
     }
 
@@ -76,6 +80,7 @@ public enum AArmorMaterial implements ArmorMaterial {
         return this.soundEvent;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public Ingredient getRepairIngredient() {
         return this.repairMaterial.get();

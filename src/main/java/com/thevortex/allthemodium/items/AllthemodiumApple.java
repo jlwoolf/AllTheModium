@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.items;
 
 import com.thevortex.allthemodium.registry.ModRegistry;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,28 +15,35 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
-public class Allthemodium_Carrot extends Item {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-    public Allthemodium_Carrot(Properties properties) {
+public class AllthemodiumApple extends Item {
+
+    public AllthemodiumApple(Properties properties) {
         super(properties);
 
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
+    public ItemStack finishUsingItem(@Nonnull ItemStack stack, @Nonnull Level worldIn,
+            @Nonnull LivingEntity entityLiving) {
 
-        if ((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ALLTHEMODIUM_CARROT.get())) {
+        if ((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ALLTHEMODIUM_APPLE.get())) {
             Player player = (Player) entityLiving;
-            player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 2, false, false));
-            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 2, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 1, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 1, false, false));
+
         }
         return super.finishUsingItem(stack, worldIn, entityLiving);
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<net.minecraft.network.chat.Component> tooltip,
-            TooltipFlag flagIn) {
+    public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn, @Nonnull List<Component> tooltip,
+            @Nonnull TooltipFlag flagIn) {
+        ;
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
+
 }

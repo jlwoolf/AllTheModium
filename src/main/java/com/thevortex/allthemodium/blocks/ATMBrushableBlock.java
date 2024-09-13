@@ -7,6 +7,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BrushableBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+
+import javax.annotation.Nonnull;
+
 import org.jetbrains.annotations.Nullable;
 
 public class ATMBrushableBlock extends BrushableBlock {
@@ -14,7 +17,7 @@ public class ATMBrushableBlock extends BrushableBlock {
         super(block, properties, soundBrush, soundCompleted);
     }
 
-    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public @Nullable BlockEntity newBlockEntity(@Nonnull BlockPos pos, @Nonnull BlockState state) {
         return new ATMBrushableBlockEntity(pos, state);
     }
 }

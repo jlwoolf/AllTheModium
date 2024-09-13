@@ -19,8 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.fml.ModList;
-
 import java.util.function.Consumer;
 
 public class ATMCraftingRecipes extends RecipeProvider {
@@ -32,10 +30,10 @@ public class ATMCraftingRecipes extends RecipeProvider {
         return new ResourceLocation(Reference.MOD_ID, typeIn + "_from_" + typeOut);
     }
 
-    private ShapedRecipeBuilder shaped(ItemLike provider, int integer) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider, integer)
-                .group(Reference.MOD_ID);
-    }
+    // private ShapedRecipeBuilder shaped(ItemLike provider, int integer) {
+    //     return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider, integer)
+    //             .group(Reference.MOD_ID);
+    // }
 
     private ShapedRecipeBuilder shaped(ItemLike provider) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
@@ -79,7 +77,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
                 .pattern("nnn")
                 .pattern("nnn")
                 .define('n', ModRegistry.PIGLICH_HEART.get())
-                .unlockedBy("has_piglich_heartt",
+                .unlockedBy("has_piglich_heart",
                         RecipeProvider.inventoryTrigger(
                                 ItemPredicate.Builder.item().of(ModRegistry.PIGLICH_HEART.get()).build()))
                 .save(consumer);
@@ -174,8 +172,6 @@ public class ATMCraftingRecipes extends RecipeProvider {
                                 ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_ROD).build()))
                 .save(consumer);
 
-        final String hasCondition = "has_item";
-
         ShapedAncientStones.builder(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM)
                 .setBookShelf(ModRegistry.DEMONIC_BOOKSHELF_ITEM)
                 .setDoor(ModRegistry.DEMONIC_DOOR_ITEM)
@@ -265,9 +261,9 @@ public class ATMCraftingRecipes extends RecipeProvider {
 
         ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_INGOT)
                 .setBlock(ModRegistry.UNOBTAINIUM_BLOCK_ITEM)
-                .setGear(ModRegistry.ONOB_GEAR)
-                .setPlate(ModRegistry.ONOB_PLATE)
-                .setRod(ModRegistry.ONOB_ROD)
+                .setGear(ModRegistry.UNOB_GEAR)
+                .setPlate(ModRegistry.UNOB_PLATE)
+                .setRod(ModRegistry.UNOB_ROD)
                 .build(consumer);
 
         ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_INGOT)

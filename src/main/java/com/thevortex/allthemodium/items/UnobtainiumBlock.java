@@ -10,9 +10,9 @@ import net.minecraft.world.item.BlockItem;
  * @author thevortex
  *
  */
-public class Unobtainium_Block extends BlockItem {
+public class UnobtainiumBlock extends BlockItem {
 
-    public Unobtainium_Block(Properties properties) {
+    public UnobtainiumBlock(Properties properties) {
         super(ModRegistry.UNOBTAINIUM_BLOCK.get(), properties);
 
     }

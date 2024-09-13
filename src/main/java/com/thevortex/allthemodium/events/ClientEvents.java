@@ -3,7 +3,7 @@ package com.thevortex.allthemodium.events;
 import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.entity.PiglichRenderer;
 import com.thevortex.allthemodium.entity.shulkers.atm.ATMShulkerModel;
-import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
+import com.thevortex.allthemodium.items.toolitems.armor.models.AllthemodiumHelmetModel;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -25,6 +25,7 @@ public class ClientEvents {
         event.registerBlockEntityRenderer(ModRegistry.BRUSHABLE_BLOCK.get(), BrushableBlockRenderer::new);
     }
 
+    @SuppressWarnings("deprecation")
     @SubscribeEvent
     public static void registerTree(FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_HERB.get(), RenderType.cutout());
@@ -62,7 +63,7 @@ public class ClientEvents {
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(PiglichModel.LAYER_LOCATION, () -> PiglichModel.createBodyLayer());
         event.registerLayerDefinition(ATMShulkerModel.LAYER_LOCATION, () -> ATMShulkerModel.createBodyLayer());
-        event.registerLayerDefinition(allthemodium_helmet.LAYER_LOCATION, allthemodium_helmet::createBodyLayer);
+        event.registerLayerDefinition(AllthemodiumHelmetModel.LAYER_LOCATION, AllthemodiumHelmetModel::createBodyLayer);
     }
 
 }

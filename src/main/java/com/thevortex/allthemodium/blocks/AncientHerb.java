@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -9,6 +8,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Random;
+
+import javax.annotation.Nonnull;
 
 public class AncientHerb extends Block {
     public AncientHerb(Properties props) {
@@ -23,8 +24,10 @@ public class AncientHerb extends Block {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
+    public void tick(@Nonnull BlockState state, @Nonnull ServerLevel level, @Nonnull BlockPos pos,
+            @Nonnull RandomSource rand) {
         super.tick(state, level, pos, rand);
         if (!level.getBlockState(pos.below()).is(BlockTags.DIRT)) {
             dropResources(state, level, pos);

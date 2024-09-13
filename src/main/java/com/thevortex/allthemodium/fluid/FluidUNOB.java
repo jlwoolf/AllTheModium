@@ -26,6 +26,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.fluids.FluidType;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class FluidUNOB extends FlowingFluid {
@@ -45,7 +46,8 @@ public class FluidUNOB extends FlowingFluid {
     }
 
     @Override
-    protected void animateTick(Level level, BlockPos blockPos, FluidState state, RandomSource randomSource) {
+    protected void animateTick(@Nonnull Level level, @Nonnull BlockPos blockPos, @Nonnull FluidState state,
+            @Nonnull RandomSource randomSource) {
         super.animateTick(level, blockPos, state, randomSource);
         if (!state.isSource() && !state.getValue(FALLING)) {
             if (randomSource.nextInt(64) == 0) {
@@ -67,55 +69,57 @@ public class FluidUNOB extends FlowingFluid {
     }
 
     @Override
-    protected boolean canConvertToSource(Level level) {
+    protected boolean canConvertToSource(@Nonnull Level level) {
         return false;
     }
 
     @Override
-    protected void beforeDestroyingBlock(LevelAccessor worldIn, BlockPos pos, BlockState state) {
+    protected void beforeDestroyingBlock(@Nonnull LevelAccessor worldIn, @Nonnull BlockPos pos,
+            @Nonnull BlockState state) {
         BlockEntity blockEntity = state.hasBlockEntity() ? worldIn.getBlockEntity(pos) : null;
         Block.dropResources(state, worldIn, pos, blockEntity);
     }
 
     @Override
-    protected int getSlopeFindDistance(LevelReader p_76074_) {
+    protected int getSlopeFindDistance(@Nonnull LevelReader p_76074_) {
         return 4;
     }
 
     @Override
-    protected BlockState createLegacyBlock(FluidState p_76136_) {
+    protected BlockState createLegacyBlock(@Nonnull FluidState p_76136_) {
         return BlockRegistry.MOLTEN_UNOB_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL,
                 Integer.valueOf(getLegacyLevel(p_76136_)));
     }
 
     @Override
-    public boolean isSource(FluidState p_76140_) {
+    public boolean isSource(@Nonnull FluidState p_76140_) {
         return false;
     }
 
     @Override
-    public int getAmount(FluidState p_164509_) {
+    public int getAmount(@Nonnull FluidState p_164509_) {
         return 4;
     }
 
     @Override
-    public boolean isSame(Fluid fluidIn) {
+    public boolean isSame(@Nonnull Fluid fluidIn) {
         return fluidIn == FluidRegistry.UNOBTAINIUM.get() || fluidIn == FluidRegistry.FLOWING_UNOBTAINIUM.get();
     }
 
     @Override
-    protected int getDropOff(LevelReader p_76087_) {
+    protected int getDropOff(@Nonnull LevelReader p_76087_) {
         return 1;
     }
 
     @Override
-    public int getTickDelay(LevelReader p_76120_) {
+    public int getTickDelay(@Nonnull LevelReader p_76120_) {
         return 8;
     }
 
     @Override
-    protected boolean canBeReplacedWith(FluidState p_76127_, BlockGetter p_76128_, BlockPos p_76129_, Fluid p_76130_,
-            Direction p_76131_) {
+    protected boolean canBeReplacedWith(@Nonnull FluidState p_76127_, @Nonnull BlockGetter p_76128_,
+            @Nonnull BlockPos p_76129_, @Nonnull Fluid p_76130_,
+            @Nonnull Direction p_76131_) {
         return p_76131_ == Direction.DOWN && p_76127_.getFluidType() != FluidTypeRegistry.UNOB.get();
     }
 
@@ -131,30 +135,30 @@ public class FluidUNOB extends FlowingFluid {
 
     public static class Flowing extends FluidUNOB {
         @Override
-        protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> p_76046_) {
+        protected void createFluidStateDefinition(@Nonnull StateDefinition.Builder<Fluid, FluidState> p_76046_) {
             super.createFluidStateDefinition(p_76046_);
             p_76046_.add(LEVEL);
         }
 
         @Override
-        public int getAmount(FluidState p_164509_) {
+        public int getAmount(@Nonnull FluidState p_164509_) {
             return p_164509_.getValue(LEVEL);
         }
 
         @Override
-        public boolean isSource(FluidState state) {
+        public boolean isSource(@Nonnull FluidState state) {
             return false;
         }
     }
 
     public static class Source extends FluidUNOB {
         @Override
-        public int getAmount(FluidState p_164509_) {
+        public int getAmount(@Nonnull FluidState p_164509_) {
             return 8;
         }
 
         @Override
-        public boolean isSource(FluidState state) {
+        public boolean isSource(@Nonnull FluidState state) {
             return true;
         }
     }

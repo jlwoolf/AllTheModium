@@ -2,13 +2,9 @@ package com.thevortex.allthemodium.registry;
 
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -18,16 +14,10 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ATMBiomes {
-
-    private static TagKey<Biome> register(String names) {
-        return TagKey.create(Registries.BIOME, new ResourceLocation(Reference.MOD_ID, names));
-    }
-
     public static void addDefaultCarvers(BiomeGenerationSettings.Builder builder) {
         builder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
         builder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);

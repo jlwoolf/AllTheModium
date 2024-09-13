@@ -218,19 +218,19 @@ public class ATMBlockTags extends BlockTagsProvider {
                 .forEach(blockRegistryObject -> {
                     tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
                 });
-        ModRegistry.STAIRBLOCKS.getEntries().stream()
+        ModRegistry.STAIR_BLOCKS.getEntries().stream()
                 .forEach(blockRegistryObject -> {
                     tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
                 });
-        ModRegistry.SLABBLOCKS.getEntries().stream()
+        ModRegistry.SLAB_BLOCKS.getEntries().stream()
                 .forEach(blockRegistryObject -> {
                     tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
                 });
-        ModRegistry.WALLBLOCKS.getEntries().stream()
+        ModRegistry.WALL_BLOCKS.getEntries().stream()
                 .forEach(blockRegistryObject -> {
                     tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
                 });
-        ModRegistry.PILLARBLOCKS.getEntries().stream()
+        ModRegistry.PILLAR_BLOCKS.getEntries().stream()
                 .forEach(blockRegistryObject -> {
                     tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
                 });

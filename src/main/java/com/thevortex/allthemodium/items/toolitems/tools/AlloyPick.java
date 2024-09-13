@@ -2,8 +2,8 @@ package com.thevortex.allthemodium.items.toolitems.tools;
 
 import com.thevortex.allthemodium.material.ToolTiers;
 import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandSource;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
@@ -16,6 +16,9 @@ import net.minecraftforge.server.command.TextComponentHelper;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public class AlloyPick extends PickaxeItem {
 
     public AlloyPick(Tier tier, int damage, float speed, Properties properties) {
@@ -23,14 +26,14 @@ public class AlloyPick extends PickaxeItem {
     }
 
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
+    public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
             return speed;
         return super.getDestroySpeed(stack, state);
     }
 
     @Override
-    public boolean isEnchantable(ItemStack stack) {
+    public boolean isEnchantable(@Nonnull ItemStack stack) {
         return true;
     }
 
@@ -40,8 +43,9 @@ public class AlloyPick extends PickaxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+    public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn, @Nonnull List<Component> tooltip,
+            @Nonnull TooltipFlag flagIn) {
+        tooltip.add(TextComponentHelper.createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                 .withStyle(ChatFormatting.GOLD));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);

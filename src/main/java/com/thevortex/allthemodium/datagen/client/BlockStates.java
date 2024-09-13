@@ -1,24 +1,17 @@
 package com.thevortex.allthemodium.datagen.client;
 
-import com.thevortex.allthemodium.blocks.AncientGrass;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class BlockStates extends BlockStateProvider {
@@ -159,7 +152,7 @@ public class BlockStates extends BlockStateProvider {
     }
 
     /**
-     * Generates an item model and block model/blockstate for a simple block
+     * Generates an item model and block model/blockState for a simple block
      * 
      * @param block
      *            the block

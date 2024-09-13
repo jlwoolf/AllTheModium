@@ -1,5 +1,7 @@
 package com.thevortex.allthemodium.entity.shulkers.vib;
 
+import javax.annotation.Nonnull;
+
 import com.google.common.collect.ImmutableList;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.client.model.ListModel;
@@ -16,8 +18,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.monster.Shulker;
 
 public class VIBShulkerModel<T extends Shulker> extends ListModel<T> {
-    private static final String LID = "lid";
-    private static final String BASE = "base";
+    // private static final String LID = "lid";
+    // private static final String BASE = "base";
     private final ModelPart base;
     private final ModelPart lid;
     private final ModelPart head;
@@ -32,21 +34,21 @@ public class VIBShulkerModel<T extends Shulker> extends ListModel<T> {
     }
 
     public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
-        partdefinition.addOrReplaceChild("lid",
+        MeshDefinition meshDefinition = new MeshDefinition();
+        PartDefinition partDefinition = meshDefinition.getRoot();
+        partDefinition.addOrReplaceChild("lid",
                 CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F),
                 PartPose.offset(0.0F, 24.0F, 0.0F));
-        partdefinition.addOrReplaceChild("base",
+        partDefinition.addOrReplaceChild("base",
                 CubeListBuilder.create().texOffs(0, 28).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F),
                 PartPose.offset(0.0F, 24.0F, 0.0F));
-        partdefinition.addOrReplaceChild("head",
+        partDefinition.addOrReplaceChild("head",
                 CubeListBuilder.create().texOffs(0, 52).addBox(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F),
                 PartPose.offset(0.0F, 12.0F, 0.0F));
-        return LayerDefinition.create(meshdefinition, 64, 64);
+        return LayerDefinition.create(meshDefinition, 64, 64);
     }
 
-    public void setupAnim(T p_103735_, float p_103736_, float p_103737_, float p_103738_, float p_103739_,
+    public void setupAnim(@Nonnull T p_103735_, float p_103736_, float p_103737_, float p_103738_, float p_103739_,
             float p_103740_) {
         float f = p_103738_ - (float) p_103735_.tickCount;
         float f1 = (0.5F + p_103735_.getClientPeekAmount(f)) * (float) Math.PI;

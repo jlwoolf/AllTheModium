@@ -1,7 +1,7 @@
 package com.thevortex.allthemodium.crafting;
 
 import java.util.*;
-import java.util.Map.Entry;
+import javax.annotation.Nonnull;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -12,7 +12,6 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.crafting.IShapedRecipe;
 
 public class ATMShapelessRecipe implements IATMShapelessRecipe {
 
@@ -29,7 +28,7 @@ public class ATMShapelessRecipe implements IATMShapelessRecipe {
     }
 
     @Override
-    public boolean matches(CraftingContainer inv, Level world) {
+    public boolean matches(@Nonnull CraftingContainer inv, @Nonnull Level world) {
         // Note: We do not override the matches method if it matches ignoring NBT,
         // to ensure that we return the proper value for if there is a match that gives
         // a proper output
@@ -37,7 +36,7 @@ public class ATMShapelessRecipe implements IATMShapelessRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer inv, RegistryAccess blah) {
+    public ItemStack assemble(@Nonnull CraftingContainer inv, @Nonnull RegistryAccess blah) {
         if (getResultItem(blah).isEmpty()) {
             return ItemStack.EMPTY;
         }
@@ -67,7 +66,7 @@ public class ATMShapelessRecipe implements IATMShapelessRecipe {
     }
 
     @Override
-    public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv) {
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull CraftingContainer inv) {
         return recipe.getRemainingItems(inv);
     }
 
@@ -87,7 +86,7 @@ public class ATMShapelessRecipe implements IATMShapelessRecipe {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess blah) {
+    public ItemStack getResultItem(@Nonnull RegistryAccess blah) {
         return recipe.getResultItem(blah);
     }
 

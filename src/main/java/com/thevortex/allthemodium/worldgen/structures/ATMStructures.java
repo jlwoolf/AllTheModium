@@ -1,7 +1,6 @@
 package com.thevortex.allthemodium.worldgen.structures;
 
 import com.thevortex.allthemodium.reference.Reference;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraftforge.registries.DeferredRegister;

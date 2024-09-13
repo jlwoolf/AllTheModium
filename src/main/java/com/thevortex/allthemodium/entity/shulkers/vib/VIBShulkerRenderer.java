@@ -1,5 +1,7 @@
 package com.thevortex.allthemodium.entity.shulkers.vib;
 
+import javax.annotation.Nonnull;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,13 +16,14 @@ public class VIBShulkerRenderer extends MobRenderer<VIBShulkerEntity, VIBShulker
     }
 
     @Override
-    public void render(VIBShulkerEntity p_114485_, float p_114486_, float p_114487_, PoseStack p_114488_,
-            MultiBufferSource p_114489_, int p_114490_) {
+    public void render(@Nonnull VIBShulkerEntity p_114485_, float p_114486_, float p_114487_,
+            @Nonnull PoseStack p_114488_,
+            @Nonnull MultiBufferSource p_114489_, int p_114490_) {
         super.render(p_114485_, p_114486_, p_114487_, p_114488_, p_114489_, p_114490_);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(VIBShulkerEntity p_114482_) {
+    public ResourceLocation getTextureLocation(@Nonnull VIBShulkerEntity p_114482_) {
         return new ResourceLocation(Reference.MOD_ID, "textures/entity/vibranium_shulker.png");
 
     }

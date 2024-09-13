@@ -1,17 +1,16 @@
 package com.thevortex.allthemodium.blocks;
 
-import java.util.Random;
 import java.util.function.Supplier;
+
+import javax.annotation.Nonnull;
 
 import com.thevortex.allthemodium.registry.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.GameRules;
@@ -20,20 +19,14 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.ticks.ScheduledTick;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import net.minecraftforge.event.ForgeEventFactory;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
-import org.lwjgl.system.CallbackI;
-
 public class SoulLava extends LiquidBlock {
 
-    public int tickcount = 0;
+    public int tickCount = 0;
     protected FlowingFluid fluid;
 
     public SoulLava(Supplier<? extends FlowingFluid> supplier, Properties p_i48368_1_) {
@@ -57,42 +50,43 @@ public class SoulLava extends LiquidBlock {
     }
 
     @Override
-    public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
+    public boolean canBeReplaced(@Nonnull BlockState state, @Nonnull BlockPlaceContext context) {
 
         return false;
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(@Nonnull BlockState state, @Nonnull ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
             int i = random.nextInt(10);
             if (i > 0) {
-                BlockPos blockpos = pos;
+                BlockPos blockPos = pos;
 
                 for (int j = 0; j < i; ++j) {
-                    blockpos = blockpos.offset(random.nextInt(10) - 1, 1, random.nextInt(10) - 1);
-                    if (!level.isEmptyBlock(blockpos)) {
+                    blockPos = blockPos.offset(random.nextInt(10) - 1, 1, random.nextInt(10) - 1);
+                    if (!level.isEmptyBlock(blockPos)) {
                         return;
                     }
 
-                    BlockState blockstate = level.getBlockState(blockpos);
-                    BlockState FIRE = SoulFireBlock.canSurviveOnBlock(blockstate)
+                    BlockState blockState = level.getBlockState(blockPos);
+                    @SuppressWarnings("unused")
+                    BlockState FIRE = SoulFireBlock.canSurviveOnBlock(blockState)
                             ? Blocks.SOUL_FIRE.defaultBlockState()
                             : ((FireBlock) Blocks.FIRE).defaultBlockState();
                 }
             } else {
                 for (int k = 0; k < 10; ++k) {
-                    BlockPos blockpos1 = pos.offset(random.nextInt(10) - 1, 0, random.nextInt(10) - 1);
-                    BlockState FIRE = SoulFireBlock.canSurviveOnBlock(level.getBlockState(blockpos1))
+                    BlockPos blockPos1 = pos.offset(random.nextInt(10) - 1, 0, random.nextInt(10) - 1);
+                    BlockState FIRE = SoulFireBlock.canSurviveOnBlock(level.getBlockState(blockPos1))
                             ? Blocks.SOUL_FIRE.defaultBlockState()
                             : ((FireBlock) Blocks.FIRE).defaultBlockState();
 
-                    if (!level.isEmptyBlock(blockpos1)) {
+                    if (!level.isEmptyBlock(blockPos1)) {
                         return;
                     }
 
-                    level.setBlockAndUpdate(blockpos1.above(), ForgeEventFactory
-                            .fireFluidPlaceBlockEvent(level, blockpos1.above(), pos, FIRE));
+                    level.setBlockAndUpdate(blockPos1.above(), ForgeEventFactory
+                            .fireFluidPlaceBlockEvent(level, blockPos1.above(), pos, FIRE));
 
                 }
             }
@@ -103,24 +97,24 @@ public class SoulLava extends LiquidBlock {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
-        this.tickcount++;
+    public void animateTick(@Nonnull BlockState stateIn, @Nonnull Level worldIn, @Nonnull BlockPos pos, @Nonnull RandomSource rand) {
+        this.tickCount++;
 
-        if (stateIn.is(BlockRegistry.SOULLAVA_BLOCK.get()) && this.tickcount >= 40) {
+        if (stateIn.is(BlockRegistry.SOULLAVA_BLOCK.get()) && this.tickCount >= 40) {
             spawnParticles(worldIn, pos);
-            this.tickcount = 0;
+            this.tickCount = 0;
         }
         super.animateTick(stateIn, worldIn, pos, rand);
     }
 
     private static void spawnParticles(Level world, BlockPos worldIn) {
-        double d0 = 0.5625D;
+        // double d0 = 0.5625D;
         RandomSource random = world.random;
 
         if (world.getFluidState(worldIn).isSource() && (random.nextBoolean() == true)) {
             for (Direction direction : Direction.values()) {
-                BlockPos blockpos = worldIn.offset(direction.getNormal());
-                if (!world.getBlockState(blockpos).isSolidRender(world, blockpos)) {
+                BlockPos blockPos = worldIn.offset(direction.getNormal());
+                if (!world.getBlockState(blockPos).isSolidRender(world, blockPos)) {
                     Direction.Axis direction$axis = direction.getAxis();
                     double d1 = direction$axis == Direction.Axis.X ? 0.5D + 0.5625D * (double) direction.getStepX()
                             : (double) random.nextFloat();

@@ -2,7 +2,6 @@ package com.thevortex.allthemodium.datagen.client;
 
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
-import net.minecraft.client.model.Model;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
@@ -22,6 +21,7 @@ public class ItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         ResourceLocation generated = new ResourceLocation("item/generated");
+        @SuppressWarnings("unused")
         ResourceLocation handheld = new ResourceLocation("item/handheld");
         ModRegistry.ITEMS.getEntries().stream()
                 .filter(item -> !(item.get() instanceof BlockItem))

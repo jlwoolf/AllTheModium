@@ -1,8 +1,5 @@
 package com.thevortex.allthemodium.registry;
 
-import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.items.toolitems.tools.*;
-import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;

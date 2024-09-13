@@ -5,9 +5,9 @@ import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.commands.CommandSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,19 +22,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.server.command.TextComponentHelper;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class AlloyPaxel extends DiggerItem {
 
@@ -64,7 +60,7 @@ public class AlloyPaxel extends DiggerItem {
     }
 
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
+    public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
             return speed * 1.4f;
         if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
@@ -78,12 +74,13 @@ public class AlloyPaxel extends DiggerItem {
         return super.getDestroySpeed(stack, state);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public net.minecraft.world.InteractionResult interactLivingEntity(ItemStack stack,
-            net.minecraft.world.entity.player.Player playerIn, LivingEntity entity,
-            net.minecraft.world.InteractionHand hand) {
+    public net.minecraft.world.InteractionResult interactLivingEntity(@Nonnull ItemStack stack,
+            @Nonnull net.minecraft.world.entity.player.Player playerIn, @Nonnull LivingEntity entity,
+            @Nonnull net.minecraft.world.InteractionHand hand) {
         if (entity instanceof net.minecraftforge.common.IForgeShearable target) {
-            if (entity.level().isClientSide)
+            if (entity.level().isClientSide())
                 return net.minecraft.world.InteractionResult.SUCCESS;
             BlockPos pos = new BlockPos(entity.blockPosition());
             if (target.isShearable(stack, entity.level(), pos)) {
@@ -92,9 +89,13 @@ public class AlloyPaxel extends DiggerItem {
                                 net.minecraft.world.item.enchantment.Enchantments.BLOCK_FORTUNE, stack));
                 java.util.Random rand = new java.util.Random();
                 drops.forEach(d -> {
-                    net.minecraft.world.entity.item.ItemEntity ent = entity.spawnAtLocation(d, 1.0F);
-                    ent.setDeltaMovement(
-                            ent.getDeltaMovement().add((double) ((rand.nextFloat() - rand.nextFloat()) * 0.1F),
+                    net.minecraft.world.entity.item.ItemEntity dropEntity = entity.spawnAtLocation(d, 1.0F);
+
+                    if (dropEntity == null)
+                        return;
+
+                    dropEntity.setDeltaMovement(
+                            dropEntity.getDeltaMovement().add((double) ((rand.nextFloat() - rand.nextFloat()) * 0.1F),
                                     (double) (rand.nextFloat() * 0.05F),
                                     (double) ((rand.nextFloat() - rand.nextFloat()) * 0.1F)));
                 });
@@ -111,24 +112,24 @@ public class AlloyPaxel extends DiggerItem {
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity player) {
+    public boolean hurtEnemy(@Nonnull ItemStack stack, @Nonnull LivingEntity entity, @Nonnull LivingEntity player) {
         //entity.setSecondsOnFire(30);
         return super.hurtEnemy(stack, entity, player);
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public InteractionResult useOn(@Nonnull UseOnContext context) {
         Level world = context.getLevel();
-        BlockPos blockpos = context.getClickedPos();
-        BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.getBlock() == Blocks.OBSIDIAN) {
-            BlockState bpos = Blocks.CRYING_OBSIDIAN.defaultBlockState();
-            Player playerentity = context.getPlayer();
-            world.playSound(playerentity, blockpos, SoundEvents.NETHER_ORE_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+        BlockPos blockPos = context.getClickedPos();
+        BlockState blockState = world.getBlockState(blockPos);
+        if (blockState.getBlock() == Blocks.OBSIDIAN) {
+            BlockState bPos = Blocks.CRYING_OBSIDIAN.defaultBlockState();
+            Player playerEntity = context.getPlayer();
+            world.playSound(playerEntity, blockPos, SoundEvents.NETHER_ORE_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (!world.isClientSide) {
-                world.setBlock(blockpos, bpos, 11);
-                if (playerentity != null) {
-                    context.getItemInHand().hurtAndBreak(1, playerentity, (p_220040_1_) -> {
+                world.setBlock(blockPos, bPos, 11);
+                if (playerEntity != null) {
+                    context.getItemInHand().hurtAndBreak(1, playerEntity, (p_220040_1_) -> {
                         p_220040_1_.broadcastBreakEvent(context.getHand());
                     });
                 }
@@ -136,35 +137,40 @@ public class AlloyPaxel extends DiggerItem {
 
             return InteractionResult.sidedSuccess(world.isClientSide);
         }
-        if (blockstate.getBlock() instanceof GrowingPlantHeadBlock growingplantheadblock) {
-            if (!growingplantheadblock.isMaxAge(blockstate)) {
-                Player player = context.getPlayer();
-                assert player != null;
-                ItemStack itemstack = context.getItemInHand();
-                if (player instanceof ServerPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, blockpos, itemstack);
+
+        Player playerEntity = context.getPlayer();
+
+        if (playerEntity == null)
+            return InteractionResult.PASS;
+
+        if (blockState.getBlock() instanceof GrowingPlantHeadBlock growingPlantHeadBlock) {
+            if (!growingPlantHeadBlock.isMaxAge(blockState)) {
+                assert playerEntity != null;
+                ItemStack itemStack = context.getItemInHand();
+
+                if (playerEntity instanceof ServerPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) playerEntity, blockPos, itemStack);
                 }
 
-                world.playSound(player, blockpos, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1.0F, 1.0F);
-                world.setBlockAndUpdate(blockpos, growingplantheadblock.getMaxAgeState(blockstate));
-                itemstack.hurtAndBreak(1, player, (p_186374_) -> {
+                world.playSound(playerEntity, blockPos, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                world.setBlockAndUpdate(blockPos, growingPlantHeadBlock.getMaxAgeState(blockState));
+                itemStack.hurtAndBreak(1, playerEntity, (p_186374_) -> {
                     p_186374_.broadcastBreakEvent(context.getHand());
                 });
 
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }
         }
-        if ((blockstate.is(BlockTags.DIRT))) {
-            //tags dirt
-            boolean isSneaking = context.getPlayer().isCrouching();
+        if ((blockState.is(BlockTags.DIRT))) {
+            boolean isSneaking = playerEntity.isCrouching();
             BlockState blockPath = isSneaking ? Blocks.FARMLAND.defaultBlockState()
                     : Blocks.DIRT_PATH.defaultBlockState();
-            Player playerentity = context.getPlayer();
-            world.playSound(playerentity, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+            world.playSound(playerEntity, blockPos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (!world.isClientSide) {
-                world.setBlock(blockpos, blockPath, 11);
-                if (playerentity != null) {
-                    context.getItemInHand().hurtAndBreak(1, playerentity, (p_220040_1_) -> {
+                world.setBlock(blockPos, blockPath, 11);
+                if (playerEntity != null) {
+                    context.getItemInHand().hurtAndBreak(1, playerEntity, (p_220040_1_) -> {
                         p_220040_1_.broadcastBreakEvent(context.getHand());
                     });
                 }
@@ -172,21 +178,20 @@ public class AlloyPaxel extends DiggerItem {
 
             return InteractionResult.sidedSuccess(world.isClientSide);
         }
-        if (blockstate.is(BlockTags.LOGS)) {
+        if (blockState.is(BlockTags.LOGS)) {
 
             //tags logs
-            Block check = STRIPPABLES.get(blockstate.getBlock());
+            Block check = STRIPPABLES.get(blockState.getBlock());
             if (check != null) {
                 BlockState block = check.defaultBlockState();
-                Player playerentity = context.getPlayer();
-                world.playSound(playerentity, blockpos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                world.playSound(playerEntity, blockPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!world.isClientSide) {
-                    world.setBlock(blockpos, block, 11);
-                    if (playerentity != null) {
-                        context.getItemInHand().hurtAndBreak(1, playerentity, (p_220040_1_) -> {
-                            p_220040_1_.broadcastBreakEvent(context.getHand());
-                        });
-                    }
+                    world.setBlock(blockPos, block, 11);
+
+                    context.getItemInHand().hurtAndBreak(1, playerEntity, (p_220040_1_) -> {
+                        p_220040_1_.broadcastBreakEvent(context.getHand());
+                    });
+
                 }
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }
@@ -196,7 +201,7 @@ public class AlloyPaxel extends DiggerItem {
     }
 
     @Override
-    public boolean isEnchantable(ItemStack stack) {
+    public boolean isEnchantable(@Nonnull ItemStack stack) {
         return true;
     }
 
@@ -206,8 +211,9 @@ public class AlloyPaxel extends DiggerItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+    public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn, @Nonnull List<Component> tooltip,
+            @Nonnull TooltipFlag flagIn) {
+        tooltip.add(TextComponentHelper.createComponentTranslation(CommandSource.NULL, "indestructible", new Object())
                 .withStyle(ChatFormatting.GOLD));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);

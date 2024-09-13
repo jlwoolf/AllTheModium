@@ -14,7 +14,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -32,7 +31,6 @@ public class ShapedArmorBuilder {
     private final InventoryChangeTrigger.TriggerInstance criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
     private final TagKey<Item> ingot;
-    private Item core;
 
     public ShapedArmorBuilder(TagKey<Item> ingot) {
         this.ingot = ingot;

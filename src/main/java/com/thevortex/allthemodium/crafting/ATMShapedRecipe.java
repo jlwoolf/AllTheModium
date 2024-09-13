@@ -1,13 +1,10 @@
 package com.thevortex.allthemodium.crafting;
 
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.thevortex.allthemodium.AllTheModium;
+import javax.annotation.Nonnull;
+
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +17,6 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import org.codehaus.plexus.util.CachedMap;
 import org.jetbrains.annotations.NotNull;
 
 public class ATMShapedRecipe implements IATMShapedRecipe {
@@ -41,7 +37,7 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
     }
 
     @Override
-    public boolean matches(CraftingContainer inv, Level world) {
+    public boolean matches(@Nonnull CraftingContainer inv, @Nonnull Level world) {
         // Note: We do not override the matches method if it matches ignoring NBT,
         // to ensure that we return the proper value for if there is a match that gives
         // a proper output
@@ -49,7 +45,7 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer inv, RegistryAccess blah) {
+    public ItemStack assemble(@Nonnull CraftingContainer inv, @Nonnull RegistryAccess blah) {
         if (getResultItem(blah).isEmpty()) {
             return ItemStack.EMPTY;
         }
@@ -85,12 +81,12 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
     }
 
     @Override
-    public @NotNull ItemStack getResultItem(RegistryAccess blah) {
+    public @NotNull ItemStack getResultItem(@Nonnull RegistryAccess blah) {
         return internal.getResultItem(blah);
     }
 
     @Override
-    public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv) {
+    public NonNullList<ItemStack> getRemainingItems(@Nonnull CraftingContainer inv) {
         return internal.getRemainingItems(inv);
     }
 
