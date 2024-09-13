@@ -12,12 +12,8 @@ import java.util.List;
 
 public class UAAlloy_Block extends Block {
 
-	public UAAlloy_Block() {
-	super(Properties.of().sound(SoundType.STONE).strength(7.0f));
-	}
-
-
-
-
+    public UAAlloy_Block() {
+        super(Properties.of().sound(SoundType.STONE).strength(7.0f));
+    }
 
 }

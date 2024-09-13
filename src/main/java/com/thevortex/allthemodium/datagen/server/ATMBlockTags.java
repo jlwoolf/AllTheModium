@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.datagen.server;
 
-
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
@@ -16,11 +15,11 @@ import java.util.concurrent.CompletableFuture;
 
 import static net.minecraftforge.common.Tags.Blocks.NEEDS_NETHERITE_TOOL;
 
-
 public class ATMBlockTags extends BlockTagsProvider {
 
-    public ATMBlockTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(packOutput,lookupProvider, Reference.MOD_ID, existingFileHelper);
+    public ATMBlockTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider,
+            @Nullable ExistingFileHelper existingFileHelper) {
+        super(packOutput, lookupProvider, Reference.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -70,7 +69,7 @@ public class ATMBlockTags extends BlockTagsProvider {
 
         tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_.get());
         tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get());
-        
+
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_DIRT.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_GRASS.get());
@@ -92,7 +91,6 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_PLANKS.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG.get());
@@ -144,7 +142,6 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get());
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get());
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_STONE_BRICK_SLABS.get());
-
 
         tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_STONE_WALL.get());
         tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get());
@@ -212,7 +209,6 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VA_ALLOY.get());
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.TELEPORT_PAD.get());
-
 
         ModRegistry.BLOCKS.getEntries().stream()
                 .forEach(blockRegistryObject -> {

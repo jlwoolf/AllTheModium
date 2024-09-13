@@ -16,23 +16,26 @@ import java.util.List;
 
 public class Allthemodium_Carrot extends Item {
 
-	public Allthemodium_Carrot(Properties properties) {
-		super(properties);
-		
-	}
-	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
-	
-		if((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ALLTHEMODIUM_CARROT.get())) {
-			Player player = (Player)entityLiving;
-			player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,600,2,false,false));
-			player.addEffect(new MobEffectInstance(MobEffects.REGENERATION,600,2,false,false));
-		}
-	return super.finishUsingItem(stack, worldIn, entityLiving);
-	}
-	@OnlyIn(Dist.CLIENT)
-	@Override
-	public void appendHoverText(ItemStack stack, Level worldIn, List<net.minecraft.network.chat.Component> tooltip, TooltipFlag flagIn){
-		super.appendHoverText(stack, worldIn, tooltip, flagIn);
-	}
+    public Allthemodium_Carrot(Properties properties) {
+        super(properties);
+
+    }
+
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
+
+        if ((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ALLTHEMODIUM_CARROT.get())) {
+            Player player = (Player) entityLiving;
+            player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 2, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 2, false, false));
+        }
+        return super.finishUsingItem(stack, worldIn, entityLiving);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void appendHoverText(ItemStack stack, Level worldIn, List<net.minecraft.network.chat.Component> tooltip,
+            TooltipFlag flagIn) {
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    }
 }

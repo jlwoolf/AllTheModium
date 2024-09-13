@@ -6,10 +6,9 @@ import net.minecraftforge.fml.ModList;
 public class TweakProxy {
 
     public static int packMode() {
-        if(ModList.get().isLoaded("allthetweaks")){
+        if (ModList.get().isLoaded("allthetweaks")) {
             return Configuration.COMMON.mainmode.get();
-        }
-        else {
+        } else {
             return 0;
         }
     }

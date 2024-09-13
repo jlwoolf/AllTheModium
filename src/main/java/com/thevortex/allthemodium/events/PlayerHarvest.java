@@ -1,7 +1,7 @@
 package com.thevortex.allthemodium.events;
 
 import com.mojang.datafixers.TypeRewriteRule;
-import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
+import com.thevortex.allthemodium.blocks.AllthemodiumOre;
 import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.material.ToolTiers;
@@ -14,7 +14,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerHarvest {
 
     /*
@@ -34,6 +34,6 @@ public class PlayerHarvest {
             event.setCanHarvest(net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(blockstate, player));
         }
     }
-
+    
     */
 }

@@ -16,13 +16,16 @@ import java.util.List;
 
 public class Vibranium_Ore_Item extends BlockItem {
 
-	public Vibranium_Ore_Item(Block block, Properties properties) {
-		super(block, properties);
-	}
-	@Override
-	public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-		tooltip.add(TextComponentHelper.createComponentTranslation(null,"vibranium.loc" , new Object()).withStyle(ChatFormatting.GOLD));
-		tooltip.add(TextComponentHelper.createComponentTranslation(null,"allthemodium.mine" , new Object()).withStyle(ChatFormatting.GOLD));
-		super.appendHoverText(stack, worldIn, tooltip, flagIn);
-	}
-	}
+    public Vibranium_Ore_Item(Block block, Properties properties) {
+        super(block, properties);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        tooltip.add(TextComponentHelper.createComponentTranslation(null, "vibranium.loc", new Object())
+                .withStyle(ChatFormatting.GOLD));
+        tooltip.add(TextComponentHelper.createComponentTranslation(null, "allthemodium.mine", new Object())
+                .withStyle(ChatFormatting.GOLD));
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    }
+}

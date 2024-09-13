@@ -21,15 +21,18 @@ public class AlloyShovel extends ShovelItem {
     public AlloyShovel(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties);
     }
+
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state)
-    {
-        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
+    public float getDestroySpeed(ItemStack stack, BlockState state) {
+        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
+            return speed;
         return super.getDestroySpeed(stack, state);
     }
+
     @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                .withStyle(ChatFormatting.GOLD));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
@@ -38,13 +41,14 @@ public class AlloyShovel extends ShovelItem {
     public boolean isEnchantable(ItemStack stack) {
         return true;
     }
+
     @Override
     public boolean canBeDepleted() {
         return false;
     }
+
     @Override
-    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-    {
+    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
         if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
             return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLOY_TIER, state);
         if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))

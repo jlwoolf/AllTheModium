@@ -30,17 +30,22 @@ public class MoltenATMType extends FluidType {
     }
 
     @Override
-    public @Nullable BlockPathTypes getBlockPathType(FluidState state, BlockGetter level, BlockPos pos, @Nullable Mob mob, boolean canFluidLog) {
+    public @Nullable BlockPathTypes getBlockPathType(FluidState state, BlockGetter level, BlockPos pos,
+            @Nullable Mob mob, boolean canFluidLog) {
         return canFluidLog ? super.getBlockPathType(state, level, pos, mob, true) : null;
     }
 
     @Override
     public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
         consumer.accept(new IClientFluidTypeExtensions() {
-            private static final ResourceLocation UNDER_FLUID = new ResourceLocation(Reference.MOD_ID, "textures/block/fluid/molten_still.png");
-            private static final ResourceLocation FLUID_STILL = new ResourceLocation(Reference.MOD_ID, "block/fluid/atm_molten_still");
-            private static final ResourceLocation FLUID_FLOW = new ResourceLocation(Reference.MOD_ID, "block/fluid/atm_molten_flow");
-            private static final ResourceLocation FLUID_OVERLAY = new ResourceLocation(Reference.MOD_ID, "block/fluid/atm_molten_still");
+            private static final ResourceLocation UNDER_FLUID = new ResourceLocation(Reference.MOD_ID,
+                    "textures/block/fluid/molten_still.png");
+            private static final ResourceLocation FLUID_STILL = new ResourceLocation(Reference.MOD_ID,
+                    "block/fluid/atm_molten_still");
+            private static final ResourceLocation FLUID_FLOW = new ResourceLocation(Reference.MOD_ID,
+                    "block/fluid/atm_molten_flow");
+            private static final ResourceLocation FLUID_OVERLAY = new ResourceLocation(Reference.MOD_ID,
+                    "block/fluid/atm_molten_still");
 
             @Override
             public ResourceLocation getStillTexture() {
@@ -64,12 +69,14 @@ public class MoltenATMType extends FluidType {
             }
 
             @Override
-            public @NotNull Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
+            public @NotNull Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level,
+                    int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
                 return new Vector3f(0.08F, 0.08F, 0.0F);
             }
 
             @Override
-            public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance, float partialTick, float nearDistance, float farDistance, FogShape shape) {
+            public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance,
+                    float partialTick, float nearDistance, float farDistance, FogShape shape) {
                 nearDistance = -8.0F;
                 farDistance = 96.0F;
 

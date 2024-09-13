@@ -20,7 +20,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class PiglichRenderer extends GeoEntityRenderer<PiglichEntity> {
 
     public PiglichRenderer(EntityRendererProvider.Context context) {
-        super(context,new PiglichModel());
+        super(context, new PiglichModel());
         this.shadowRadius = 0.3f;
     }
 
@@ -30,7 +30,8 @@ public class PiglichRenderer extends GeoEntityRenderer<PiglichEntity> {
     }
 
     @Override
-    public RenderType getRenderType(PiglichEntity animatable, ResourceLocation textureLocation, @Nullable MultiBufferSource renderTypeBuffer,float partialTicks) {
+    public RenderType getRenderType(PiglichEntity animatable, ResourceLocation textureLocation,
+            @Nullable MultiBufferSource renderTypeBuffer, float partialTicks) {
 
         return RenderType.entityTranslucent(getTextureLocation(animatable));
     }

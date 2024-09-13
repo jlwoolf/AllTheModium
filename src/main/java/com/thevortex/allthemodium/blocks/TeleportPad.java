@@ -31,197 +31,197 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TeleportPad extends Block {
-	protected static final VoxelShape TELEPORTPAD_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
+    protected static final VoxelShape TELEPORTPAD_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
 
-	public TeleportPad(Properties properties) {
-		super(properties);
-		// TODO Auto-generated constructor stub
-	}
+    public TeleportPad(Properties properties) {
+        super(properties);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-		return TELEPORTPAD_AABB;
-	}
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return TELEPORTPAD_AABB;
+    }
 
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos,
+            CollisionContext context) {
 
+        return TELEPORTPAD_AABB;
+    }
 
-	@Override
-	public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos,
-			CollisionContext context) {
+    @Override
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player,
+            InteractionHand handIn, BlockHitResult hit) {
+        if ((player instanceof ServerPlayer) && (player.isCrouching() == true)) {
 
-		return TELEPORTPAD_AABB;
-	}
+            transferPlayer((ServerPlayer) player, pos);
+            worldIn.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0,
+                    1, 0);
+        }
+        return super.use(state, worldIn, pos, player, handIn, hit);
+    }
 
-	@Override
-	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player,
-								 InteractionHand handIn, BlockHitResult hit) {
-		if ((player instanceof ServerPlayer) && (player.isCrouching() == true)) {
+    @Override
+    public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
+        if (player.level().dimension().registry().getNamespace().contains(Reference.MOD_ID)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-			transferPlayer((ServerPlayer) player, pos);
-			worldIn.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
-		}
-		return super.use(state, worldIn, pos, player, handIn, hit);
-	}
+    public void transferPlayer(ServerPlayer player, BlockPos pos) {
+        int config = TweakProxy.packMode();
+        if (player.level().dimension().equals(LevelRegistry.Mining)) {
+            ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
+            int y = 256;
+            boolean located = false;
+            while (y >= 1) {
+                BlockPos posa = new BlockPos(Math.round(pos.getX()), y, Math.round(pos.getZ()));
+                Block potential = targetWorld.getBlockState(posa).getBlock();
+                if (potential.getName().toString().contains("teleport_pad")) {
+                    located = true;
+                    break;
 
-	@Override
-	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if(player.level().dimension().registry().getNamespace().contains(Reference.MOD_ID)) {
-			return false;
-		} else {
-			return true;
-		}
-	}
+                } else {
+                    y--;
+                }
+            }
+            if (located) {
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
+                player.teleportTo(targetWorld, pos.getX() + 0.5D, y + 0.25D, pos.getZ() + 0.5D, player.rotA,
+                        player.yya);
 
-	public void transferPlayer(ServerPlayer player, BlockPos pos) {
-		int config = TweakProxy.packMode();
-		if (player.level().dimension().equals(LevelRegistry.Mining)) {
-			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
-			int y = 256;
-			boolean located = false;
-			while (y >= 1) {
-				BlockPos posa = new BlockPos(Math.round(pos.getX()), y, Math.round(pos.getZ()));
-				Block potential = targetWorld.getBlockState(posa).getBlock();
-				if (potential.getName().toString().contains("teleport_pad")) {
-					located = true;
-					break;
+                return;
+            } else {
 
-				} else {
-					y--;
-				}
-			}
-			if (located) {
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, pos.getX() + 0.5D, y + 0.25D, pos.getZ() + 0.5D, player.rotA,
-						player.yya);
+                if ((!targetWorld.getBlockState(pos).hasBlockEntity())
+                        && (targetWorld.getBlockState(pos).canEntityDestroy(targetWorld, pos, player))) {
+                    //targetWorld.setBlockState(pos, ModBlocks.TELEPORT_PAD.getDefaultState());
+                }
 
-				return;
-			} else {
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
+                player.teleportTo(targetWorld, pos.getX() + 0.5D, pos.getY() + 0.25D, pos.getZ() + 0.5D, player.rotA,
+                        player.yya);
+            }
 
-				if ((!targetWorld.getBlockState(pos).hasBlockEntity())
-						&& (targetWorld.getBlockState(pos).canEntityDestroy(targetWorld, pos, player))) {
-					//targetWorld.setBlockState(pos, ModBlocks.TELEPORT_PAD.getDefaultState());
-				}
+        } else if (player.level().dimension().equals(AllTheModium.Nether)) {
+            ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_OTHER);
+            BlockPos targetPos = new BlockPos(Math.round(pos.getX()), Math.round(pos.getY()), Math.round(pos.getZ()));
 
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, pos.getX() + 0.5D, pos.getY() + 0.25D, pos.getZ() + 0.5D, player.rotA,
-						player.yya);
-			}
+            if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 
-		}
-		else if (player.level().dimension().equals(AllTheModium.Nether)) {
-			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_OTHER);
-			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), Math.round(pos.getY()), Math.round(pos.getZ()));
+                LevelHeightAccessor accessor = targetWorld.getChunk(pos).getHeightAccessorForGeneration();
+                int y = targetWorld.getChunkSource().getGenerator().getSpawnHeight(accessor);
+                targetWorld.setBlockAndUpdate(new BlockPos(targetPos.getX(), y, targetPos.getZ()),
+                        ModRegistry.TELEPORT_PAD.get().defaultBlockState());
 
-			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
+                player.teleportTo(targetWorld, targetPos.getX() + 0.5D, y + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
 
-				LevelHeightAccessor accessor = targetWorld.getChunk(pos).getHeightAccessorForGeneration();
-				int y = targetWorld.getChunkSource().getGenerator().getSpawnHeight(accessor);
-				targetWorld.setBlockAndUpdate(new BlockPos(targetPos.getX(),y,targetPos.getZ()), ModRegistry.TELEPORT_PAD.get().defaultBlockState());
+            }
+        } else if (player.level().dimension().equals(LevelRegistry.THE_OTHER)) {
+            ServerLevel targetWorld = player.server.getLevel(AllTheModium.Nether);
+            int y = 128;
+            boolean located = false;
+            while (y >= 1) {
+                BlockPos posa = new BlockPos(Math.round(pos.getX()), y, Math.round(pos.getZ()));
+                Block potential = targetWorld.getBlockState(posa).getBlock();
+                if (potential.getName().toString().contains("teleport_pad")) {
+                    located = true;
+                    break;
 
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, y + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
+                } else {
+                    y--;
+                }
+            }
+            if (located) {
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
+                player.teleportTo(targetWorld, pos.getX() + 0.5D, y + 0.25D, pos.getZ() + 0.5D, player.rotA,
+                        player.yya);
 
+                return;
+            } else {
+                BlockPos newpos = new BlockPos(pos.getX(), 90, pos.getZ());
+                if ((!targetWorld.getBlockState(newpos).hasBlockEntity())
+                        && (targetWorld.getBlockState(newpos).canEntityDestroy(targetWorld, newpos, player))) {
+                    targetWorld.setBlockAndUpdate(newpos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
+                }
 
-			}
-		}
-		else if (player.level().dimension().equals(LevelRegistry.THE_OTHER)) {
-			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Nether);
-			int y = 128;
-			boolean located = false;
-			while (y >= 1) {
-				BlockPos posa = new BlockPos(Math.round(pos.getX()), y, Math.round(pos.getZ()));
-				Block potential = targetWorld.getBlockState(posa).getBlock();
-				if (potential.getName().toString().contains("teleport_pad")) {
-					located = true;
-					break;
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, newpos.getX(), newpos.getY(), newpos.getZ(), 0,
+                        1, 0);
+                player.teleportTo(targetWorld, newpos.getX() + 0.5D, newpos.getY() + 0.25D, newpos.getZ() + 0.5D,
+                        player.rotA,
+                        player.yya);
 
-				} else {
-					y--;
-				}
-			}
-			if (located) {
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, pos.getX() + 0.5D, y + 0.25D, pos.getZ() + 0.5D, player.rotA,
-						player.yya);
+            }
+        } else if (player.level().dimension().equals(AllTheModium.The_End)) {
+            ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_BEYOND);
+            BlockPos targetPos = new BlockPos(Math.round(pos.getX() * 50), Math.round(pos.getY()),
+                    Math.round(pos.getZ() * 50));
 
-				return;
-			} else {
-				BlockPos newpos = new BlockPos(pos.getX(), 90 , pos.getZ());
-				if ((!targetWorld.getBlockState(newpos).hasBlockEntity())
-						&& (targetWorld.getBlockState(newpos).canEntityDestroy(targetWorld, newpos, player))) {
-					targetWorld.setBlockAndUpdate(newpos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
-				}
+            if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, newpos.getX(), newpos.getY(), newpos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, newpos.getX() + 0.5D, newpos.getY() + 0.25D, newpos.getZ() + 0.5D, player.rotA,
-						player.yya);
+                LevelHeightAccessor accessor = targetWorld.getChunk(pos).getHeightAccessorForGeneration();
+                int y = targetWorld.getChunkSource().getGenerator().getSpawnHeight(accessor);
+                targetWorld.setBlockAndUpdate(new BlockPos(targetPos.getX(), y, targetPos.getZ()),
+                        ModRegistry.TELEPORT_PAD.get().defaultBlockState());
+                if (targetWorld.getBlockState(new BlockPos(targetPos.getX(), y - 1, targetPos.getZ())).is(Blocks.AIR)) {
+                    targetWorld.setBlockAndUpdate(new BlockPos(targetPos.getX(), y - 1, targetPos.getZ()),
+                            ModRegistry.ANCIENT_POLISHED_STONE.get().defaultBlockState());
+                }
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
+                player.teleportTo(targetWorld, targetPos.getX() + 0.5D, y + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
 
-			}
-		}
-		else if (player.level().dimension().equals(AllTheModium.The_End)) {
-			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_BEYOND);
-			BlockPos targetPos = new BlockPos(Math.round(pos.getX() *50), Math.round(pos.getY()), Math.round(pos.getZ()*50));
+            }
+        } else if (player.level().dimension().equals(LevelRegistry.THE_BEYOND)) {
+            ServerLevel targetWorld = player.server.getLevel(AllTheModium.The_End);
+            int y = 384;
+            boolean located = false;
+            while (y >= -63) {
+                BlockPos posa = new BlockPos(Math.round(pos.getX() / 50), y, Math.round(pos.getZ()) / 50);
+                Block potential = targetWorld.getBlockState(posa).getBlock();
+                if (potential.getName().toString().contains("teleport_pad")) {
+                    located = true;
+                    break;
 
-			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
+                } else {
+                    y--;
+                }
+            }
+            if (located) {
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
+                player.teleportTo(targetWorld, pos.getX() / 50 + 0.5D, y + 0.25D, pos.getZ() / 50 + 0.5D, player.rotA,
+                        player.yya);
 
-				LevelHeightAccessor accessor = targetWorld.getChunk(pos).getHeightAccessorForGeneration();
-				int y = targetWorld.getChunkSource().getGenerator().getSpawnHeight(accessor);
-				targetWorld.setBlockAndUpdate(new BlockPos(targetPos.getX(),y,targetPos.getZ()), ModRegistry.TELEPORT_PAD.get().defaultBlockState());
-				if(targetWorld.getBlockState(new BlockPos(targetPos.getX(),y-1,targetPos.getZ())).is(Blocks.AIR)){
-					targetWorld.setBlockAndUpdate(new BlockPos(targetPos.getX(),y-1,targetPos.getZ()), ModRegistry.ANCIENT_POLISHED_STONE.get().defaultBlockState());
-				}
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, y + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
+                return;
+            } else {
+                BlockPos newpos = new BlockPos(pos.getX() / 50, 90, pos.getZ() / 50);
+                if ((!targetWorld.getBlockState(newpos).hasBlockEntity())
+                        && (targetWorld.getBlockState(newpos).canEntityDestroy(targetWorld, newpos, player))) {
+                    targetWorld.setBlockAndUpdate(newpos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
+                }
 
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, newpos.getX(), newpos.getY(), newpos.getZ(), 0,
+                        1, 0);
+                player.teleportTo(targetWorld, newpos.getX() + 0.5D, newpos.getY() + 0.25D, newpos.getZ() + 0.5D,
+                        player.rotA,
+                        player.yya);
 
-			}
-		}
-		else if (player.level().dimension().equals(LevelRegistry.THE_BEYOND)) {
-			ServerLevel targetWorld = player.server.getLevel(AllTheModium.The_End);
-			int y = 384;
-			boolean located = false;
-			while (y >= -63) {
-				BlockPos posa = new BlockPos(Math.round(pos.getX()/50), y, Math.round(pos.getZ())/50);
-				Block potential = targetWorld.getBlockState(posa).getBlock();
-				if (potential.getName().toString().contains("teleport_pad")) {
-					located = true;
-					break;
+            }
+        } else if (player.level().dimension().equals(AllTheModium.OverWorld) && (config != 5)) {
+            ServerLevel targetWorld = player.server.getLevel(LevelRegistry.Mining);
+            BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 253, Math.round(pos.getZ()));
+            if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
+                targetWorld.setBlockAndUpdate(targetPos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
+                targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
+                player.teleportTo(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D,
+                        targetPos.getZ() + 0.5D, 0, 0);
 
-				} else {
-					y--;
-				}
-			}
-			if (located) {
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, pos.getX()/50 + 0.5D, y + 0.25D, pos.getZ()/50 + 0.5D, player.rotA,
-						player.yya);
+            }
+        }
 
-				return;
-			} else {
-				BlockPos newpos = new BlockPos(pos.getX()/50, 90 , pos.getZ()/50);
-				if ((!targetWorld.getBlockState(newpos).hasBlockEntity())
-						&& (targetWorld.getBlockState(newpos).canEntityDestroy(targetWorld, newpos, player))) {
-					targetWorld.setBlockAndUpdate(newpos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
-				}
-
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, newpos.getX(), newpos.getY(), newpos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, newpos.getX() + 0.5D, newpos.getY() + 0.25D, newpos.getZ() + 0.5D, player.rotA,
-						player.yya);
-
-			}
-		}
-		else if (player.level().dimension().equals(AllTheModium.OverWorld) && (config != 5)) {
-			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.Mining);
-			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 253, Math.round(pos.getZ()));
-			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
-				targetWorld.setBlockAndUpdate(targetPos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
-
-			}
-		}
-
-	}
-
+    }
 
 }

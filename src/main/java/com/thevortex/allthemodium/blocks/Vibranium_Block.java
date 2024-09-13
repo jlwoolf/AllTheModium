@@ -12,10 +12,8 @@ import net.minecraft.world.level.storage.loot.LootContext;
 
 public class Vibranium_Block extends Block {
 
-	public Vibranium_Block() {	
-	super(Properties.of().sound(SoundType.STONE).strength(7.0f));
-	}
-
-
+    public Vibranium_Block() {
+        super(Properties.of().sound(SoundType.STONE).strength(7.0f));
+    }
 
 }

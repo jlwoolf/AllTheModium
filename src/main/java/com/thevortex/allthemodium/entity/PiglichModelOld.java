@@ -24,22 +24,33 @@ public class PiglichModelOld<T extends Mob> extends PlayerModel<T> {
     private final PartPose headDefault = this.head.storePose();
     private final PartPose leftArmDefault = this.leftArm.storePose();
     private final PartPose rightArmDefault = this.rightArm.storePose();
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "piglich"),"main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
+            new ResourceLocation(Reference.MOD_ID, "piglich"), "main");
 
     public PiglichModelOld(ModelPart p_170821_, boolean p_170822_) {
         super(p_170821_, p_170822_);
     }
 
-
     public static MeshDefinition createMesh() {
 
         CubeDeformation cubeDeformation = CubeDeformation.NONE;
-        MeshDefinition meshdefinition = PlayerModel.createMesh(cubeDeformation,false);
+        MeshDefinition meshdefinition = PlayerModel.createMesh(cubeDeformation, false);
         PartDefinition partdefinition = meshdefinition.getRoot();
-        partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, cubeDeformation), PartPose.ZERO);
-        PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, cubeDeformation).texOffs(31, 1).addBox(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, cubeDeformation).texOffs(2, 4).addBox(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, cubeDeformation).texOffs(2, 0).addBox(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, cubeDeformation), PartPose.ZERO);
-        partdefinition1.addOrReplaceChild("left_ear", CubeListBuilder.create().texOffs(51, 6).addBox(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, cubeDeformation), PartPose.offsetAndRotation(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (-(float)Math.PI / 6F)));
-        partdefinition1.addOrReplaceChild("right_ear", CubeListBuilder.create().texOffs(39, 6).addBox(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, cubeDeformation), PartPose.offsetAndRotation(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, ((float)Math.PI / 6F)));
+        partdefinition.addOrReplaceChild("body",
+                CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, cubeDeformation),
+                PartPose.ZERO);
+        PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("head",
+                CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, cubeDeformation)
+                        .texOffs(31, 1).addBox(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, cubeDeformation).texOffs(2, 4)
+                        .addBox(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, cubeDeformation).texOffs(2, 0)
+                        .addBox(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, cubeDeformation),
+                PartPose.ZERO);
+        partdefinition1.addOrReplaceChild("left_ear",
+                CubeListBuilder.create().texOffs(51, 6).addBox(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, cubeDeformation),
+                PartPose.offsetAndRotation(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (-(float) Math.PI / 6F)));
+        partdefinition1.addOrReplaceChild("right_ear",
+                CubeListBuilder.create().texOffs(39, 6).addBox(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, cubeDeformation),
+                PartPose.offsetAndRotation(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, ((float) Math.PI / 6F)));
 
         partdefinition1.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
         partdefinition1.addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.ZERO);
@@ -75,12 +86,13 @@ public class PiglichModelOld<T extends Mob> extends PlayerModel<T> {
         return super.getRandomModelPart(p_103407_);
     }
 
-    public void setupAnim(T p_103366_, float p_103367_, float p_103368_, float p_103369_, float p_103370_, float p_103371_) {
+    public void setupAnim(T p_103366_, float p_103367_, float p_103368_, float p_103369_, float p_103370_,
+            float p_103371_) {
         super.setupAnim(p_103366_, p_103367_, p_103368_, p_103369_, p_103370_, p_103371_);
     }
 
     protected void setupAttackAnimation(T p_103363_, float p_103364_) {
-            super.setupAttackAnimation(p_103363_, p_103364_);
+        super.setupAttackAnimation(p_103363_, p_103364_);
     }
 
     @Override
@@ -88,20 +100,22 @@ public class PiglichModelOld<T extends Mob> extends PlayerModel<T> {
         super.prepareMobModel(p_102861_, p_102862_, p_102863_, p_102864_);
         setPartVisibility();
     }
+
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay,
+            float red, float green, float blue, float alpha) {
         setPartVisibility();
         super.renderToBuffer(poseStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 
     private void setPartVisibility() {
-                head.visible = true;
-                hat.visible = true;
-                body.visible = true;
-                rightArm.visible = true;
-                leftArm.visible = true;
-                rightLeg.visible = true;
-                leftLeg.visible = true;
+        head.visible = true;
+        hat.visible = true;
+        body.visible = true;
+        rightArm.visible = true;
+        leftArm.visible = true;
+        rightLeg.visible = true;
+        leftLeg.visible = true;
     }
 
 }

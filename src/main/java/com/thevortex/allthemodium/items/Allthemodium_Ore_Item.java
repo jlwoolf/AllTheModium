@@ -16,15 +16,17 @@ import java.util.List;
 
 public class Allthemodium_Ore_Item extends BlockItem {
 
-	public Allthemodium_Ore_Item(Block block, Properties properties) {
-		super(block, properties);
-	}
+    public Allthemodium_Ore_Item(Block block, Properties properties) {
+        super(block, properties);
+    }
 
-	@Override
-	public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-		tooltip.add(TextComponentHelper.createComponentTranslation(null,"allthemodium.loc" , new Object()).withStyle(ChatFormatting.GOLD));
-		tooltip.add(TextComponentHelper.createComponentTranslation(null,"allthemodium.mine" , new Object()).withStyle(ChatFormatting.GOLD));
-		super.appendHoverText(stack, worldIn, tooltip, flagIn);
-	}
+    @Override
+    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        tooltip.add(TextComponentHelper.createComponentTranslation(null, "allthemodium.loc", new Object())
+                .withStyle(ChatFormatting.GOLD));
+        tooltip.add(TextComponentHelper.createComponentTranslation(null, "allthemodium.mine", new Object())
+                .withStyle(ChatFormatting.GOLD));
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    }
 
-	}
+}

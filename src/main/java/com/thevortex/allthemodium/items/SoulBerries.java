@@ -21,16 +21,16 @@ public class SoulBerries extends ItemNameBlockItem {
     public SoulBerries(Block block, Properties properties) {
         super(block, properties);
     }
+
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
 
-        if((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ANCIENT_SOULBERRY.get())) {
-            Player player = (Player)entityLiving;
-            player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,1200,2,false,false));
+        if ((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ANCIENT_SOULBERRY.get())) {
+            Player player = (Player) entityLiving;
+            player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 2, false, false));
 
         }
         return super.finishUsingItem(stack, worldIn, entityLiving);
     }
 
-   }
-
+}

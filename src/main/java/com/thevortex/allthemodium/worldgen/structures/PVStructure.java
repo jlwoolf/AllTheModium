@@ -18,16 +18,19 @@ import java.util.Optional;
 
 public class PVStructure extends Structure {
 
-
-    public static final Codec<PVStructure> CODEC = RecordCodecBuilder.<PVStructure>mapCodec(instance ->
-            instance.group(PVStructure.settingsCodec(instance),
+    public static final Codec<PVStructure> CODEC = RecordCodecBuilder
+            .<PVStructure>mapCodec(instance -> instance.group(PVStructure.settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
-                    ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
+                    ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name")
+                            .forGetter(structure -> structure.startJigsawName),
                     Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
                     HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
-                    Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
-                    Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
-            ).apply(instance, PVStructure::new)).codec();
+                    Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap")
+                            .forGetter(structure -> structure.projectStartToHeightmap),
+                    Codec.intRange(1, 128).fieldOf("max_distance_from_center")
+                            .forGetter(structure -> structure.maxDistanceFromCenter))
+                    .apply(instance, PVStructure::new))
+            .codec();
     private final Holder<StructureTemplatePool> startPool;
     private final Optional<ResourceLocation> startJigsawName;
     private final int size;
@@ -36,13 +39,12 @@ public class PVStructure extends Structure {
     private final int maxDistanceFromCenter;
 
     public PVStructure(Structure.StructureSettings config,
-                       Holder<StructureTemplatePool> startPool,
-                       Optional<ResourceLocation> startJigsawName,
-                       int size,
-                       HeightProvider startHeight,
-                       Optional<Heightmap.Types> projectStartToHeightmap,
-                       int maxDistanceFromCenter)
-    {
+            Holder<StructureTemplatePool> startPool,
+            Optional<ResourceLocation> startJigsawName,
+            int size,
+            HeightProvider startHeight,
+            Optional<Heightmap.Types> projectStartToHeightmap,
+            int maxDistanceFromCenter) {
         super(config);
         this.startPool = startPool;
         this.startJigsawName = startJigsawName;
@@ -100,25 +102,25 @@ public class PVStructure extends Structure {
         if (!PVStructure.extraSpawningChecks(context)) {
             return Optional.empty();
         }
-        int startY = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
+        int startY = this.startHeight.sample(context.random(),
+                new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets corner of that chunk)
         ChunkPos chunkPos = context.chunkPos();
         BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 0, chunkPos.getMinBlockZ());
 
-        Optional<Structure.GenerationStub> structurePiecesGenerator =
-                JigsawPlacement.addPieces(
-                        context, // Used for JigsawPlacement to get all the proper behaviors done.
-                        this.startPool, // The starting pool to use to create the structure layout from
-                        this.startJigsawName, // Can be used to only spawn from one Jigsaw block. But we don't need to worry about this.
-                        this.size, // How deep a branch of pieces can go away from center piece. (5 means branches cannot be longer than 5 pieces from center piece)
-                        blockPos, // Where to spawn the structure.
-                        false, // "useExpansionHack" This is for legacy villages to generate properly. You should keep this false always.
-                        this.projectStartToHeightmap, // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
-                        // Here, blockpos's y value is 60 which means the structure spawn 60 blocks above terrain height.
-                        // Set this to false for structure to be place only at the passed in blockpos's Y value instead.
-                        // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
-                        this.maxDistanceFromCenter); // Maximum limit for how far pieces can spawn from center. You cannot set this bigger than 128 or else pieces gets cutoff.
+        Optional<Structure.GenerationStub> structurePiecesGenerator = JigsawPlacement.addPieces(
+                context, // Used for JigsawPlacement to get all the proper behaviors done.
+                this.startPool, // The starting pool to use to create the structure layout from
+                this.startJigsawName, // Can be used to only spawn from one Jigsaw block. But we don't need to worry about this.
+                this.size, // How deep a branch of pieces can go away from center piece. (5 means branches cannot be longer than 5 pieces from center piece)
+                blockPos, // Where to spawn the structure.
+                false, // "useExpansionHack" This is for legacy villages to generate properly. You should keep this false always.
+                this.projectStartToHeightmap, // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
+                // Here, blockpos's y value is 60 which means the structure spawn 60 blocks above terrain height.
+                // Set this to false for structure to be place only at the passed in blockpos's Y value instead.
+                // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
+                this.maxDistanceFromCenter); // Maximum limit for how far pieces can spawn from center. You cannot set this bigger than 128 or else pieces gets cutoff.
 
         /*
          * Note, you are always free to make your own JigsawPlacement class and implementation of how the structure

@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.datagen.server;
 
-
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
@@ -16,11 +15,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class ATMItemTags extends ItemTagsProvider {
 
-
-    public ATMItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
-        super(packOutPut, lookupProvider,tagLookup, Reference.MOD_ID, existingFileHelper);
+    public ATMItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider,
+            CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
+        super(packOutPut, lookupProvider, tagLookup, Reference.MOD_ID, existingFileHelper);
     }
-
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
@@ -39,8 +37,6 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_1_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_2_ITEM.get());
 
-
-
         tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
 
@@ -54,7 +50,6 @@ public class ATMItemTags extends ItemTagsProvider {
 
         tag(TagRegistry.FORGE_SWORDS).add(ModRegistry.ALLTHEMODIUM_SWORD.get());
         tag(TagRegistry.FORGE_SWORDS).add(ModRegistry.ATM_ALLOY_SWORD.get());
-
 
         tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ATM_ALLOY_PICK.get());
         tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ATM_ALLOY_PAXEL.get());
@@ -141,7 +136,6 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.RAW_ALLTHEMODIUM_BLOCK).add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK_ITEM.get());
         tag(TagRegistry.RAW_VIBRANIUM_BLOCK).add(ModRegistry.RAW_VIBRANIUM_BLOCK_ITEM.get());
         tag(TagRegistry.RAW_UNOBTAINIUM_BLOCK).add(ModRegistry.RAW_UNOBTAINIUM_BLOCK_ITEM.get());
-
 
         tag(TagRegistry.ALLTHEMODIUM_ORE_ITEM).add(ModRegistry.ALLTHEMODIUM_ORE_ITEM.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE_ITEM).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE_ITEM.get());

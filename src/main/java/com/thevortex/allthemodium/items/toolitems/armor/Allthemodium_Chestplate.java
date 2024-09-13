@@ -16,25 +16,24 @@ import java.util.List;
 
 public class Allthemodium_Chestplate extends ArmorItem {
 
-
-
     public Allthemodium_Chestplate(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-		super(materialIn, Type.CHESTPLATE, builder);
+        super(materialIn, Type.CHESTPLATE, builder);
 
-	}
+    }
+
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return true;
     }
+
     @Override
     public boolean canBeDepleted() {
         return false;
     }
+
     @Override
-    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
-    {
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
         return true;
     }
-
 
 }

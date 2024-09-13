@@ -34,7 +34,6 @@ public class ShapedArmorBuilder {
     private final TagKey<Item> ingot;
     private Item core;
 
-
     public ShapedArmorBuilder(TagKey<Item> ingot) {
         this.ingot = ingot;
 
@@ -48,7 +47,6 @@ public class ShapedArmorBuilder {
     public static ShapedArmorBuilder builder(TagKey<Item> ingot) {
         return new ShapedArmorBuilder(ingot);
     }
-
 
     public ShapedArmorBuilder setHelmet(RegistryObject<ArmorItem> object) {
         pieces.put(Slot.HELMET, object.get());
@@ -70,7 +68,6 @@ public class ShapedArmorBuilder {
         return this;
     }
 
-
     protected void validate(ResourceLocation id) {
         if (pieces.isEmpty()) {
             throw new RecipeException(id.toString(), "recipe must have at least 1 output");
@@ -82,63 +79,63 @@ public class ShapedArmorBuilder {
         Consumer<ShapedRecipeBuilder> register = builder -> builder.save(consumer);
 
         Optional.ofNullable(pieces.get(Slot.HELMET))
-            .map(this::helmet)
-            .map(this::addCriterion)
-            .ifPresent(register);
+                .map(this::helmet)
+                .map(this::addCriterion)
+                .ifPresent(register);
 
         Optional.ofNullable(pieces.get(Slot.CHESTPLATE))
-            .map(this::chestplate)
-            .map(this::addCriterion)
-            .ifPresent(register);
+                .map(this::chestplate)
+                .map(this::addCriterion)
+                .ifPresent(register);
 
         Optional.ofNullable(pieces.get(Slot.LEGGINGS))
-            .map(this::leggings)
-            .map(this::addCriterion)
-            .ifPresent(register);
+                .map(this::leggings)
+                .map(this::addCriterion)
+                .ifPresent(register);
 
         Optional.ofNullable(pieces.get(Slot.BOOTS))
-            .map(this::boots)
-            .map(this::addCriterion)
-            .ifPresent(register);
+                .map(this::boots)
+                .map(this::addCriterion)
+                .ifPresent(register);
     }
 
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
-            .group(Reference.MOD_ID);
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
+                .group(Reference.MOD_ID);
     }
 
     private ShapedRecipeBuilder addCriterion(ShapedRecipeBuilder builder) {
         return builder
-            .define('a', ingot)
-            .unlockedBy(criteriaName, criterion);
+                .define('a', ingot)
+                .unlockedBy(criteriaName, criterion);
     }
 
     private ShapedRecipeBuilder helmet(ItemLike provider) {
         return shaped(provider)
-            .pattern("aaa")
-            .pattern("a a")
-            .pattern("   ");
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("   ");
 
     }
 
     private ShapedRecipeBuilder chestplate(ItemLike provider) {
         return shaped(provider)
-            .pattern("a a")
-            .pattern("aaa")
-            .pattern("aaa");
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa");
     }
 
     private ShapedRecipeBuilder leggings(ItemLike provider) {
         return shaped(provider)
-            .pattern("aaa")
-            .pattern("a a")
-            .pattern("a a");
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a");
     }
 
     private ShapedRecipeBuilder boots(ItemLike provider) {
         return shaped(provider)
-            .pattern("a a")
-            .pattern("a a")
-            .pattern("   ");
+                .pattern("a a")
+                .pattern("a a")
+                .pattern("   ");
     }
 }

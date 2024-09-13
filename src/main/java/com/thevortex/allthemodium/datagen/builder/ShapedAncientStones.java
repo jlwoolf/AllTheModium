@@ -22,11 +22,13 @@ import java.util.function.Consumer;
 
 public class ShapedAncientStones {
     public enum Slot {
-      BOOKSHELF, TRAPDOOR, BRICK, FENCE, FENCEGATE, STAIRS, WALL, SLAB, DOOR;
+        BOOKSHELF, TRAPDOOR, BRICK, FENCE, FENCEGATE, STAIRS, WALL, SLAB, DOOR;
+
         public String lower() {
             return toString().toLowerCase(Locale.ROOT);
         }
     }
+
     private final String criteriaName;
     private final InventoryChangeTrigger.TriggerInstance criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
@@ -49,18 +51,22 @@ public class ShapedAncientStones {
         pieces.put(Slot.BOOKSHELF, object.get());
         return this;
     }
+
     public ShapedAncientStones setDoor(RegistryObject<Item> object) {
         pieces.put(Slot.DOOR, object.get());
         return this;
     }
+
     public ShapedAncientStones setTrapDoor(RegistryObject<Item> object) {
         pieces.put(Slot.TRAPDOOR, object.get());
         return this;
     }
+
     public ShapedAncientStones setBrick(RegistryObject<Item> object) {
         pieces.put(Slot.BRICK, object.get());
         return this;
     }
+
     public ShapedAncientStones setStairs(RegistryObject<Item> object) {
         pieces.put(Slot.STAIRS, object.get());
         return this;
@@ -85,7 +91,6 @@ public class ShapedAncientStones {
         pieces.put(Slot.WALL, object.get());
         return this;
     }
-
 
     protected void validate(ResourceLocation id) {
         if (pieces.isEmpty()) {
@@ -133,14 +138,15 @@ public class ShapedAncientStones {
                 .map(this::addStickCriterion)
                 .ifPresent(register);
 
-
     }
+
     private ShapedRecipeBuilder shaped(ItemLike provider, int integer) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider,integer)
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider, integer)
                 .group(Reference.MOD_ID);
     }
+
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
                 .group(Reference.MOD_ID);
     }
 
@@ -149,18 +155,21 @@ public class ShapedAncientStones {
                 .define('a', ancientstone)
                 .unlockedBy(criteriaName, criterion);
     }
+
     private ShapedRecipeBuilder addStickCriterion(ShapedRecipeBuilder builder) {
         return builder
                 .define('a', ancientstone)
                 .define('s', Items.STICK)
                 .unlockedBy(criteriaName, criterion);
     }
+
     private ShapedRecipeBuilder addBookCriterion(ShapedRecipeBuilder builder) {
         return builder
                 .define('a', ancientstone)
                 .define('b', Items.BOOK)
                 .unlockedBy(criteriaName, criterion);
     }
+
     private ShapedRecipeBuilder bookshelf(ItemLike provider) {
         return shaped(provider)
                 .pattern("aaa")
@@ -170,33 +179,37 @@ public class ShapedAncientStones {
     }
 
     private ShapedRecipeBuilder fence(ItemLike provider) {
-        return shaped(provider,3)
+        return shaped(provider, 3)
                 .pattern("   ")
                 .pattern("asa")
                 .pattern("asa");
 
     }
+
     private ShapedRecipeBuilder trapdoor(ItemLike provider) {
-        return shaped(provider,2)
+        return shaped(provider, 2)
                 .pattern("   ")
                 .pattern("aaa")
                 .pattern("aaa");
 
     }
+
     private ShapedRecipeBuilder door(ItemLike provider) {
-        return shaped(provider,3)
+        return shaped(provider, 3)
                 .pattern("aa ")
                 .pattern("aa ")
                 .pattern("aa ");
 
     }
+
     private ShapedRecipeBuilder brick(ItemLike provider) {
-        return shaped(provider,4)
+        return shaped(provider, 4)
                 .pattern("   ")
                 .pattern("aa ")
                 .pattern("aa ");
 
     }
+
     private ShapedRecipeBuilder fencegate(ItemLike provider) {
         return shaped(provider)
                 .pattern("   ")
@@ -204,22 +217,24 @@ public class ShapedAncientStones {
                 .pattern("sas");
 
     }
+
     private ShapedRecipeBuilder stairs(ItemLike provider) {
-        return shaped(provider,4)
+        return shaped(provider, 4)
                 .pattern("a  ")
                 .pattern("aa ")
                 .pattern("aaa");
     }
 
     private ShapedRecipeBuilder wall(ItemLike provider) {
-        return shaped(provider,6)
+        return shaped(provider, 6)
                 .pattern("   ")
                 .pattern("aaa")
                 .pattern("aaa");
 
     }
+
     private ShapedRecipeBuilder slab(ItemLike provider) {
-        return shaped(provider,6)
+        return shaped(provider, 6)
                 .pattern("   ")
                 .pattern("   ")
                 .pattern("aaa");

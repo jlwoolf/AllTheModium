@@ -14,20 +14,18 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 
 public class SoulBucket extends BucketItem {
-	
-	
 
-	public SoulBucket(Supplier<? extends Fluid> supplier, Properties builder) {
-		super(supplier, builder);
-	}
+    public SoulBucket(Supplier<? extends Fluid> supplier, Properties builder) {
+        super(supplier, builder);
+    }
 
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return new FluidBucketWrapper(stack);
     }
 
-	@Override
-	public int getBurnTime(ItemStack itemStack, RecipeType<?> provider) {
-		return 100000;
-	}
+    @Override
+    public int getBurnTime(ItemStack itemStack, RecipeType<?> provider) {
+        return 100000;
+    }
 }

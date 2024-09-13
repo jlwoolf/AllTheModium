@@ -9,8 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class ATMBrushableBlock extends BrushableBlock
-{
+public class ATMBrushableBlock extends BrushableBlock {
     public ATMBrushableBlock(Block block, Properties properties, SoundEvent soundBrush, SoundEvent soundCompleted) {
         super(block, properties, soundBrush, soundCompleted);
     }

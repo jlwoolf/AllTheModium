@@ -11,9 +11,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 public enum ATMResource implements IResource {
-    ATM("allthemodium", 16772878, TagRegistry.ALLTHEMODIUM_ORE_ITEM),
-    VIB("vibranium",	2547336,TagRegistry.VIBRANIUM_ORE_ITEM),
-    UNOB("unobtainium",	13718243,TagRegistry.UNOBTAINIUM_ORE_ITEM);
+    ATM("allthemodium", 16772878, TagRegistry.ALLTHEMODIUM_ORE_ITEM), VIB("vibranium", 2547336,
+            TagRegistry.VIBRANIUM_ORE_ITEM), UNOB("unobtainium", 13718243, TagRegistry.UNOBTAINIUM_ORE_ITEM);
 
     private final String name;
     private final int tint;
@@ -24,9 +23,11 @@ public enum ATMResource implements IResource {
     private final BlockResourceInfo rawResourceBlockInfo;
 
     ATMResource(String name, int colour, TagKey<Item> oreTag) {
-        this(name, colour, () -> oreTag,true, null,null);
+        this(name, colour, () -> oreTag, true, null, null);
     }
-    ATMResource(String name, int tint, Supplier<TagKey<Item>> oreTag, boolean isVanilla, BlockResourceInfo resourceBlockInfo, BlockResourceInfo rawResourceBlockInfo) {
+
+    ATMResource(String name, int tint, Supplier<TagKey<Item>> oreTag, boolean isVanilla,
+            BlockResourceInfo resourceBlockInfo, BlockResourceInfo rawResourceBlockInfo) {
         this.name = name;
         this.tint = tint;
         this.oreTag = oreTag;

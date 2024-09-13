@@ -25,31 +25,33 @@ import java.util.function.Consumer;
 
 public class Allthemodium_Helmet extends ArmorItem {
 
-	public Allthemodium_Helmet(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-		super(materialIn, Type.HELMET, builder);
-		
-	}
+    public Allthemodium_Helmet(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
+        super(materialIn, Type.HELMET, builder);
 
-
+    }
 
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return true;
     }
+
     @Override
     public boolean canBeDepleted() {
         return false;
     }
+
     @Override
-    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
-    {
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
         return true;
     }
+
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
-        if((stack.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get()) || (stack.getItem() == ModRegistry.VIBRANIUM_HELMET.get()) || (stack.getItem() == ModRegistry.UNOBTAINIUM_HELMET.get()) && (!world.isClientSide)) {
+        if ((stack.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get())
+                || (stack.getItem() == ModRegistry.VIBRANIUM_HELMET.get())
+                || (stack.getItem() == ModRegistry.UNOBTAINIUM_HELMET.get()) && (!world.isClientSide)) {
 
-            if(player.isInWater() && player.isSwimming()){
+            if (player.isInWater() && player.isSwimming()) {
 
                 player.setAirSupply(300);
             }

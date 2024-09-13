@@ -12,8 +12,10 @@ public class ATMShulkerRenderer extends MobRenderer<ATMShulkerEntity, ATMShulker
     public ATMShulkerRenderer(EntityRendererProvider.Context context) {
         super(context, new ATMShulkerModel<>(context.bakeLayer(ATMShulkerModel.LAYER_LOCATION), true), 0.5F);
     }
+
     @Override
-    public void render(ATMShulkerEntity p_114485_, float p_114486_, float p_114487_, PoseStack p_114488_, MultiBufferSource p_114489_, int p_114490_) {
+    public void render(ATMShulkerEntity p_114485_, float p_114486_, float p_114487_, PoseStack p_114488_,
+            MultiBufferSource p_114489_, int p_114490_) {
         super.render(p_114485_, p_114486_, p_114487_, p_114488_, p_114489_, p_114490_);
     }
 

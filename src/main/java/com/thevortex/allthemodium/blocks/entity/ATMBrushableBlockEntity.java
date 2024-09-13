@@ -6,8 +6,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ATMBrushableBlockEntity extends BrushableBlockEntity
-{
+public class ATMBrushableBlockEntity extends BrushableBlockEntity {
     public ATMBrushableBlockEntity(BlockPos pos, BlockState state) {
         super(pos, state);
     }

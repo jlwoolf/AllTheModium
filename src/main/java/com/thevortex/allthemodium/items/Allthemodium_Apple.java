@@ -17,26 +17,28 @@ import java.util.List;
 
 public class Allthemodium_Apple extends Item {
 
-	public Allthemodium_Apple(Properties properties) {
-		super(properties);
-		
-	}
-	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
-	
-		if((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ALLTHEMODIUM_APPLE.get())) {
-			Player player = (Player)entityLiving;
-			player.addEffect(new MobEffectInstance(MobEffects.REGENERATION,600,1,false,false));
-			player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,600,1,false,false));
+    public Allthemodium_Apple(Properties properties) {
+        super(properties);
 
-		}
-	return super.finishUsingItem(stack, worldIn, entityLiving);
-	}
-	@OnlyIn(Dist.CLIENT)
-	@Override
-	public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-	;
-		super.appendHoverText(stack, worldIn, tooltip, flagIn);
-	}
+    }
+
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
+
+        if ((entityLiving instanceof Player) && (stack.getItem() == ModRegistry.ALLTHEMODIUM_APPLE.get())) {
+            Player player = (Player) entityLiving;
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 1, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 1, false, false));
+
+        }
+        return super.finishUsingItem(stack, worldIn, entityLiving);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        ;
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+    }
 
 }

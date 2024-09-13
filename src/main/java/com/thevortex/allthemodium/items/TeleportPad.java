@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.items;
 
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -22,9 +21,4 @@ public class TeleportPad extends BlockItem {
         super(blockIn, builder);
     }
 
-
 }
-
-
-
-

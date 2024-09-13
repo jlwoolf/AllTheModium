@@ -7,4 +7,3 @@ public class AncientLog extends RotatedPillarBlock {
         super(prop);
     }
 }
-

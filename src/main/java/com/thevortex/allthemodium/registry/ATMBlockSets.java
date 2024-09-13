@@ -13,5 +13,4 @@ public class ATMBlockSets {
     public static WoodType DEMONICWOOD = WoodType.register(new WoodType("demonic", DEMONIC));
     public static WoodType SOULWOOD = WoodType.register(new WoodType("soul", SOUL));
 
-
 }

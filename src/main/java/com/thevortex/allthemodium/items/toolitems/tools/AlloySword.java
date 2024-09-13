@@ -17,20 +17,23 @@ public class AlloySword extends SwordItem {
     public AlloySword(Tier tier, int damage, float speed, Properties properties) {
         super(tier, damage, speed, properties);
     }
+
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return true;
     }
+
     @Override
     public boolean canBeDepleted() {
         return false;
     }
+
     @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        tooltip.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object())
+                .withStyle(ChatFormatting.GOLD));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-
 
 }

@@ -12,11 +12,8 @@ import java.util.List;
 
 public class VAAlloy_Block extends Block {
 
-	public VAAlloy_Block() {
-	super(Properties.of().sound(SoundType.STONE).strength(7.0f));
-	}
-
-
-
+    public VAAlloy_Block() {
+        super(Properties.of().sound(SoundType.STONE).strength(7.0f));
+    }
 
 }
