@@ -56,7 +56,8 @@ public class SoulLava extends LiquidBlock {
     }
 
     @Override
-    public void randomTick(@Nonnull BlockState state, @Nonnull ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
+    public void randomTick(@Nonnull BlockState state, @Nonnull ServerLevel level, @Nonnull BlockPos pos,
+            @Nonnull RandomSource random) {
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
             int i = random.nextInt(10);
             if (i > 0) {
@@ -97,7 +98,8 @@ public class SoulLava extends LiquidBlock {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void animateTick(@Nonnull BlockState stateIn, @Nonnull Level worldIn, @Nonnull BlockPos pos, @Nonnull RandomSource rand) {
+    public void animateTick(@Nonnull BlockState stateIn, @Nonnull Level worldIn, @Nonnull BlockPos pos,
+            @Nonnull RandomSource rand) {
         this.tickCount++;
 
         if (stateIn.is(BlockRegistry.SOULLAVA_BLOCK.get()) && this.tickCount >= 40) {

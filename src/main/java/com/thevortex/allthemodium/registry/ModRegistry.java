@@ -603,7 +603,7 @@ public class ModRegistry {
             () -> new BlockItem(BlockRegistry.SUS_CLAY.get(), new Item.Properties()));
     public static final RegistryObject<Item> SUS_SOUL_SAND_ITEM = ITEMS.register("suspicious_soul_sand",
             () -> new BlockItem(BlockRegistry.SUS_SOUL_SAND.get(), new Item.Properties()));
-            
+
     @SuppressWarnings("null")
     public static final RegistryObject<BlockEntityType<ATMBrushableBlockEntity>> BRUSHABLE_BLOCK = ENTITY
             .register("brushable_block", () -> BlockEntityType.Builder.of(ATMBrushableBlockEntity::new,

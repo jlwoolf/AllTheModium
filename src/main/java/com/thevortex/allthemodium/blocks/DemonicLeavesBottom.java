@@ -39,7 +39,8 @@ public class DemonicLeavesBottom extends LeavesBlock {
 
     }
 
-    public VoxelShape getBlockSupportShape(@Nonnull BlockState p_54456_, @Nonnull BlockGetter p_54457_, @Nonnull BlockPos p_54458_) {
+    public VoxelShape getBlockSupportShape(@Nonnull BlockState p_54456_, @Nonnull BlockGetter p_54457_,
+            @Nonnull BlockPos p_54458_) {
         return Shapes.empty();
     }
 
@@ -73,7 +74,8 @@ public class DemonicLeavesBottom extends LeavesBlock {
         return 1;
     }
 
-    public BlockState updateShape(@Nonnull BlockState p_54440_, @Nonnull Direction p_54441_, @Nonnull BlockState p_54442_, @Nonnull LevelAccessor p_54443_,
+    public BlockState updateShape(@Nonnull BlockState p_54440_, @Nonnull Direction p_54441_,
+            @Nonnull BlockState p_54442_, @Nonnull LevelAccessor p_54443_,
             @Nonnull BlockPos p_54444_, @Nonnull BlockPos p_54445_) {
         int i = getDistanceAt(p_54442_) + 1;
         if (i != 1 || p_54440_.getValue(DISTANCE) != i) {
