@@ -36,15 +36,15 @@ import software.bernie.geckolib.GeckoLib;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AllTheModium {
 
-    public static final ResourceKey<Level> OverWorld = Level.OVERWORLD;
-    public static final ResourceKey<Level> Nether = Level.NETHER;
-    public static final ResourceKey<Level> The_End = Level.END;
+    public static final ResourceKey<Level> OVERWORLD = Level.OVERWORLD;
+    public static final ResourceKey<Level> THE_NETHER = Level.NETHER;
+    public static final ResourceKey<Level> THE_END = Level.END;
+
     public static final ResourceLocation MINING_DIM_ID = new ResourceLocation(MOD_ID, "mining");
     public static final ResourceLocation THE_OTHER_DIM_ID = new ResourceLocation(MOD_ID, "the_other");
-
     public static final ResourceLocation THE_BEYOND_DIM_ID = new ResourceLocation(MOD_ID, "the_beyond");
 
-    public static final ResourceKey<DimensionType> Mining_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
+    public static final ResourceKey<DimensionType> MINING_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             MINING_DIM_ID);
     public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             THE_OTHER_DIM_ID);

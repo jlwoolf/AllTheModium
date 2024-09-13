@@ -71,7 +71,7 @@ public class TeleportPad extends Block {
     public void transferPlayer(ServerPlayer player, BlockPos pos) {
         int config = TweakProxy.packMode();
         if (player.level().dimension().equals(LevelRegistry.Mining)) {
-            ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
+            ServerLevel targetWorld = player.server.getLevel(AllTheModium.OVERWORLD);
 
             if (targetWorld == null)
                 return;
@@ -107,7 +107,7 @@ public class TeleportPad extends Block {
                         player.yya);
             }
 
-        } else if (player.level().dimension().equals(AllTheModium.Nether)) {
+        } else if (player.level().dimension().equals(AllTheModium.THE_NETHER)) {
             ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_OTHER);
 
             if (targetWorld == null)
@@ -127,7 +127,7 @@ public class TeleportPad extends Block {
 
             }
         } else if (player.level().dimension().equals(LevelRegistry.THE_OTHER)) {
-            ServerLevel targetWorld = player.server.getLevel(AllTheModium.Nether);
+            ServerLevel targetWorld = player.server.getLevel(AllTheModium.THE_NETHER);
 
             if (targetWorld == null)
                 return;
@@ -165,7 +165,7 @@ public class TeleportPad extends Block {
                         player.yya);
 
             }
-        } else if (player.level().dimension().equals(AllTheModium.The_End)) {
+        } else if (player.level().dimension().equals(AllTheModium.THE_END)) {
             ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_BEYOND);
 
             if (targetWorld == null)
@@ -189,7 +189,7 @@ public class TeleportPad extends Block {
 
             }
         } else if (player.level().dimension().equals(LevelRegistry.THE_BEYOND)) {
-            ServerLevel targetWorld = player.server.getLevel(AllTheModium.The_End);
+            ServerLevel targetWorld = player.server.getLevel(AllTheModium.THE_END);
 
             if (targetWorld == null)
                 return;
@@ -227,7 +227,7 @@ public class TeleportPad extends Block {
                         player.yya);
 
             }
-        } else if (player.level().dimension().equals(AllTheModium.OverWorld) && (config != 5)) {
+        } else if (player.level().dimension().equals(AllTheModium.OVERWORLD) && (config != 5)) {
             ServerLevel targetWorld = player.server.getLevel(LevelRegistry.Mining);
 
             if (targetWorld == null)
