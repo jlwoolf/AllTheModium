@@ -2,7 +2,7 @@
   "feature": "allthemodium:allthemodium_ore",
   "placement": [
     {
-      "count": 12,
+      "count": 6,
       "type": "minecraft:count"
     },
     {
