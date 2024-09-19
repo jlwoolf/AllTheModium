@@ -9,7 +9,7 @@
         },
         {
             "type": "text",
-            "text": "テレポートパッドは、$(l:dimensions/miningdim)採掘ディメンション$(/c)や$(l:dimensions/otherdim)ジ・アザー$(/c)にテレポートするために使用します。両手が空の状態でShiftを押しながら右クリックすることでテレポートできます。$(br2)注意：$(l:dimensions/miningdim)採掘ディメンション$(/c)は、ATM6: To The Skyでは無効化されています。"
+            "text": "テレポートパッドは、$(l:dimensions/miningdim)採掘ディメンション$(/c)や$(l:dimensions/otherdim)アザー$(/c)にテレポートするために使用します。両手が空の状態でShiftを押しながら右クリックすることでテレポートできます。$(br2)注意：$(l:dimensions/miningdim)採掘ディメンション$(/c)は、ATM6: To The Skyでは無効化されています。"
         }
     ]
 }
