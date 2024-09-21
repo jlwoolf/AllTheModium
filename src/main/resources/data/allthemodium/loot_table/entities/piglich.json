@@ -2,32 +2,22 @@
   "type": "minecraft:entity",
   "pools": [
     {
-      "rolls": 1,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 1,
           "functions": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 0.0,
-                "max": 1.0,
-                "type": "minecraft:uniform"
-              }
-            },
-            {
-              "function": "minecraft:looting_enchant",
-              "count": {
-                "min": 0.0,
-                "max": 1.0
-              }
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
             }
           ],
           "name": "allthemodium:piglich_heart"
         }
-       
-      ]
+      ],
+      "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "allthemodium:entities/piglich"
 }

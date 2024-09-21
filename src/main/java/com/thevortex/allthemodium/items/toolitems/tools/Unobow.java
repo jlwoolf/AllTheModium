@@ -7,6 +7,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
+import java.util.function.Predicate;
+
 public class Unobow extends CrossbowItem{
 
     public Unobow(Properties p_40850_) {
@@ -21,6 +23,15 @@ public class Unobow extends CrossbowItem{
     @Override
         public int getEnchantmentValue() {
         return 145;
+    }
+    @Override
+    public Predicate<ItemStack> getSupportedHeldProjectiles() {
+        return ARROW_OR_FIREWORK;
+    }
+
+    @Override
+    public Predicate<ItemStack> getAllSupportedProjectiles() {
+        return ARROW_ONLY;
     }
 
 }

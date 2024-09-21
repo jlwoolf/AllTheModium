@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.piglin.Piglin;
+import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.ItemStack;
@@ -31,14 +33,21 @@ import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.Animation.LoopType;
+import software.bernie.geckolib.animation.RawAnimation.Stage;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
+
+import javax.annotation.Nullable;
 
 
 public class PiglichEntity extends Piglin implements GeoEntity {
+    private final List<Stage> animationStages = new ArrayList<>();
     private final SimpleContainer inventory = new SimpleContainer(8);
-    private static final RawAnimation ANIMATION = RawAnimation.begin().thenPlay("walk.piglich.nik").thenPlay("summon.piglich.nik").thenPlay("meleeattack.piglich.nik");
+    private static final RawAnimation ANIMATION = RawAnimation.begin().then("walk.piglich.nik", LoopType.DEFAULT).then("summon.piglich.nik", LoopType.DEFAULT).then("meleeattack.piglich.nik", LoopType.DEFAULT);
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
     private final Level level;
 
@@ -61,6 +70,11 @@ public class PiglichEntity extends Piglin implements GeoEntity {
 
 
     
+    @Nullable
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor p_34717_, DifficultyInstance p_34718_, MobSpawnType p_34719_, @Nullable SpawnGroupData p_34720_) {
+            return p_34720_;
+    }
 
     @Override
         protected void registerGoals() {

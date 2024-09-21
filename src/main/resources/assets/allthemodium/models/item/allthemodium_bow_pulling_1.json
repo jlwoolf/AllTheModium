@@ -1,0 +1,6 @@
+{
+    "parent": "allthemodium:item/allthemodium_bow",
+    "textures": {
+        "layer0": "allthemodium:item/allthemodium_bow_pulling_1"
+    }
+}
