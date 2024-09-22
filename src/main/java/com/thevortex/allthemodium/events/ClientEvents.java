@@ -7,13 +7,17 @@ import com.thevortex.allthemodium.entity.TridentRenderSetup;
 import com.thevortex.allthemodium.entity.alloy_trident;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
 import com.thevortex.allthemodium.items.toolitems.tools.ATMBow;
+import com.thevortex.allthemodium.items.toolitems.tools.Unobow;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BrushableBlockRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.component.ChargedProjectiles;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -57,7 +61,7 @@ public class ClientEvents {
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES_.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get(), RenderType.cutoutMipped());
 
-        ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "pull"), (itemStack, clientWorld, livingEntity, i) -> {
+        ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
         
@@ -65,8 +69,27 @@ public class ClientEvents {
                   return (livingEntity.getUseItem() != itemStack) ? 0.0F :(float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks());  
             }
         });
-        ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "pulling"), (itemStack, clientWorld, livingEntity, i) -> {
+        ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
             return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem().is(ModRegistry.ATM_BOW.get()) ? 1.0F : 0.0F;
+        });
+
+        ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
+            if (livingEntity == null) {
+                return 0.0F;
+        
+            } else {
+                  return Unobow.isCharged(itemStack) ? 0.0F :(float)((itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks())/Unobow.getChargeDuration(itemStack, livingEntity));  
+            }
+        });
+        ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
+            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem().is(ModRegistry.UNO_BOW.get()) && !Unobow.isCharged(itemStack) ? 1.0F : 0.0F;
+        });
+        ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("charged"), (itemStack, clientWorld, livingEntity, i) -> {
+            return Unobow.isCharged(itemStack) ? 1.0F : 0.0F;
+        });
+        ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("firework"), (itemStack, clientWorld, livingEntity, i) -> {
+            ChargedProjectiles chargedprojectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
+            return chargedprojectiles != null && Unobow.isCharged(itemStack) ? 1.0F : 0.0F;
         });
     }
     @SubscribeEvent
