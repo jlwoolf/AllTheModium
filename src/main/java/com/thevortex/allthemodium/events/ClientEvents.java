@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ChargedProjectiles;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -66,7 +67,7 @@ public class ClientEvents {
                 return 0.0F;
         
             } else {
-                  return (livingEntity.getUseItem() != itemStack) ? 0.0F :(float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks());  
+                  return (livingEntity.getUseItem() != itemStack) ? 0.0F :(float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks())/20.0F;  
             }
         });
         ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
@@ -78,7 +79,7 @@ public class ClientEvents {
                 return 0.0F;
         
             } else {
-                  return Unobow.isCharged(itemStack) ? 0.0F :(float)((itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks())/Unobow.getChargeDuration(itemStack, livingEntity));  
+                  return Unobow.isCharged(itemStack) ? 0.0F : (float)((itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks())/Unobow.getChargeDuration(itemStack, livingEntity))/20.0F;  
             }
         });
         ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
@@ -89,7 +90,7 @@ public class ClientEvents {
         });
         ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("firework"), (itemStack, clientWorld, livingEntity, i) -> {
             ChargedProjectiles chargedprojectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
-            return chargedprojectiles != null && Unobow.isCharged(itemStack) ? 1.0F : 0.0F;
+            return chargedprojectiles != null && Unobow.isCharged(itemStack) && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
         });
     }
     @SubscribeEvent

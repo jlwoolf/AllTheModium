@@ -16,7 +16,7 @@ public class ATMBow extends BowItem {
     
     @Override
         public int getUseDuration(ItemStack p_40680_, LivingEntity p_345962_) {
-        return 72000;
+        return 36000;
     }
 
     @Override
