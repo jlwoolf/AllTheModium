@@ -1,5 +1,5 @@
 {
-    "parent": "allthemodium:item/allthemodium_bow",
+    "parent": "item/bow",
     "textures": {
         "layer0": "allthemodium:item/allthemodium_bow_pulling_0"
     }
