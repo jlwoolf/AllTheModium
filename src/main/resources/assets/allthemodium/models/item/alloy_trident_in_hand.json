@@ -46,7 +46,7 @@
             "predicate": {
                 "throwing": 1
             },
-            "model": "item/alloy_trident_throwing"
+            "model": "allthemodium:item/alloy_trident_throwing"
         }
     ]
 }

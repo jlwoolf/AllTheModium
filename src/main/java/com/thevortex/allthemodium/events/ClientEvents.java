@@ -92,6 +92,14 @@ public class ClientEvents {
             ChargedProjectiles chargedprojectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
             return chargedprojectiles != null && Unobow.isCharged(itemStack) && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
         });
+        ItemProperties.register(ModRegistry.ALLOY_TRIDENT.get(), ResourceLocation.withDefaultNamespace("throwing"), (itemStack, clientWorld, livingEntity, i) -> {
+            if (livingEntity == null) {
+                return 0.0F;
+        
+            } else {
+                  return (livingEntity.isUsingItem() && livingEntity.getUseItem().is(ModRegistry.ALLOY_TRIDENT.get())) ? 1.0F : 0.0F;
+            }
+        });
     }
     @SubscribeEvent
     public static void registerMesh(EntityRenderersEvent.AddLayers event) {

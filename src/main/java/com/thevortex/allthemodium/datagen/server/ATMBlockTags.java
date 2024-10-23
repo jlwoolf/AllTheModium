@@ -333,6 +333,8 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.GOLD_BLOCK);
 
         tag(TagRegistry.OTHER_PROTECTION).addTag(TagRegistry.BLOCK_ORES);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SPAWNER);
+        
 
     }
 

@@ -5,10 +5,10 @@
     "minVersion": "0.8",
     "refmap": "allthemodium.refmap.json",
     "mixins": [
-  
+      "MixinAxeItem"
     ],
     "client": [
-      "MixinItemRenderer"
+
     ],
     "injectors": {
       "defaultRequire": 1

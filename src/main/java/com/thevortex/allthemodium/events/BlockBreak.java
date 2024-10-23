@@ -37,6 +37,10 @@ public class BlockBreak {
 	public static void on(BlockEvent.BreakEvent event) {
 		if(event.getPlayer().isCreative()) { return; }
 
+		if((event.getPlayer() instanceof FakePlayer) && (event.getState().is(TagRegistry.OTHER_PROTECTION)) && (event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES))) {
+			event.setCanceled(true);
+			return;
+		}
 		
 		if((event.getState().is(TagRegistry.ALLTHEMODIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
 			

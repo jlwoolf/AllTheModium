@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.registry;
 
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
@@ -17,13 +18,14 @@ import java.util.Set;
 
 public class TagRegistry {
 
+    public static final TagKey<Biome> OTHER_BIOMES = TagKey.create(Registries.BIOME,ResourceLocation.fromNamespaceAndPath("allthemodium","mining_features/other_features"));
     public static final TagKey<Block> ALLTHEMODIUM_ORE = BlockTags.create(Reference.ore("allthemodium"));
     public static final TagKey<Block> VIBRANIUM_ORE = BlockTags.create(Reference.ore("vibranium"));
     public static final TagKey<Block> UNOBTAINIUM_ORE = BlockTags.create(Reference.ore("unobtainium"));
 
     public static final TagKey<Block> OTHER_PROTECTION = BlockTags.create(Reference.atm("blocks/blocklist"));
 
-
+ 
     
     public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
     public static final TagKey<Block> INCORRECT_FOR_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("incorrect_for_allthemodium_tool"));

@@ -147,6 +147,7 @@
     "minecraft:amethyst_block",
     "minecraft:amethyst_cluster",
     "minecraft:gold_block",
-    "#c:ores"
+    "#c:ores",
+    "minecraft:spawner"
   ]
 }
