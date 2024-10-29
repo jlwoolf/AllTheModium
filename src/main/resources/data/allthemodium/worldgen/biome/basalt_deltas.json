@@ -51,12 +51,6 @@
         "maxCount": 2
       },
       {
-        "type": "thermal:basalz",
-        "weight": 100,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:wither_skeleton",
         "weight": 140,
         "minCount": 1,

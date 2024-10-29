@@ -51,12 +51,6 @@
         "maxCount": 4
       },
       {
-        "type": "thermal:blitz",
-        "weight": 100,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:zombie",
         "weight": 19,
         "minCount": 4,

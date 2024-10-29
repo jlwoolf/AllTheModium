@@ -78,12 +78,6 @@
     ],
     "creature": [
 
-      {
-        "type": "iceandfire:ghost",
-        "weight": 240,
-        "minCount": 1,
-        "maxCount": 2
-      }
     ],
     "ambient": [],
     "water_creature": [],
