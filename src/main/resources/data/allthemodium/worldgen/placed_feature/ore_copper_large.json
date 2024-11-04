@@ -2,7 +2,7 @@
   "feature": "minecraft:ore_copper_large",
   "placement": [
     {
-      "count": 16,
+      "count": 12,
       "type": "minecraft:count"
     },
     {

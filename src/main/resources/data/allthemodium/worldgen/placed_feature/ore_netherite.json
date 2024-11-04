@@ -2,7 +2,7 @@
   "feature": "allthemodium:ore_netherite",
   "placement": [
     {
-      "count": 4,
+      "count": 8,
       "type": "minecraft:count"
     },
     {
