@@ -25,7 +25,10 @@ public class TagRegistry {
 
     public static final TagKey<Block> OTHER_PROTECTION = BlockTags.create(Reference.atm("blocks/blocklist"));
 
- 
+    public static final TagKey<Item> ATM_CHESTPLATES = ItemTags.create(Reference.atm("chestplates"));
+    public static final TagKey<Item> ATM_HELMETS = ItemTags.create(Reference.atm("helmets"));
+    public static final TagKey<Item> ATM_LEGGINGS = ItemTags.create(Reference.atm("leggings"));
+    public static final TagKey<Item> ATM_BOOTS = ItemTags.create(Reference.atm("boots"));
     
     public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
     public static final TagKey<Block> INCORRECT_FOR_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("incorrect_for_allthemodium_tool"));

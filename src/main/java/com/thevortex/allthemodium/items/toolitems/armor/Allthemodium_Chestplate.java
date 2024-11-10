@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.items.toolitems.armor;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
@@ -13,6 +14,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
+
 
 public class Allthemodium_Chestplate extends ArmorItem {
 
@@ -23,6 +27,15 @@ public class Allthemodium_Chestplate extends ArmorItem {
 
 	}
     
+    @Override
+    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+        if((entity instanceof LivingEntity) && (entity.isOnFire()) && stack.is(TagRegistry.ATM_CHESTPLATES)){
+            entity.clearFire();
+        }
+        
+    }
+
+
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return true;

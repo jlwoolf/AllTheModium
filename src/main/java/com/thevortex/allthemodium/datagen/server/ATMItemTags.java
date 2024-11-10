@@ -28,6 +28,24 @@ public class ATMItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        
+        tag(TagRegistry.ATM_CHESTPLATES).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(TagRegistry.ATM_CHESTPLATES).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
+        tag(TagRegistry.ATM_CHESTPLATES).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
+
+        tag(TagRegistry.ATM_HELMETS).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
+        tag(TagRegistry.ATM_HELMETS).add(ModRegistry.VIBRANIUM_HELMET.get());
+        tag(TagRegistry.ATM_HELMETS).add(ModRegistry.UNOBTAINIUM_HELMET.get());
+
+        tag(TagRegistry.ATM_LEGGINGS).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(TagRegistry.ATM_LEGGINGS).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
+        tag(TagRegistry.ATM_LEGGINGS).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
+
+        tag(TagRegistry.ATM_BOOTS).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+        tag(TagRegistry.ATM_BOOTS).add(ModRegistry.VIBRANIUM_BOOTS.get());
+        tag(TagRegistry.ATM_BOOTS).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
+        
+
         tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
         tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
         tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());

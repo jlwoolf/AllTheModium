@@ -29,6 +29,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.launch.MixinBootstrap;
 
+import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
 import com.thevortex.allthemodium.mixins.MixinConnector;
 
@@ -110,6 +111,7 @@ public class AllTheModium
 		//MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, PVStructure::setupStructureSpawns);
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(BlockBreak.class);
+		NeoForge.EVENT_BUS.register(ArmorEvents.class);
 		setupLogFilter();
 	}
 

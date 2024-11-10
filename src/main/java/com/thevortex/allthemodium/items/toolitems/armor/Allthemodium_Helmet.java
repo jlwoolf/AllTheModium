@@ -1,11 +1,17 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
 
+import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
+
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 
@@ -16,7 +22,16 @@ public class Allthemodium_Helmet extends ArmorItem {
 		
 	}
 
-
+    @Override
+    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+        if((entity instanceof LivingEntity) && (entity.isInWater()) && stack.is(TagRegistry.ATM_HELMETS)){
+            entity.setAirSupply(300);
+        }
+        if((entity instanceof LivingEntity) && ((LivingEntity)entity).hasEffect(MobEffects.DARKNESS) && (stack.is(TagRegistry.ATM_HELMETS))){
+            ((LivingEntity)entity).removeEffect(MobEffects.DARKNESS);
+        }
+        
+    }
 
     @Override
     public boolean isEnchantable(ItemStack stack) {

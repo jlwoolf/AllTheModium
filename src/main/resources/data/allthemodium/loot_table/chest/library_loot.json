@@ -216,11 +216,6 @@
             }
           ],
           "weight": 5
-        },
-        {
-          "type": "item",
-          "name": "allthemodium:unobtainium_upgrade_smithing_template",
-          "weight": 1
         }
       ]
     }
