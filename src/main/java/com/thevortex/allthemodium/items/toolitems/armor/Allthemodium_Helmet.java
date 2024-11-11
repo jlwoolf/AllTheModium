@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
 
+import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
 
@@ -24,10 +25,11 @@ public class Allthemodium_Helmet extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-        if((entity instanceof LivingEntity) && (entity.isInWater()) && stack.is(TagRegistry.ATM_HELMETS)){
+        if((entity instanceof LivingEntity) && (entity.isInWater()) && stack.is(TagRegistry.ATM_HELMETS) && (slot == 39)){
             entity.setAirSupply(300);
+            
         }
-        if((entity instanceof LivingEntity) && ((LivingEntity)entity).hasEffect(MobEffects.DARKNESS) && (stack.is(TagRegistry.ATM_HELMETS))){
+        if((entity instanceof LivingEntity) && ((LivingEntity)entity).hasEffect(MobEffects.DARKNESS) && (stack.is(TagRegistry.ATM_HELMETS)) && (slot == 39)){
             ((LivingEntity)entity).removeEffect(MobEffects.DARKNESS);
         }
         

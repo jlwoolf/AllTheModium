@@ -14,6 +14,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
+import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
 
@@ -29,8 +30,9 @@ public class Allthemodium_Chestplate extends ArmorItem {
     
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-        if((entity instanceof LivingEntity) && (entity.isOnFire()) && stack.is(TagRegistry.ATM_CHESTPLATES)){
+        if((entity instanceof LivingEntity) && (entity.isOnFire()) && stack.is(TagRegistry.ATM_CHESTPLATES)&& (slot == 38)){
             entity.clearFire();
+       
         }
         
     }

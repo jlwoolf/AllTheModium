@@ -11,11 +11,14 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
+import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.registry.TagRegistry;
 
 
@@ -28,12 +31,13 @@ public class Allthemodium_Leggings extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-        if((entity instanceof LivingEntity) && (((LivingEntity)entity).hasEffect(MobEffects.WITHER)) && stack.is(TagRegistry.ATM_LEGGINGS)){
+        if((entity instanceof LivingEntity) && (((LivingEntity)entity).hasEffect(MobEffects.WITHER)) && stack.is(TagRegistry.ATM_LEGGINGS)&& (slot == 37)){
             ((LivingEntity)entity).removeEffect(MobEffects.WITHER);
         }
-        if((entity instanceof LivingEntity) && (entity.isInWater()) && stack.is(TagRegistry.ATM_LEGGINGS)){
+        if((entity instanceof LivingEntity) && (entity.isInWater()) && stack.is(TagRegistry.ATM_LEGGINGS)&& (slot == 37)){
             ((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 100, 0));
         }
+        
     }
    
     @Override
