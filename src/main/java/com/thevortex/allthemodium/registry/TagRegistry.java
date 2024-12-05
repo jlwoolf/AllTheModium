@@ -151,10 +151,10 @@ public class TagRegistry {
     public static final TagKey<Item> RAW_VIBRANIUM = ItemTags.create(Reference.material("vibranium"));
     public static final TagKey<Item> RAW_UNOBTAINIUM = ItemTags.create(Reference.material("unobtainium"));
 
-    public static final TagKey<Item> DIRTYDUST = ItemTags.create(Reference.mek("dirty_dusts"));
-    public static final TagKey<Item> CRYSTAL = ItemTags.create(Reference.mek("crystals"));
-    public static final TagKey<Item> CLUMP = ItemTags.create(Reference.mek("clumps"));
-    public static final TagKey<Item> SHARD = ItemTags.create(Reference.mek("shards"));
+    public static final TagKey<Item> DIRTYDUST = ItemTags.create(Reference.forge("dirty_dusts"));
+    public static final TagKey<Item> CRYSTAL = ItemTags.create(Reference.forge("crystals"));
+    public static final TagKey<Item> CLUMP = ItemTags.create(Reference.forge("clumps"));
+    public static final TagKey<Item> SHARD = ItemTags.create(Reference.forge("shards"));
 
 
     public static final TagKey<Item> ALLTHEMODIUM_DIRTYDUST = ItemTags.create(Reference.dirty("allthemodium"));

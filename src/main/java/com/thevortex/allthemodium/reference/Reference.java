@@ -38,16 +38,16 @@ public class Reference {
 		return forge("dusts/" + path);
 	}
 	public static ResourceLocation dirty(String path) {
-		return mek("dirty_dusts/" + path);
+		return forge("dirty_dusts/" + path);
 	}
 	public static ResourceLocation shard(String path) {
-		return mek("shards/" + path);
+		return forge("shards/" + path);
 	}
 	public static ResourceLocation clump(String path) {
-		return mek("clumps/" + path);
+		return forge("clumps/" + path);
 	}
 	public static ResourceLocation crystal(String path) {
-		return mek("crystals/" + path);
+		return forge("crystals/" + path);
 	}
 	public static ResourceLocation nugget(String path) {
 		return forge("nuggets/" + path);
