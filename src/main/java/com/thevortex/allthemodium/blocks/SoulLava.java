@@ -43,6 +43,12 @@ public class SoulLava extends LiquidBlock {
 	}
 
 	@Override
+	public void entityInside(@NotNull BlockState state, @NotNull Level world, @NotNull BlockPos position, @NotNull Entity entity) {
+		super.entityInside(state, world, position, entity);
+		entity.setRemainingFireTicks(400);
+	}
+
+	@Override
 	public boolean isBurning(BlockState state, BlockGetter world, BlockPos pos) {
 		return true;
 	}
