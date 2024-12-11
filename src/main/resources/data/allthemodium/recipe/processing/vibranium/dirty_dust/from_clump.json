@@ -2,7 +2,7 @@
   "type": "mekanism:crushing",
   "input": {
     "count": 1,
-      "item": "allthemodium:vibranium_clump"
+    "tag": "c:clumps/vibranium"
   
   },
   "output": {

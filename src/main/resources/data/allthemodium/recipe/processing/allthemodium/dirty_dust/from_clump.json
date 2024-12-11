@@ -2,7 +2,7 @@
   "type": "mekanism:crushing",
   "input": {
     "count": 1,
-      "item": "allthemodium:allthemodium_clump"
+    "tag": "c:clumps/allthemodium"
   
   },
   "output": {

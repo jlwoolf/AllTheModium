@@ -2,8 +2,7 @@
   "type": "mekanism:injecting",
   "item_input": {
     "count": 1,
-      "item": "allthemodium:allthemodium_crystal"
-  
+    "tag": "c:crystals/allthemodium"
   },
   "chemical_input": {
     "amount": 1,
