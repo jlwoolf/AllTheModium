@@ -2,7 +2,7 @@
   "type": "mekanism:enriching",
   "input": {
     "count":1,
-      "item": "allthemodium:dirty_vibranium_dust"
+    "tag": "c:dirty_dusts/vibranium"
     
   },
   "output": {

@@ -2,7 +2,7 @@
   "type": "mekanism:purifying",
   "item_input": {
     "count": 1,
-    "tag": "mekanism:shards/vibranium"
+    "tag": "c:shards/vibranium"
   },
   "chemical_input": {
     "amount": 1,
