@@ -104,7 +104,9 @@ dependencies {
     
     implementation "curse.maven:${mekanism}"
     implementation "curse.maven:${ato}"
-    runtimeOnly "curse.maven:emi-580555:5619579"
+    implementation "curse.maven:${ars_nouveau}"
+    implementation "curse.maven:adorned-1036809:5740650"
+    runtimeOnly "curse.maven:jei-238222:5846880"
     //implementation "curse.maven:${jei}"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
@@ -134,6 +136,8 @@ tasks.withType(ProcessResources).configureEach {
     filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties
     }
+
+    duplicatesStrategy = 'exclude'
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

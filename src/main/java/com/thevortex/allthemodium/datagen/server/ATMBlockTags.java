@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.datagen.server;
 
 
+import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
@@ -335,7 +336,7 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_PROTECTION).addTag(TagRegistry.BLOCK_ORES);
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SPAWNER);
         
-
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ArsCompat.ALLTHEMODIUM_SOURCE_JAR.get());
     }
 
 }

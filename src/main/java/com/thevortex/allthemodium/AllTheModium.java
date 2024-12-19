@@ -1,6 +1,8 @@
 package com.thevortex.allthemodium;
 
 
+import com.thevortex.allthemodium.compat.ars_nouveau.ArsClientHandler;
+import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
 import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.mek_reg.ATMSlurries;
 import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
@@ -8,13 +10,10 @@ import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -31,9 +30,6 @@ import org.spongepowered.asm.launch.MixinBootstrap;
 
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
-import com.thevortex.allthemodium.mixins.MixinConnector;
-
-import java.util.Set;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Reference.MOD_ID)
@@ -104,6 +100,13 @@ public class AllTheModium
 		if(ModList.get().isLoaded("mekanism")) {
 
 			ATMSlurries.SLURRIES.register(modEventBus);
+		}
+		if (ModList.get().isLoaded("ars_nouveau")) {
+			ArsCompat.ARS_BLOCKS.register(modEventBus);
+			ArsCompat.ARS_ITEMS.register(modEventBus);
+			ArsCompat.ARS_BLOCK_ENTITIES.register(modEventBus);
+			modEventBus.addListener(ArsCompat::registerCapabilities);
+			modEventBus.addListener(ArsClientHandler::init);
 		}
 
 		//MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, APStructure::setupStructureSpawns);
