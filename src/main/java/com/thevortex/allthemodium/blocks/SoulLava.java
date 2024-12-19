@@ -31,6 +31,7 @@ import net.neoforged.neoforge.common.NeoForgeEventHandler;
 import net.neoforged.neoforge.event.EventHooks;
 
 import com.thevortex.allthemodium.registry.ModRegistry;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.system.CallbackI;
 
 public class SoulLava extends LiquidBlock {
