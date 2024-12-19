@@ -8,7 +8,7 @@
 	],
 	"textures": {
 		"0": "ars_nouveau:block/mana_still",
-		"2": "ars_nouveau:block/source_jar",
+		"2": "allthemodium:block/source_jar",
 		"particle": "ars_nouveau:block/mana_still"
 	},
 	"elements": [
