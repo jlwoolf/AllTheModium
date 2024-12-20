@@ -9,6 +9,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -31,7 +32,7 @@ public class ArsCompat {
     public static BlockEntityTypeRegistryWrapper<AllTheModiumSourceJarTile> ALLTHEMODIUM_SOURCE_JAR_TILE = registerTile("allthemodium_source_jar", AllTheModiumSourceJarTile::new, ALLTHEMODIUM_SOURCE_JAR);
 
     public static ModBlockItem getDefaultBlockItem(Block block) {
-        return new ModBlockItem(block, ItemsRegistry.defaultItemProperties());
+        return new ModBlockItem(block, new Item.Properties().rarity(Rarity.EPIC));
     }
 
     public static <T extends Block> BlockRegistryWrapper<T> registerBlockAndItem(String name, Supplier<T> blockSupp) {

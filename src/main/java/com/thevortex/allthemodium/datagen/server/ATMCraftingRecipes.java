@@ -8,7 +8,8 @@ import com.thevortex.allthemodium.datagen.builder.ShapedBlockBuilder;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
-import net.allthemods.alltheores.infos.ItemTagRegistry;
+
+import net.allthemods.alltheores.registry.ATOTagRegistry;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -406,21 +407,21 @@ public class ATMCraftingRecipes extends RecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM.get(),1)
                 .requires(TagRegistry.ANCIENT_STONE_BRICKS_ITEM)
-                .requires(ItemTagRegistry.ORE_HAMMERS)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ANCIENT_STONE_BRICKS_ITEM).build()))
                 .save(consumer,recipeDir("ancient_cracked_stone_bricks","crushing"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM.get(),1)
                 .requires(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM)
-                .requires(ItemTagRegistry.ORE_HAMMERS)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM).build()))
                 .save(consumer,recipeDir("ancient_chiseled_stone_bricks","crushing"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ALLTHEMODIUM_DUST.get(),2)
                 .requires(ModRegistry.RAW_ALLTHEMODIUM.get())
-                .requires(ItemTagRegistry.ORE_HAMMERS)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_ALLTHEMODIUM.get()))
                 .save(consumer,recipeDir("allthemodium_dust","ore_crushing"));
 
@@ -439,7 +440,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.VIBRANIUM_DUST.get(),2)
                 .requires(ModRegistry.RAW_VIBRANIUM.get())
-                .requires(ItemTagRegistry.ORE_HAMMERS)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_VIBRANIUM.get()))
                 .save(consumer,recipeDir("vibranium_dust","ore_crushing"));
 
@@ -447,7 +448,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.UNOBTAINIUM_DUST.get(),2)
                 .requires(ModRegistry.RAW_UNOBTAINIUM.get())
-                .requires(ItemTagRegistry.ORE_HAMMERS)
+                .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_UNOBTAINIUM.get()))
                 .save(consumer,recipeDir("unobtainium_dust","ore_crushing"));
 

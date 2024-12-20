@@ -20,7 +20,7 @@ import net.neoforged.neoforge.gametest.GameTestHooks;
 public class AncientStone extends Block {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 	public AncientStone() {	//func_235861_h_ = setRequiresTool
-		super(Properties.of().requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 0;}).strength(-1.0f,1500.0f));
+		super(Properties.of().requiresCorrectToolForDrops().isRedstoneConductor((BlockState state, BlockGetter level, BlockPos pos) -> false).sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 0;}).strength(-1.0f,1500.0f));
 	}
 
 	

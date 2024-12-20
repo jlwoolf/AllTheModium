@@ -16,7 +16,9 @@ import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.entity.ThrownATMTrident;
 import com.thevortex.allthemodium.entity.alloy_trident;
+import com.thevortex.allthemodium.compat.ars_nouveau.*;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -31,11 +33,13 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.material.MapColor;
@@ -144,11 +148,11 @@ public class ModRegistry {
 
 	public static final DeferredHolder<Block,Block> ANCIENT_HERB = PILLARBLOCKS.register("ancient_herb",() -> new AncientHerb(BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noCollission()));
 
-	public static final DeferredHolder<Block,Block> ANCIENT_SMOOTH_STONE = BLOCKS.register("ancient_smooth_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(2.25f)));
-	public static final DeferredHolder<Block,Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(1.5f)));
+	public static final DeferredHolder<Block,Block> ANCIENT_SMOOTH_STONE = BLOCKS.register("ancient_smooth_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).isRedstoneConductor((BlockState state, BlockGetter level, BlockPos pos) -> false).strength(2.25f)));
+	public static final DeferredHolder<Block,Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).isRedstoneConductor((BlockState state, BlockGetter level, BlockPos pos) -> false).strength(1.5f)));
 	public static final DeferredHolder<Block,Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> new AncientDirt(BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).strength(0.6f)));
 	public static final DeferredHolder<Block,Block> ANCIENT_GRASS = BLOCKS.register("ancient_grass", () -> new Ancient_Grass(BlockBehaviour.Properties.of().sound(SoundType.MOSS).strength(0.6f)));
-	public static final DeferredHolder<Block,Block> ANCIENT_MOSSY_STONE = BLOCKS.register("ancient_mossy_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MOSS_CARPET).strength(1.5f)));
+	public static final DeferredHolder<Block,Block> ANCIENT_MOSSY_STONE = BLOCKS.register("ancient_mossy_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MOSS_CARPET).isRedstoneConductor((BlockState state, BlockGetter level, BlockPos pos) -> false).strength(1.5f)));
 	public static final DeferredHolder<Block,Block> ANCIENT_STONE_BRICKS = BLOCKS.register("ancient_stone_bricks", () -> new AncientStone());
 	public static final DeferredHolder<Block,Block> ANCIENT_CHISELED_STONE_BRICKS = BLOCKS.register("ancient_chiseled_stone_bricks", () -> new AncientStone());
 	public static final DeferredHolder<Block,Block> ANCIENT_CRACKED_STONE_BRICKS = BLOCKS.register("ancient_cracked_stone_bricks", () -> new AncientStone());

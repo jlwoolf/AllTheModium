@@ -5,7 +5,6 @@ import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
-import net.allthemods.alltheores.blocks.BlockList;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -283,49 +282,7 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SOUL_SOIL);
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.DEEPSLATE);
 
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_ALUMINUM_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_COAL_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_COPPER_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_DIAMOND_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_LEAD_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_NICKEL_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_IRIDIUM_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_LAPIS_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_PLATINUM_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_SILVER_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_OSMIUM_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_URANIUM_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_ZINC_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_TIN_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_IRON_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_REDSTONE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_GOLD_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_QUARTZ_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_EMERALD_ORE.get());
-
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.ALUMINUM_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.LEAD_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.NICKEL_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OSMIUM_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.PLATINUM_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.SILVER_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.TIN_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.URANIUM_SLATE_ORE.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.ZINC_SLATE_ORE.get());
-
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.IRIDIUM_SLATE_ORE.get());
-
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_ALUMINUM_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_LEAD_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_NICKEL_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_OSMIUM_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_PLATINUM_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_SILVER_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_TIN_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_URANIUM_BLOCK.get());
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_ZINC_BLOCK.get());
-
-        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_IRIDIUM_BLOCK.get());
+   
 
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.NETHERITE_BLOCK);
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.DIAMOND_BLOCK);
@@ -337,6 +294,12 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SPAWNER);
         
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ArsCompat.ALLTHEMODIUM_SOURCE_JAR.get());
+        tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+        tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        
     }
 
 }
