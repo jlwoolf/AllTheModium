@@ -225,7 +225,7 @@
   "block.allthemodium.molten_allthemodium_block" : "Molten Allthemodium",
   "block.allthemodium.molten_vibranium_block" : "Molten Vibranium",
   "block.allthemodium.molten_unobtainium_block" : "Molten Unobtainium",
-  "block.allthemodium.soul_lava_block" : "Soul Lava",
+  "block.allthemodium.soul_lava" : "Soul Lava",
   "item.allthemodium.soul_lava_bucket": "Soul Lava Bucket",
   "fluid.allthemodium.molten_allthemodium":"Molten Allthemodium",
   "fluid.allthemodium.soul_lava":"Soul Lava",
