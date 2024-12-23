@@ -9,9 +9,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
-@EventBusSubscriber(value = Dist.CLIENT, modid = Reference.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+
 public class ArsClientHandler {
-    @SubscribeEvent
+    
     public static void init(final FMLClientSetupEvent fmlClientSetupEvent) {
         fmlClientSetupEvent.enqueueWork(() -> ItemProperties.register(ArsCompat.ALLTHEMODIUM_SOURCE_JAR.asItem(), ArsNouveau.prefix("source"), (stack, level, entity, seed) -> {
             int amount = BlockFillContents.get(stack);
