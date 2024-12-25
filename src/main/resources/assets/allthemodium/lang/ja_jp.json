@@ -225,7 +225,7 @@
   "block.allthemodium.molten_allthemodium_block" : "溶融したAllthemodium",
   "block.allthemodium.molten_vibranium_block" : "溶融したヴィブラニウム",
   "block.allthemodium.molten_unobtainium_block" : "溶融したアンオブタニウム",
-  "block.allthemodium.soul_lava_block" : "魂の溶岩",
+  "block.allthemodium.soul_lava" : "魂の溶岩",
   "item.allthemodium.soul_lava_bucket": "魂の溶岩入りバケツ",
   "fluid.allthemodium.molten_allthemodium":"溶融したAllthemodium",
   "fluid.allthemodium.soul_lava":"魂の溶岩",
@@ -290,5 +290,6 @@
   "fluid.allthemodium.vapor_unobtainium": "アンオブタニウムの蒸気",
   "block.iceandfire.allthemodium_pile": "堆積したAllthemodium",
   "block.iceandfire.unobtainium_pile": "堆積したアンオブタニウム",
-  "block.iceandfire.vibranium_pile": "堆積したヴィブラニウム"
+  "block.iceandfire.vibranium_pile": "堆積したヴィブラニウム",
+  "block.allthemodium.allthemodium_source_jar": "Allthemodiumのソース瓶"
 }
